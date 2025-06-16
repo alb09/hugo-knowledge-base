@@ -1,0 +1,14 @@
+{{ define "main" }}
+
+{{ .Content }}
+<h1>Topic: {{ .Title }}</h1>
+<p>Explore posts related to the topic "{{ .Title }}".</p>
+<ul>
+  {{ range .Pages }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <span>- {{ .Date.Format "2 Jan 2006" }}</span>
+    </li>
+  {{ end }}
+</ul>
+{{ end }}

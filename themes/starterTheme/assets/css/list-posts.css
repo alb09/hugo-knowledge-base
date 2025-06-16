@@ -1,0 +1,38 @@
+.list-posts {
+    /* display: flex; */
+    margin-bottom: 100px; /* have some margin to the footer */
+}
+
+.list-posts div {
+    /* background-color: hsla(0, 0%, 94%, 0.455); */
+    border-radius: 0px;
+    line-height: 1.3;
+}
+
+
+.each-listed-post h2 a {
+    color: var(--text-color);
+    font-size: 2.6rem;
+    font-weight: 760;
+    text-decoration: underline;
+    }
+
+.each-listed-post h2 {
+    margin: 0;
+    margin-top: 1rem;
+}
+
+
+.each-listed-post ul {
+    margin-top: 2rem;   
+}
+
+
+.each-listed-post li {
+    font-size: 22px;
+}
+
+
+.each-listed-post {
+    margin-bottom: 0;
+}

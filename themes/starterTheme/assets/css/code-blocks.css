@@ -1,0 +1,58 @@
+:root {
+    --code-text-color: #f8f8f2;
+    --code-line-number-color: #6272a4;
+    --code-bg-color-dracula: #282a36;
+}
+
+/*** Code block styling ***/
+.highlight code {
+    font-size: 1.5rem;
+    font-family: var(--code-fonts);
+    line-height: 0;
+}
+
+.chroma .lnt {
+    color: var(--code-line-number-color);
+    user-select: none;
+    text-shadow: none;
+}
+
+
+/* Make the terminal pretty */ 
+.highlight {
+    background-color: var(--code-bg-color-dracula);
+    border-radius: var(--code-block-corners);
+    padding: 0;
+    margin: 0;
+}
+
+
+/* The inside of the code block */
+.chroma {
+    max-width: 100%;
+    overflow-x: auto;
+    
+    padding-left: 1rem; /* Set the padding of code block (between code block numbers and sides) */
+
+    /* Set the margin of code block (distance between code block and code bar) */
+    margin-top: 0;
+    margin-bottom: 10px;
+
+    color: var(--code-text-color);
+    
+    line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

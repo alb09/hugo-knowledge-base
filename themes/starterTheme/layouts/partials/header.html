@@ -1,0 +1,13 @@
+<nav>
+    <div class="navbar-left">
+        <div class="navbar-title"><a href="{{ "/" | relURL }}">{{ site.Title }}</a></div>
+        
+    </div>
+    
+    <div class="navbar-right">
+        {{ partial "theme-toggle" }}
+        {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+
+    
+    </div>
+</nav>

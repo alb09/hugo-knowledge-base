@@ -1,0 +1,17 @@
+{{ define "main" }}
+  {{ .Content }}
+
+  <!-- Uncomment this or create an _index.md file in the content directiory.
+
+  <h1>Welcome to my blog</h1>
+
+  <p>It is about this and that. See topics here and there. Explore some tags or learn more about me.</p>
+
+  <p>See some of my blog posts:</p>
+  -->
+
+
+  {{ partial "list-posts" . }}
+
+
+{{ end }}

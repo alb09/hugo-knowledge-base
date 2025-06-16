@@ -1,0 +1,25 @@
+
+.tags-box {
+    display: flex;
+    align-items: center;
+}
+
+.tags {
+    display: flex;
+    gap: 1px;
+}
+
+.tags li {
+    list-style: none;
+}
+
+.tags a {
+    border-radius: 0.25rem;
+    color: black;
+}
+
+.tags a:hover {
+    background-color: #ddd;
+    color: black;
+}
+

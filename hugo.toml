@@ -1,0 +1,23 @@
+baseURL = 'https://example.com'
+languageCode = 'en-us'
+title = "Alex' KB"
+theme = 'starterTheme'
+
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  topic = "topic"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      attribute = true
+
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false
+    style = "dracula"

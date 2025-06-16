@@ -1,0 +1,77 @@
+baseURL = 'https:/kb.alexbutenschoen.com/'
+languageCode = 'en-US'
+title = "Starter Theme"
+theme = 'starterTheme'
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  topic = "topics"
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      attribute = true
+
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false
+    style = "dracula"
+  
+
+
+# [[menus.main]]
+# name = 'Explore'
+# pageRef = '/explore'
+# weight = 10
+
+# [[menus.main]]
+# name = 'Search'
+# pageRef = '/search'
+# weight = 10
+
+# [[menus.main]]
+# name = 'Posts'
+# pageRef = '/posts'
+# weight = 20
+
+# [[menus.main]]
+# name = 'Topics'
+# pageRef = '/topic'
+# weight = 30
+
+# [[menus.main]]
+# name = 'Categories'
+# pageRef = '/categories'
+# weight = 40
+
+# [[menus.main]]
+# name = 'Tags'
+# pageRef = '/tags'
+# weight = 50
+
+# [[menus.main]]
+# name = 'Timeline'
+# pageRef = '/timeline'
+# weight = 50
+
+# [[menus.main]]
+# name = 'Notes'
+# pageRef = '/notes'
+# weight = 50
+
+[[menus.main]]
+name = 'About'
+url = 'https://alexbutenschoen.com/about' # remove for uploading later
+weight = 60
+target = "_blank"
+
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.116.0"
