@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Using Windows Inside of Linux | Alex&#39; KB</title>
+<title>Setup Windows 11 Inside of Linux | Alex&#39; KB</title>
 
 
 
@@ -94,7 +94,7 @@
   </header>
   <main>
     
-  <h1 class="blogpost-title">Using Windows Inside of Linux</h1>
+  <h1 class="blogpost-title">Setup Windows 11 Inside of Linux</h1>
 
 
 
@@ -106,7 +106,7 @@
 <div class="pageinfo">
     <ul>
         <li><i></i> 17 Jun 2025</li> 
-        <li><i class="fa-regular fa-keyboard"></i> 52 words.</li>
+        <li><i class="fa-regular fa-keyboard"></i> 91 words.</li>
 	
     </ul>
 </div>
@@ -114,8 +114,28 @@
    
 
 
-  <div class="single-content"><p>Installing the graphical user interface for QEMU and a GUI Hypervisor:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1849f25a81f00fa6">
+  <div class="single-content"><p>Download preferred ISO from Microsoft: 
+
+<a href="https://www.microsoft.com/en-us/software-download/windows11" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+Download Windows 11
+<i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+</a>
+</p>
+<p>I recommend Windows 11 English International, supposedly less bloat in there. Look at 
+
+<a href="https://winutil.christitus.com/userguide/microwin/" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+Microwin – Winutil Documentation
+<i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+</a>
+ if you want to go full mode with setting up an clean Windows ISO.</p>
+<p>Installing the graphical user interface for QEMU and a GUI Hypervisor:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1849f352e3ab0d4a">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -133,7 +153,7 @@
 
 <p>See <code>man virsh</code> and <code>man qemu</code> for details.</p>
 <p>Enable <code>libvirtd</code>:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1849f25a8207a946">
+<div class="code-block language-bash" data-lang="bash" id="code-1849f352e3bf9f1e">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
