@@ -59,7 +59,7 @@
 
 /* Styling the references links */
 .external-link {
-  color: #345995;
+  color: var(--link-color);
   font-weight: 480;
 }
 
