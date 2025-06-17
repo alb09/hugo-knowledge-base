@@ -9,7 +9,6 @@ draft: false
 
 <!--more-->
 
-Test
 
 Download preferred ISO from Microsoft: [Download Windows 11](https://www.microsoft.com/en-us/software-download/windows11)
 
