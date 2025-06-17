@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Running Windows Apps on Linux with Wine | Alex&#39; KB</title>
+<title>Using Windows Inside of Linux | Alex&#39; KB</title>
 
 
 
@@ -94,7 +94,7 @@
   </header>
   <main>
     
-  <h1 class="blogpost-title">Running Windows Apps on Linux with Wine</h1>
+  <h1 class="blogpost-title">Using Windows Inside of Linux</h1>
 
 
 
@@ -105,8 +105,8 @@
 
 <div class="pageinfo">
     <ul>
-        <li><i></i> 16 Jun 2025</li> 
-        <li><i class="fa-regular fa-keyboard"></i> 34 words.</li>
+        <li><i></i> 17 Jun 2025</li> 
+        <li><i class="fa-regular fa-keyboard"></i> 52 words.</li>
 	
     </ul>
 </div>
@@ -114,9 +114,8 @@
    
 
 
-  <div class="single-content"><p>Download desired Windows <code>.exe</code> or <code>.msi</code>.</p>
-<p>Configuring Wine:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1849f25a81ede1e1">
+  <div class="single-content"><p>Installing the graphical user interface for QEMU and a GUI Hypervisor:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1849f25a81f00fa6">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -125,15 +124,16 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">winecfg</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S quemu-desktop libvirt virt-manager</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
 
 
-<p>Installing a Windows Program:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1849f25a82057716">
+<p>See <code>man virsh</code> and <code>man qemu</code> for details.</p>
+<p>Enable <code>libvirtd</code>:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1849f25a8207a946">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -142,44 +142,14 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wine foobar2000.exe</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl <span class="nb">enable</span> libvirtd.socket</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
 
 
-<p>Uninstalling a program:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1849f25a8208a640">
-  <div class="code-header">
-    <span class="code-language">bash</span>
-  </div>
-  <div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wine uninstaller</span></span></code></pre></td></tr></table>
-</div>
-</div>
-</div>
-
-
-
-<p>Also remove desktop entries:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1849f25a820c1b8c">
-  <div class="code-header">
-    <span class="code-language">bash</span>
-  </div>
-  <div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm  /.local/share/applications/wine/Programs/foobar2000.desktop</span></span></code></pre></td></tr></table>
-</div>
-</div>
-</div></div>
+<p>Open <code>Virtual Machine Manager</code>, click the plus icon and create an virtual machine with Windows ISO for example.</p></div>
 
 
 
@@ -192,13 +162,13 @@
 
   <div class="prev">
       
-        <span class="no-prev"></span>
+	<p>&lt;-- Previous on</p>
+        <a class="previous-post" href="http://localhost:1313/windows-apps-on-linux/">Running Windows Apps on Linux with Wine</a>
       
   </div>
   <div class="next">
       
-	<p>Up next --></p>
-        <a class="next-post" href="http://localhost:1313/using-windows-inside-of-linux/">Using Windows Inside of Linux</a>
+        <span class="no-next"></span>
       
 
   </div>
