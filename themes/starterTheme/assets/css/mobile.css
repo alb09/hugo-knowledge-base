@@ -33,6 +33,11 @@
         margin: 0;
     }
 
+    .pageinfo li {
+        font-size: 14px;
+    }
+
+
     .navbar-title {
         font-size: 28px;
     }
