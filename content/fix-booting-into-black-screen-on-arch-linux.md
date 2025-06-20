@@ -30,7 +30,7 @@ lspci -k | grep -A 3 -E "(VGA|3D)"
 
 Output:
 
-```bash
+```
 04:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev c1)
 	Subsystem: ASUSTeK Computer Inc. Device 161c
 	Kernel driver in use: amdgpu

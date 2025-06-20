@@ -106,7 +106,7 @@
 <div class="pageinfo">
     <ul>
         <li><i></i> 20 Jun 2025</li> 
-        <li><i class="fa-regular fa-keyboard"></i> 94 words.</li>
+        <li><i class="fa-regular fa-keyboard"></i> 151 words.</li>
 	
     </ul>
 </div>
@@ -115,7 +115,7 @@
 
 
   <div class="single-content"><p>How I fixed booting into a black monitor for Asus Zenbook running Arch Linux (step by step):</p>
-<div class="code-block language-bash" data-lang="bash" id="code-184ade72472b5220">
+<div class="code-block language-bash" data-lang="bash" id="code-184aded4c0365c60">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -127,6 +127,7 @@
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pacman -Qs radeon <span class="c1"># search system wide radeon driver</span>
@@ -134,7 +135,48 @@
 </span></span><span class="line"><span class="cl">sudo pacman -Ss amdgpu <span class="c1"># search for amdgpu drivers in the repo</span>
 </span></span><span class="line"><span class="cl">sudo pacman -S xf86-video-amdgpu <span class="c1"># install those drivers</span>
 </span></span><span class="line"><span class="cl">sudo pacman -Rns vulkan-radeon <span class="c1"># remove conflicting drivers</span>
-</span></span><span class="line"><span class="cl">sudo mkinitcpio -P <span class="c1"># reload initramfs modules</span></span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl">sudo mkinitcpio -P <span class="c1"># reload initramfs modules</span>
+</span></span><span class="line"><span class="cl">reboot</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Check kernel driver for gpu:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-184aded4c05ff2d5">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lspci -k <span class="p">|</span> grep -A <span class="m">3</span> -E <span class="s2">&#34;(VGA|3D)&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Output:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-184aded4c0710d4a">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">04:00.0 VGA compatible controller: Advanced Micro Devices, Inc. <span class="o">[</span>AMD/ATI<span class="o">]</span> Cezanne <span class="o">[</span>Radeon Vega Series / Radeon Vega Mobile Series<span class="o">]</span> <span class="o">(</span>rev c1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">	Subsystem: ASUSTeK Computer Inc. Device 161c
+</span></span><span class="line"><span class="cl">	Kernel driver in use: amdgpu
+</span></span><span class="line"><span class="cl">	Kernel modules: amdgpu</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -144,7 +186,7 @@
 <hr>
 <p>Run <code>xrandr</code> or <code>arandr</code> to adjust monitors</p>
 <p>Enable and set resolution of embedded monitor (usually eDP-1):</p>
-<div class="code-block language-bash" data-lang="bash" id="code-184ade72474f372d">
+<div class="code-block language-bash" data-lang="bash" id="code-184aded4c0867a07">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
