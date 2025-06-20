@@ -12,4 +12,4 @@ I am using Arch Linux. But all the information shown should work on your machine
 #### BE CAREFUL 
 Don't run code snippets you don't understand on a computer, I accept no liability for any damages arising from your use of provided information on this website.
 
-Good luck bewildered internet traveller :)
+Good luck internet traveller :)
