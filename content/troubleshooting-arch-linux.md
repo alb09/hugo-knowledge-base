@@ -34,6 +34,8 @@ station wlan0 connect "SSID"
 exit
 ```
 
+---
+
 ## Access your system
 
 List block devices:
