@@ -19,6 +19,22 @@ sudo pacman -Ss amdgpu # search for amdgpu drivers in the repo
 sudo pacman -S xf86-video-amdgpu # install those drivers
 sudo pacman -Rns vulkan-radeon # remove conflicting drivers
 sudo mkinitcpio -P # reload initramfs modules
+reboot
+```
+
+Check kernel driver for gpu:
+
+```bash
+lspci -k | grep -A 3 -E "(VGA|3D)"
+```
+
+Output:
+
+```bash
+04:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev c1)
+	Subsystem: ASUSTeK Computer Inc. Device 161c
+	Kernel driver in use: amdgpu
+	Kernel modules: amdgpu
 ```
 
 ---
