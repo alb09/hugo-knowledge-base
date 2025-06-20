@@ -1,4 +1,4 @@
-baseURL = 'https://example.com'
+baseURL = 'https://kb.alexbutenschoen.com'
 languageCode = 'en-us'
 title = "Alex' KB"
 theme = 'starterTheme'
