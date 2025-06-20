@@ -115,7 +115,7 @@
 
 
   <div class="single-content"><p>How I fixed booting into a black monitor for Asus Zenbook running Arch Linux (step by step):</p>
-<div class="code-block language-bash" data-lang="bash" id="code-184aded4c0365c60">
+<div class="code-block language-bash" data-lang="bash" id="code-184adeeabb0c21e7">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -144,7 +144,7 @@
 
 
 <p>Check kernel driver for gpu:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-184aded4c05ff2d5">
+<div class="code-block language-bash" data-lang="bash" id="code-184adeeabb2d8c1a">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -161,9 +161,9 @@
 
 
 <p>Output:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-184aded4c0710d4a">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-184adeeabb6c8416">
   <div class="code-header">
-    <span class="code-language">bash</span>
+    <span class="code-language">plaintext</span>
   </div>
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -173,7 +173,7 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">04:00.0 VGA compatible controller: Advanced Micro Devices, Inc. <span class="o">[</span>AMD/ATI<span class="o">]</span> Cezanne <span class="o">[</span>Radeon Vega Series / Radeon Vega Mobile Series<span class="o">]</span> <span class="o">(</span>rev c1<span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">04:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev c1)
 </span></span><span class="line"><span class="cl">	Subsystem: ASUSTeK Computer Inc. Device 161c
 </span></span><span class="line"><span class="cl">	Kernel driver in use: amdgpu
 </span></span><span class="line"><span class="cl">	Kernel modules: amdgpu</span></span></code></pre></td></tr></table>
@@ -186,7 +186,7 @@
 <hr>
 <p>Run <code>xrandr</code> or <code>arandr</code> to adjust monitors</p>
 <p>Enable and set resolution of embedded monitor (usually eDP-1):</p>
-<div class="code-block language-bash" data-lang="bash" id="code-184aded4c0867a07">
+<div class="code-block language-bash" data-lang="bash" id="code-184adeeabb719dcb">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
