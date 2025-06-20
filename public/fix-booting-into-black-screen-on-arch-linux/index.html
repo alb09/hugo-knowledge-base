@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Running Windows Apps on Linux with Wine | Alex&#39; KB</title>
+<title>Fix Booting Into Black Screen on Arch Linux | Alex&#39; KB</title>
 
 
 
@@ -94,7 +94,7 @@
   </header>
   <main>
     
-  <h1 class="blogpost-title">Running Windows Apps on Linux with Wine</h1>
+  <h1 class="blogpost-title">Fix Booting Into Black Screen on Arch Linux</h1>
 
 
 
@@ -105,8 +105,8 @@
 
 <div class="pageinfo">
     <ul>
-        <li><i></i> 16 Jun 2025</li> 
-        <li><i class="fa-regular fa-keyboard"></i> 34 words.</li>
+        <li><i></i> 20 Jun 2025</li> 
+        <li><i class="fa-regular fa-keyboard"></i> 94 words.</li>
 	
     </ul>
 </div>
@@ -114,9 +114,37 @@
    
 
 
-  <div class="single-content"><p>Download desired Windows <code>.exe</code> or <code>.msi</code>.</p>
-<p>Configuring Wine:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-184ade72472e90db">
+  <div class="single-content"><p>How I fixed booting into a black monitor for Asus Zenbook running Arch Linux (step by step):</p>
+<div class="code-block language-bash" data-lang="bash" id="code-184ade72472b5220">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pacman -Qs radeon <span class="c1"># search system wide radeon driver</span>
+</span></span><span class="line"><span class="cl">pacman -Qs amdgpu
+</span></span><span class="line"><span class="cl">sudo pacman -Ss amdgpu <span class="c1"># search for amdgpu drivers in the repo</span>
+</span></span><span class="line"><span class="cl">sudo pacman -S xf86-video-amdgpu <span class="c1"># install those drivers</span>
+</span></span><span class="line"><span class="cl">sudo pacman -Rns vulkan-radeon <span class="c1"># remove conflicting drivers</span>
+</span></span><span class="line"><span class="cl">sudo mkinitcpio -P <span class="c1"># reload initramfs modules</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<hr>
+<p>Run <code>xrandr</code> or <code>arandr</code> to adjust monitors</p>
+<p>Enable and set resolution of embedded monitor (usually eDP-1):</p>
+<div class="code-block language-bash" data-lang="bash" id="code-184ade72474f372d">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -125,58 +153,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">winecfg</span></span></code></pre></td></tr></table>
-</div>
-</div>
-</div>
-
-
-
-<p>Installing a Windows Program:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-184ade72474a04eb">
-  <div class="code-header">
-    <span class="code-language">bash</span>
-  </div>
-  <div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wine foobar2000.exe</span></span></code></pre></td></tr></table>
-</div>
-</div>
-</div>
-
-
-
-<p>Uninstalling a program:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-184ade72474f2a15">
-  <div class="code-header">
-    <span class="code-language">bash</span>
-  </div>
-  <div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wine uninstaller</span></span></code></pre></td></tr></table>
-</div>
-</div>
-</div>
-
-
-
-<p>Also remove desktop entries:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-184ade724753615a">
-  <div class="code-header">
-    <span class="code-language">bash</span>
-  </div>
-  <div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm  /.local/share/applications/wine/Programs/foobar2000.desktop</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">xrandr --output eDP-1 --mode 1920x1080</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div></div>
@@ -192,13 +169,13 @@
 
   <div class="prev">
       
-        <span class="no-prev"></span>
+	<p>&lt;-- Previous on</p>
+        <a class="previous-post" href="https://kb.alexbutenschoen.com/troubleshooting-arch-linux/">Troubleshooting Arch Linux</a>
       
   </div>
   <div class="next">
       
-	<p>Up next --></p>
-        <a class="next-post" href="https://kb.alexbutenschoen.com/setup-windows11-inside-of-linux/">Setup Windows 11 Inside of Linux</a>
+        <span class="no-next"></span>
       
 
   </div>
