@@ -80,6 +80,33 @@
         margin-left: 20px;
         user-select: none;
     }
+
+
+
+
+    .previous-post, .next-post {
+    
+    color: var(--text-color-offset);
+    font-size: 1.4rem;
+    font-weight: 860;
+    text-decoration: underline;
+    }
+
+    /* Text in the navbar (primarly size and color) */
+    .navbar-title a {
+        font-size: 28px;
+        color: var(--text-color);
+    }
+
+    /* Text in the navbar (primarly size and color) */
+    .navbar-list a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-size: 25px;
+    }
+
+    nav {
+        background-color: rgba(46, 52, 64, 0.8);
 }
 
 
