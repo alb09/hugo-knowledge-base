@@ -151,7 +151,6 @@ a.previous-post {
 a.next-post {
 	display: block;
 	text-align: right;
-
 }
 
 
@@ -161,6 +160,7 @@ a.next-post {
 
 .prev {
 	margin-right: 2rem;
+    
 }
 
 .prev *, .next * {
