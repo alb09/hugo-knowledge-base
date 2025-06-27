@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>My website on Alex&#39; KB</title>
-    <link>https://kb.alexbutenschoen.com/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content in My website on Alex&#39; KB</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 20 Jun 2025 23:44:16 +0200</lastBuildDate>
-    <atom:link href="https://kb.alexbutenschoen.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fix Booting Into Black Screen on Arch Linux</title>
-      <link>https://kb.alexbutenschoen.com/fix-booting-into-black-screen-on-arch-linux/</link>
+      <link>http://localhost:1313/fix-booting-into-black-screen-on-arch-linux/</link>
       <pubDate>Fri, 20 Jun 2025 23:44:16 +0200</pubDate>
-      <guid>https://kb.alexbutenschoen.com/fix-booting-into-black-screen-on-arch-linux/</guid>
+      <guid>http://localhost:1313/fix-booting-into-black-screen-on-arch-linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Troubleshooting Arch Linux</title>
-      <link>https://kb.alexbutenschoen.com/troubleshooting-arch-linux/</link>
+      <link>http://localhost:1313/troubleshooting-arch-linux/</link>
       <pubDate>Fri, 20 Jun 2025 22:32:50 +0200</pubDate>
-      <guid>https://kb.alexbutenschoen.com/troubleshooting-arch-linux/</guid>
+      <guid>http://localhost:1313/troubleshooting-arch-linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Setup Windows 11 Inside of Linux</title>
-      <link>https://kb.alexbutenschoen.com/setup-windows11-inside-of-linux/</link>
+      <link>http://localhost:1313/setup-windows11-inside-of-linux/</link>
       <pubDate>Tue, 17 Jun 2025 23:24:25 +0200</pubDate>
-      <guid>https://kb.alexbutenschoen.com/setup-windows11-inside-of-linux/</guid>
+      <guid>http://localhost:1313/setup-windows11-inside-of-linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Running Windows Apps on Linux with Wine</title>
-      <link>https://kb.alexbutenschoen.com/windows-apps-on-linux/</link>
+      <link>http://localhost:1313/windows-apps-on-linux/</link>
       <pubDate>Mon, 16 Jun 2025 00:34:06 +0200</pubDate>
-      <guid>https://kb.alexbutenschoen.com/windows-apps-on-linux/</guid>
+      <guid>http://localhost:1313/windows-apps-on-linux/</guid>
       <description></description>
     </item>
   </channel>
