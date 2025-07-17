@@ -114,14 +114,17 @@ notation
 ```
 
 
-At this point I recommend to create an Keyoxide Profile online for verification and claim of a number of services online.
+At this point I recommend to create an Keyoxide Profile for online identity verification and easier claim of multiple accounts.
 
-Then add something like this: `proof@ariadne.id=https://fediverse.server/@username`.
+Get your key fingerprint and add this into the notation: `proof@ariadne.id=https://keyoxide.org/aspe:keyoxide.org:FPR`.
+
 
 This will link your Keyoxide Profile to your OpenPGP Key (both ways). Remember to add the PGP Key to Keyoxide as well.
 
 
-Add some services and complete your Keyoxide Profile now.
+Add some services and complete your Keyoxide Profile afterwards.
+
+You are totally free to add your accounts to your PGP Key instead but Keyoxide is easier to maintain in my opinion.
 
 
 
