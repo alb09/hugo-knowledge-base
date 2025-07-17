@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Running Windows Apps on Linux with Wine | Alex&#39; KB</title>
+<title>Flash Usb Drive | Alex&#39; KB</title>
 
 
 
@@ -94,7 +94,7 @@
   </header>
   <main>
     
-  <h1 class="blogpost-title">Running Windows Apps on Linux with Wine</h1>
+  <h1 class="blogpost-title">Flash Usb Drive</h1>
 
 
 
@@ -105,8 +105,8 @@
 
 <div class="pageinfo">
     <ul>
-        <li><i></i> 16 Jun 2025</li> 
-        <li><i class="fa-regular fa-keyboard"></i> 34 words.</li>
+        <li><i></i> 29 Jun 2025</li> 
+        <li><i class="fa-regular fa-keyboard"></i> 93 words.</li>
 	
     </ul>
 </div>
@@ -114,9 +114,36 @@
    
 
 
-  <div class="single-content"><p>Download desired Windows <code>.exe</code> or <code>.msi</code>.</p>
-<p>Configuring Wine:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-185326ea84dbe4cd">
+  <div class="single-content"><p>Using <code>ventoy</code> to flash multiple ISOs from one USB medium:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-185326ea84dc981e">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yay -S ventoy-bin
+</span></span><span class="line"><span class="cl">sudo /opt/ventoy/VentoyGUI.x86_64</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Then simply paste all ISOs into the <code>Ventoy</code> USB Drive. When you enter the Ventoy USB on startup, a list with all ISOs are presented to choose from.</p>
+<hr>
+<h1 id="full-usb-flashing">Full USB flashing</h1>
+
+  <blockquote>
+    <p>![Important]
+Unmount the USB device you want to flash.</p>
+  </blockquote>
+
+
+<div class="code-block language-bash" data-lang="bash" id="code-185326ea84efec81">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -125,15 +152,15 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">winecfg</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">umount /dev/sdX</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
 
 
-<p>Installing a Windows Program:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-185326ea84e7b6ec">
+<p>Using the <code>dd</code> command:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-185326ea84f4fe16">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -142,15 +169,15 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wine foobar2000.exe</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>/path/to/your.iso <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
 
 
-<p>Uninstalling a program:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-185326ea84e99293">
+<p>Flush write cache:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-185326ea84f9a772">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -159,27 +186,14 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wine uninstaller</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo sync</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
 
 
-<p>Also remove desktop entries:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-185326ea84eb22ef">
-  <div class="code-header">
-    <span class="code-language">bash</span>
-  </div>
-  <div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm  /.local/share/applications/wine/Programs/foobar2000.desktop</span></span></code></pre></td></tr></table>
-</div>
-</div>
-</div></div>
+<p>Alternatively: Use <code>balena etcher</code> or <code>rufus</code> or any other usb writing tool.</p></div>
 
 
 
@@ -193,13 +207,12 @@
   <div class="prev">
       
 	<p>&lt;-- Previous on</p>
-        <a class="previous-post" href="https://kb.alexbutenschoen.com/online-identity-verification/">Online Identity Verification</a>
+        <a class="previous-post" href="https://kb.alexbutenschoen.com/fix-booting-into-black-screen-on-arch-linux/">Fix Booting Into Black Screen on Arch Linux</a>
       
   </div>
   <div class="next">
       
-	<p>Up next --></p>
-        <a class="next-post" href="https://kb.alexbutenschoen.com/setup-windows11-inside-of-linux/">Setup Windows 11 Inside of Linux</a>
+        <span class="no-next"></span>
       
 
   </div>

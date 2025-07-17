@@ -4,7 +4,7 @@ date: 2025-06-29T01:47:00+02:00
 tags:
 category:
 topic:
-draft: true
+draft: false
 ---
 
 <!--more-->
@@ -17,6 +17,12 @@ yay -S ventoy-bin
 sudo /opt/ventoy/VentoyGUI.x86_64
 ```
 
+Then simply paste all ISOs into the `Ventoy` USB Drive. When you enter the Ventoy USB on startup, a list with all ISOs are presented to choose from.
+
+
+---
+
+# Full USB flashing
 
 >![Important]
 >Unmount the USB device you want to flash.
