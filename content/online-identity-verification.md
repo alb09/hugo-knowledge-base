@@ -172,7 +172,7 @@ Change `FPR` to your key fingerprint or paste your fingerprint directly here [Ke
 
 Then add your Keyoxide link to your socials to proof your identity. (e.g. Mastodon)
 
-Last step: Check if Keyoxide realises the linked PGP Key and Socials: https://keyoxide.org/aspe:keyoxide.org:FPR
+Last step: Check if Keyoxide realises the linked PGP Key and Socials: `https://keyoxide.org/aspe:keyoxide.org:FPR`
 
 Congratulations, you are now verified on Mastodon, have an encrypted Mail and you claimed the accounts you use online.
 
