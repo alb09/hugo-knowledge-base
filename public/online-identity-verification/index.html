@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Online Identity Verification | Alex&#39; KB</title>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+<link rel="stylesheet" href="/css/combined.min.ac95b44d08a32293b3e4f7fae33cb3877dc5b139c7bf61d4056503e7ff7fc03c.css" integrity="sha256-rJW0TQijIpOz5Pf64zyzh33FsTnHv2HUBWUD5/9/wDw=" crossorigin="anonymous">
+
+
+
+<link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&display=swap" rel="stylesheet">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+      <script src="/js/main.ac5f2cf5ee78619c5a92be5a0d5e287ecf3f696a8a5da8ee4d31609e912bd598.js" integrity="sha256-rF8s9e54YZxakr5aDV4ofs8/aWqKXajuTTFgnpEr1Zg=" crossorigin="anonymous"></script>
+
+
+
+
+</head>
+<body>
+  <header>
+    <nav>
+    <div class="navbar-left">
+        <div class="navbar-title"><a href="/">Alex&#39; KB</a></div>
+        
+    </div>
+    
+    <div class="navbar-right">
+        <button class="toggle-dark-mode" id="themeToggle">
+    <i class="fa-solid fa-circle-half-stroke" style="color: var(--text-color);"></i>
+</button>
+        
+
+
+
+  <nav class="navbar-list">
+    <ul>
+
+
+
+    <li>
+      <a href="https://alexbutenschoen.com/about">About</a>
+    </li>
+    </ul>
+  </nav>
+
+
+
+
+    
+    </div>
+</nav>
+  </header>
+  <main>
+    
+  <h1 class="blogpost-title">Online Identity Verification</h1>
+
+
+
+  
+
+ 
+
+
+<div class="pageinfo">
+    <ul>
+        <li><i></i> 02 Jun 2025</li> 
+        <li><i class="fa-regular fa-keyboard"></i> 382 words.</li>
+	
+    </ul>
+</div>
+
+   
+
+
+  <div class="single-content"><p>How to reliably set up verification for your online identity (Email and Socials).</p>
+<p>Terminology:</p>
+<ul>
+<li>PGP: Pretty Good Privacy</li>
+<li>GPG: Gnu Privacy Guard</li>
+</ul>
+<h2 id="1-creating-a-private-openpgp-key">1. Creating a private OpenPGP key</h2>
+<p>Make sure <code>gnupg</code> is installed (additionally install gpg-tui):</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1853269c9378651b">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S gnupg gpg-tui</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<hr>
+
+  <blockquote class="alert-note">
+    <span class="alert-heading"></span>
+    <p>We will add your official Emails and Socials to this key later</p>
+  </blockquote>
+
+
+<p>Generate a private key:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1853269c9389d9b2">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --full-generate-key</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>I recommend a full generation and going with the defaults.</p>
+
+  <blockquote class="alert-warning">
+    <span class="alert-heading"></span>
+    <p>Deleting a key: <code>gpg --delete-secret-key [FPR or Email]</code>)</p>
+  </blockquote>
+
+
+<hr>
+<p>Listing all secret keys:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1853269c938c6a70">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --list-secret-keys</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Listing all public keys:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1853269c938edadb">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --list-public-keys</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>This way you can check out all your keys and their fingerprint (FPR)</p>
+<hr>
+<h3 id="editing-your-private-key">Editing your private key</h3>
+<div class="code-block language-bash" data-lang="bash" id="code-1853269c93912bd8">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --edit-key <span class="o">[</span>FPR<span class="o">]</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>or interactively:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1853269c9393b237">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg-tui</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<h3 id="basic-operations">Basic operations:</h3>
+<p>Selecting an uid:</p>
+<div class="code-block language-gpg" data-lang="gpg" id="code-1853269c93d01f29">
+  <div class="code-header">
+    <span class="code-language">gpg</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">uid [number]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Deleting an uid:</p>
+<div class="code-block language-gpg" data-lang="gpg" id="code-1853269c93d1b8d6">
+  <div class="code-header">
+    <span class="code-language">gpg</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">deluid</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Add secondary Emails to your encryption key:</p>
+<div class="code-block language-gpg" data-lang="gpg" id="code-1853269c93d31cdb">
+  <div class="code-header">
+    <span class="code-language">gpg</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">adduid</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Set primary Email!</p>
+<div class="code-block language-gpg" data-lang="gpg" id="code-1853269c93d46f80">
+  <div class="code-header">
+    <span class="code-language">gpg</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">uid [number]
+</span></span><span class="line"><span class="cl">primary
+</span></span><span class="line"><span class="cl">save</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Add identity claim to your private key:</p>
+<div class="code-block language-gpg" data-lang="gpg" id="code-1853269c93d5eb14">
+  <div class="code-header">
+    <span class="code-language">gpg</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">notation</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>At this point I recommend to create an Keyoxide Profile online for verification and claim of a number of services online.</p>
+<p>Then add something like this: <code>proof@ariadne.id=https://fediverse.server/@username</code>.</p>
+<p>This will link your Keyoxide Profile to your OpenPGP Key (both ways). Remember to add the PGP Key to Keyoxide as well.</p>
+<p>Add some services and complete your Keyoxide Profile now.</p>
+<h2 id="2-export-and-upload-public-key">2. Export and upload public key</h2>
+<p>Quick upload:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1853269c93d74977">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --send-keys <span class="o">[</span>FPR<span class="o">]</span>
+</span></span><span class="line"><span class="cl">gpg --keyserver hkps://keys.openpgp.org --send-keys <span class="o">[</span>FPR<span class="o">]</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>For example:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1853269c93d9af32">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --send-keys LD2C49IENMLNS287A12AC5D8CB1846291B4819D</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<hr>
+<p>Be careful where you export the keys into!</p>
+<p>Export secret key into file:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1853269c93db8b53">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --armor --export-secret-keys --output private.asc <span class="o">[</span>Email-address or KEYID<span class="o">]</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Export public key to upload later:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1853269c93ddbe2e">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --armor --export --output public.asc <span class="o">[</span>Email-address or KEYID<span class="o">]</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Upload your public key <code>public.asc</code> to 
+
+<a href="https://keys.openpgp.org/upload/submit" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+OpenPGP
+<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+
+
+</a>
+</p>
+<h2 id="3-check-if-keyoxide-shows-your-public-information">3. Check if Keyoxide shows your public information</h2>
+<p>Go to <code>https://keyoxide.org/FPR</code> and check your profile.</p>
+<p>Change <code>FPR</code> to your key fingerprint or paste your fingerprint directly here 
+
+<a href="https://keyoxide.org" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+Keyoxide
+<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+
+
+</a>
+.</p>
+<p>Then add your Keyoxide link to your socials to proof your identity. (e.g. Mastodon)</p>
+<p>Last step: Check if Keyoxide realises the linked PGP Key and Socials: 
+
+<a href="https://keyoxide.org/aspe:keyoxide.org:FPR" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+https://keyoxide.org/aspe:keyoxide.org:FPR
+<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+
+
+</a>
+</p>
+<p>Congratulations, you are now verified on Mastodon, have an encrypted Mail and you claimed the accounts you use online.</p>
+<hr>
+<p>Also look into 
+
+<a href="https://wiki.archlinux.org/title/Keybase" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+Keybase
+<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+
+
+</a>
+!</p>
+<hr>
+<p>References:</p>
+<ul>
+<li>
+
+<a href="https://docs.keyoxide.org/getting-started/creating-profile-openpgp/" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+https://docs.keyoxide.org/getting-started/creating-profile-openpgp/
+<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+
+
+</a>
+</li>
+</ul></div>
+
+
+
+
+
+<div class="readon">
+  
+<div class="post-navigation">
+
+
+  <div class="prev">
+      
+        <span class="no-prev"></span>
+      
+  </div>
+  <div class="next">
+      
+	<p>Up next --></p>
+        <a class="next-post" href="https://kb.alexbutenschoen.com/windows-apps-on-linux/">Running Windows Apps on Linux with Wine</a>
+      
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+  
+
+  
+  
+  </main>
+  <footer>
+    
+<p>Alex' Knowledge Base &copy; 2025. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>
