@@ -1,5 +1,5 @@
 ---
-title: 'Flash Usb Drive'
+title: 'Flashing USB Drives'
 date: 2025-06-29T01:47:00+02:00
 tags:
 category:
@@ -24,7 +24,7 @@ Then simply paste all ISOs into the `Ventoy` USB Drive. When you enter the Vento
 
 # Full USB flashing
 
->![Important]
+>[!IMPORTANT]
 >Unmount the USB device you want to flash.
 
 
