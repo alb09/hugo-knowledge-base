@@ -2,6 +2,7 @@
 date = '2025-09-08T19:49:07+02:00'
 draft = false
 title = 'Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout'
+author = 'Alexander B'
 +++
 
 
