@@ -3,6 +3,8 @@ languageCode = 'en-us'
 title = "Alex' KB"
 theme = 'starterTheme'
 
+[params]
+  description = "This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog."
 
 [taxonomies]
   category = "categories"

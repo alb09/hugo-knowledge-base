@@ -3,6 +3,10 @@ languageCode = 'en-US'
 title = "Starter Theme"
 # theme = 'starterTheme'
 
+[params]
+  description = ""
+
+
 [taxonomies]
   category = "categories"
   tag = "tags"
