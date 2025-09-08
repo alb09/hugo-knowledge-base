@@ -1,9 +1,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="me" href="https://defcon.social/@alexb">
+<meta name="theme-color" content="#313751">
+<meta property="og:site_name" content="Alex Knowledge Base" />
 
 
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
 
+
+  {{ with .Params.author }}
+    <meta name="author" content="{{ . }}" />
+  {{ end }}
+
+  {{ with .PublishDate }}
+    <meta name="date" content="{{ .Format "2006-01-02" }}" />
+  {{ end }}
