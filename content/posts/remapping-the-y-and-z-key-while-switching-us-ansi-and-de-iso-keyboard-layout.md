@@ -6,7 +6,7 @@ author = 'Alexander B'
 +++
 
 
-Insight: My laptop has an german iso keyboard layout. I bought an us ansi keyboard for faster typing as i am programming. Now it flips the y and z key everytime I switch between de and us grrrr.
+Insight: My laptop has a German ISO keyboard layout. I bought an US ANSI keyboard for faster typing as I am programming. Now it flips the Y and Z key everytime I switch between DE and US grrrr.
 
 
 <!--more-->
