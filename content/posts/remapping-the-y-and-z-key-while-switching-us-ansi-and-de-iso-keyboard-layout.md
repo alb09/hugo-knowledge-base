@@ -4,11 +4,11 @@ draft = false
 title = 'Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout'
 +++
 
-<!--more-->
 
 Insight: My laptop has an german iso keyboard layout. I bought an us ansi keyboard for faster typing as i am programming. Now it flips the y and z key everytime I switch between de and us grrrr.
 
 
+<!--more-->
 
 ## How I switch between layouts
 sxhkd (Hotkey Daemon): switch between us ansi and de with a key binding
