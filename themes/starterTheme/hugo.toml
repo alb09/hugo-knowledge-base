@@ -1,7 +1,7 @@
 baseURL = 'https:/kb.alexbutenschoen.com/'
 languageCode = 'en-US'
 title = "Starter Theme"
-theme = 'starterTheme'
+# theme = 'starterTheme'
 
 [taxonomies]
   category = "categories"

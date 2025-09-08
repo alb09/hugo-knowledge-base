@@ -1,46 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on Alex&#39; KB</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content in Home on Alex&#39; KB</description>
+    <title>Blue on Alex&#39; KB</title>
+    <link>http://localhost:1313/tags/blue/</link>
+    <description>Recent content in Blue on Alex&#39; KB</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Jun 2025 01:47:00 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Flashing USB Drives</title>
-      <link>http://localhost:1313/posts/flash-usb-drive/</link>
-      <pubDate>Sun, 29 Jun 2025 01:47:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/flash-usb-drive/</guid>
-      <description></description>
-    </item>
+    <lastBuildDate>Fri, 20 Jun 2025 23:44:16 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/blue/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fix Booting Into Black Screen on Arch Linux</title>
       <link>http://localhost:1313/posts/fix-booting-into-black-screen-on-arch-linux/</link>
       <pubDate>Fri, 20 Jun 2025 23:44:16 +0200</pubDate>
       <guid>http://localhost:1313/posts/fix-booting-into-black-screen-on-arch-linux/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Troubleshooting Arch Linux</title>
-      <link>http://localhost:1313/posts/troubleshooting-arch-linux/</link>
-      <pubDate>Fri, 20 Jun 2025 22:32:50 +0200</pubDate>
-      <guid>http://localhost:1313/posts/troubleshooting-arch-linux/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Setup Windows 11 Inside of Linux</title>
-      <link>http://localhost:1313/posts/setup-windows11-inside-of-linux/</link>
-      <pubDate>Tue, 17 Jun 2025 23:24:25 +0200</pubDate>
-      <guid>http://localhost:1313/posts/setup-windows11-inside-of-linux/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Running Windows Apps on Linux with Wine</title>
-      <link>http://localhost:1313/posts/windows-apps-on-linux/</link>
-      <pubDate>Mon, 16 Jun 2025 00:34:06 +0200</pubDate>
-      <guid>http://localhost:1313/posts/windows-apps-on-linux/</guid>
       <description></description>
     </item>
     <item>

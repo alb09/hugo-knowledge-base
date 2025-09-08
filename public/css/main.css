@@ -1,0 +1,52 @@
+:root {
+  --bg: #2e3440;
+  --fg: #eee;
+
+}
+
+
+body {
+  color: #222;
+  font-family: sans-serif;
+  line-height: 1.5;
+  width: 90%;
+  max-width: 55em;
+  margin: 1.5em auto;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+
+a {
+  color: #6589ff;
+}
+
+
+a:hover {
+  color: crimson;
+}
+
+.page-title a {
+  color: var(--fg)
+}
+
+.page-title:hover a {
+  color: crimson
+}
+
+ul {
+  margin: auto;
+  padding: 0;
+}
+
+li {
+  margin-left: 1rem;
+}
+
+.home-layout {
+  columns: 2;
+}
+
+.block {
+  break-inside: avoid;
+}
