@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="me" href="https://defcon.social/@alexb">
+<meta name="theme-color" content="#313751">
+<meta property="og:site_name" content="Alex Knowledge Base" />
+<meta name="fediverse:creator" content="@alexb@defcon.social" />
+
+<title>Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout | Alex&#39; KB</title>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+<link rel="stylesheet" href="/css/combined.min.ac95b44d08a32293b3e4f7fae33cb3877dc5b139c7bf61d4056503e7ff7fc03c.css" integrity="sha256-rJW0TQijIpOz5Pf64zyzh33FsTnHv2HUBWUD5/9/wDw=" crossorigin="anonymous">
+
+
+
+<link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&display=swap" rel="stylesheet">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+      <script src="/js/main.ac5f2cf5ee78619c5a92be5a0d5e287ecf3f696a8a5da8ee4d31609e912bd598.js" integrity="sha256-rF8s9e54YZxakr5aDV4ofs8/aWqKXajuTTFgnpEr1Zg=" crossorigin="anonymous"></script>
+
+
+
+
+  <meta name="description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
+
+
+
+
+  <meta name="author" content="Alexander B" />
+
+
+
+  <meta name="date" content="2025-09-08" />
+
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  
+    <meta property="article:published_time" content="2025-09-08T19:49:07&#43;02:00" />
+  
+
+
+
+<meta property="og:title" content="Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout" />
+<meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
+<meta property="og:url" content="https://kb.alexbutenschoen.com/posts/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout/" />
+
+
+  <meta property="og:image" content="https://kb.alexbutenschoen.com/images/default.png" />
+
+
+
+</head>
+<body>
+  <header>
+    <nav>
+    <div class="navbar-left">
+        <div class="navbar-title"><a href="/">Alex&#39; KB</a></div>
+
+    </div>
+
+    <div class="navbar-right">
+        <button class="toggle-dark-mode" id="themeToggle">
+    <i class="fa-solid fa-circle-half-stroke" style="color: var(--text-color);"></i>
+</button>
+        
+
+
+
+  <nav class="navbar-list">
+    <ul>
+
+
+
+    <li>
+      <a href="https://alexbutenschoen.com/about">About</a>
+    </li>
+    </ul>
+  </nav>
+
+
+
+
+
+    </div>
+</nav>
+  </header>
+  <main>
+    
+  <h1 class="blogpost-title">Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout</h1>
+
+
+
+  
+
+ 
+
+
+<div class="pageinfo">
+    <ul>
+        <li><i></i> 08 Sep 2025</li> 
+        <li><i class="fa-regular fa-keyboard"></i> 579 words.</li>
+	
+    </ul>
+</div>
+
+   
+
+
+  <div class="single-content"><p>Insight: My laptop has an german iso keyboard layout. I bought an us ansi keyboard for faster typing as i am programming. Now it flips the y and z key everytime I switch between de and us grrrr.</p>
+<h2 id="how-i-switch-between-layouts">How I switch between layouts</h2>
+<p>sxhkd (Hotkey Daemon): switch between us ansi and de with a key binding</p>
+<p>The config: <code>~/.config/sxhkd/sxhkdrc</code></p>
+<div class="code-block language-sxhkdrc" data-lang="sxhkdrc" id="code-186364c5b557de64">
+  <div class="code-header">
+    <span class="code-language">sxhkdrc</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">F1
+</span></span><span class="line"><span class="cl">    setxkbmap us &amp;&amp; xsetroot -name &#34;us&#34;
+</span></span><span class="line"><span class="cl">F2
+</span></span><span class="line"><span class="cl">    setxkbmap de &amp;&amp; xsetroot -name &#34;de&#34;</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>But remember, it resets to default everytime you reboot.</p>
+<h3 id="optional-quickly-reload-sxhkd-with-super--escape">Optional: Quickly reload sxhkd with <code>super + escape</code></h3>
+<div class="code-block language-bash" data-lang="bash" id="code-186364c5b55b3f6e">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> <span class="c1"># Reload sxhkd </span>
+</span></span><span class="line"><span class="cl"> super + @Escape
+</span></span><span class="line"><span class="cl">     pkill -USR1 -x sxhkd <span class="o">&amp;&amp;</span> xsetroot -name <span class="s2">&#34;reset sxhkd&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<h2 id="set-the-default-keyboard-layout">Set the default keyboard layout</h2>
+<p>Customize the keyboard layout system wide: <code>/etc/X11/xorg.conf.d/00-keyboard.conf</code></p>
+<div class="code-block language-vim" data-lang="vim" id="code-186364c5b55f75a6">
+  <div class="code-header">
+    <span class="code-language">vim</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="nx">Section</span> <span class="s2">&#34;InputClass&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Identifier</span> <span class="s2">&#34;system-keyboard&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">MatchIsKeyboard</span> <span class="s2">&#34;on&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Option</span> <span class="s2">&#34;XkbLayout&#34;</span> <span class="s2">&#34;de,us_custom&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Option</span> <span class="s2">&#34;XkbModel&#34;</span> <span class="s2">&#34;pc104&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Option</span> <span class="s2">&#34;XkbVariant&#34;</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        # <span class="nx">Option</span> <span class="s2">&#34;XkbOptions&#34;</span> <span class="s2">&#34;grp:alt_shift_toggle&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">EndSection</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>To prevent swapping Y and Z, create a custom XKB symbols file (or modify existing <code>us</code> layout in <code>/usr/share/X11/xkb/</code>) so that Y remains where it is in German layout.</p>
+<p>Created custom <code>us_custom</code> in <code>/usr/share/X11/xkb/symbols</code></p>
+<div class="code-block language-us_custom" data-lang="us_custom" id="code-186364c5b5cfbeb1">
+  <div class="code-header">
+    <span class="code-language">us_custom</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// Keyboard layouts for the United States of America.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">default partial alphanumeric_keys modifier_keys
+</span></span><span class="line"><span class="cl">xkb_symbols &#34;basic&#34; {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    name[Group1]= &#34;English (US)&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    key &lt;TLDE&gt;	{[   grave,	 asciitilde	]};
+</span></span><span class="line"><span class="cl">    key &lt;AE01&gt;	{[	 1,	 exclam		]};
+</span></span><span class="line"><span class="cl">    key &lt;AE02&gt;	{[	 2,	 at		]};
+</span></span><span class="line"><span class="cl">    key &lt;AE03&gt;	{[	 3,	 numbersign	]};
+</span></span><span class="line"><span class="cl">    key &lt;AE04&gt;	{[	 4,	 dollar		]};
+</span></span><span class="line"><span class="cl">    key &lt;AE05&gt;	{[	 5,	 percent	]};
+</span></span><span class="line"><span class="cl">    key &lt;AE06&gt;	{[	 6,	 asciicircum	]};
+</span></span><span class="line"><span class="cl">    key &lt;AE07&gt;	{[	 7,	 ampersand	]};
+</span></span><span class="line"><span class="cl">    key &lt;AE08&gt;	{[	 8,	 asterisk	]};
+</span></span><span class="line"><span class="cl">    key &lt;AE09&gt;	{[	 9,	 parenleft	]};
+</span></span><span class="line"><span class="cl">    key &lt;AE10&gt;	{[	 0,	 parenright	]};
+</span></span><span class="line"><span class="cl">    key &lt;AE11&gt;	{[   minus,	 underscore	]};
+</span></span><span class="line"><span class="cl">    key &lt;AE12&gt;	{[   equal,	 plus		]};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    key &lt;AD01&gt;	{[	 q,	 Q		]};
+</span></span><span class="line"><span class="cl">    key &lt;AD02&gt;	{[	 w,	 W		]};
+</span></span><span class="line"><span class="cl">    key &lt;AD03&gt;	{[	 e,	 E		]};
+</span></span><span class="line"><span class="cl">    key &lt;AD04&gt;	{[	 r,	 R		]};
+</span></span><span class="line"><span class="cl">    key &lt;AD05&gt;	{[	 t,	 T		]};
+</span></span><span class="line"><span class="cl">    key &lt;AD06&gt;	{[	 z,	 Z		]};
+</span></span><span class="line"><span class="cl">    key &lt;AD07&gt;	{[	 u,	 U		]};
+</span></span><span class="line"><span class="cl">    key &lt;AD08&gt;	{[	 i,	 I		]};
+</span></span><span class="line"><span class="cl">    key &lt;AD09&gt;	{[	 o,	 O		]};
+</span></span><span class="line"><span class="cl">    key &lt;AD10&gt;	{[	 p,	 P		]};
+</span></span><span class="line"><span class="cl">    key &lt;AD11&gt;	{[ bracketleft,	 braceleft	]};
+</span></span><span class="line"><span class="cl">    key &lt;AD12&gt;	{[ bracketright, braceright	]};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    key &lt;AC01&gt;	{[	 a,	 A		]};
+</span></span><span class="line"><span class="cl">    key &lt;AC02&gt;	{[	 s,	 S		]};
+</span></span><span class="line"><span class="cl">    key &lt;AC03&gt;	{[	 d,	 D		]};
+</span></span><span class="line"><span class="cl">    key &lt;AC04&gt;	{[	 f,	 F		]};
+</span></span><span class="line"><span class="cl">    key &lt;AC05&gt;	{[	 g,	 G		]};
+</span></span><span class="line"><span class="cl">    key &lt;AC06&gt;	{[	 h,	 H		]};
+</span></span><span class="line"><span class="cl">    key &lt;AC07&gt;	{[	 j,	 J		]};
+</span></span><span class="line"><span class="cl">    key &lt;AC08&gt;	{[	 k,	 K		]};
+</span></span><span class="line"><span class="cl">    key &lt;AC09&gt;	{[	 l,	 L		]};
+</span></span><span class="line"><span class="cl">    key &lt;AC10&gt;	{[ semicolon,	 colon		]};
+</span></span><span class="line"><span class="cl">    key &lt;AC11&gt;	{[ apostrophe,	 quotedbl	]};
+</span></span><span class="line"><span class="cl">    key &lt;BKSL&gt;	{[ backslash,	 bar		]};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    key &lt;AB01&gt;	{[	 y,	 Y		]};
+</span></span><span class="line"><span class="cl">    key &lt;AB02&gt;	{[	 x,	 X		]};
+</span></span><span class="line"><span class="cl">    key &lt;AB03&gt;	{[	 c,	 C		]};
+</span></span><span class="line"><span class="cl">    key &lt;AB04&gt;	{[	 v,	 V		]};
+</span></span><span class="line"><span class="cl">    key &lt;AB05&gt;	{[	 b,	 B		]};
+</span></span><span class="line"><span class="cl">    key &lt;AB06&gt;	{[	 n,	 N		]};
+</span></span><span class="line"><span class="cl">    key &lt;AB07&gt;	{[	 m,	 M		]};
+</span></span><span class="line"><span class="cl">    key &lt;AB08&gt;	{[   comma,	 less		]};
+</span></span><span class="line"><span class="cl">    key &lt;AB09&gt;	{[  period,	 greater	]};
+</span></span><span class="line"><span class="cl">    key &lt;AB10&gt;	{[   slash,	 question	]};
+</span></span><span class="line"><span class="cl">};</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<h2 id="update-sxhkd-configuration">Update sxhkd configuration</h2>
+<p>Now change the <code>sxhkdrc</code> accordingly:</p>
+<div class="code-block language-sxhkdrc" data-lang="sxhkdrc" id="code-186364c5b5d92e18">
+  <div class="code-header">
+    <span class="code-language">sxhkdrc</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">F1
+</span></span><span class="line"><span class="cl">    setxkbmap de &amp;&amp; xsetroot -name &#34;de&#34;
+</span></span><span class="line"><span class="cl">F2
+</span></span><span class="line"><span class="cl">    setxkbmap us_custom &amp;&amp; xsetroot -name &#34;us_custom&#34;</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Good luck!</p></div>
+
+
+
+
+
+<div class="readon">
+  
+<div class="post-navigation">
+
+
+  <div class="prev">
+      
+	<p>&lt;-- Previous on</p>
+        <a class="previous-post" href="https://kb.alexbutenschoen.com/posts/flash-usb-drive/">Flashing USB Drives</a>
+      
+  </div>
+  <div class="next">
+      
+        <span class="no-next"></span>
+      
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+  
+
+  
+  
+  </main>
+  <footer>
+    <p>Alex' Knowledge Base &copy; 2025.</p>
+  </footer>
+</body>
+</html>

@@ -1,40 +1,158 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="me" href="https://defcon.social/@alexb">
+<meta name="theme-color" content="#313751">
+<meta property="og:site_name" content="Alex Knowledge Base" />
+<meta name="fediverse:creator" content="@alexb@defcon.social" />
+
 <title>Fix Booting Into Black Screen on Arch Linux | Alex&#39; KB</title>
 
-    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.js"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+<link rel="stylesheet" href="/css/combined.min.ac95b44d08a32293b3e4f7fae33cb3877dc5b139c7bf61d4056503e7ff7fc03c.css" integrity="sha256-rJW0TQijIpOz5Pf64zyzh33FsTnHv2HUBWUD5/9/wDw=" crossorigin="anonymous">
+
+
+
+<link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&display=swap" rel="stylesheet">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+      <script src="/js/main.ac5f2cf5ee78619c5a92be5a0d5e287ecf3f696a8a5da8ee4d31609e912bd598.js" integrity="sha256-rF8s9e54YZxakr5aDV4ofs8/aWqKXajuTTFgnpEr1Zg=" crossorigin="anonymous"></script>
+
+
+
+
+  <meta name="description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
+
+
+
+
+
+
+  <meta name="date" content="2025-06-20" />
+
+
+
+
+
+
+  <meta property="og:type" content="article" />
+  
+    <meta property="article:published_time" content="2025-06-20T23:44:16&#43;02:00" />
+  
+
+
+
+<meta property="og:title" content="Fix Booting Into Black Screen on Arch Linux" />
+<meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
+<meta property="og:url" content="https://kb.alexbutenschoen.com/posts/fix-booting-into-black-screen-on-arch-linux/" />
+
+
+  <meta property="og:image" content="https://kb.alexbutenschoen.com/images/default.png" />
+
 
 
 </head>
 <body>
   <header>
-    <h1 class="page-title"><a href="/">Alex&#39; KB</a></h1>
+    <nav>
+    <div class="navbar-left">
+        <div class="navbar-title"><a href="/">Alex&#39; KB</a></div>
+
+    </div>
+
+    <div class="navbar-right">
+        <button class="toggle-dark-mode" id="themeToggle">
+    <i class="fa-solid fa-circle-half-stroke" style="color: var(--text-color);"></i>
+</button>
+        
+
+
+
+  <nav class="navbar-list">
+    <ul>
+
+
+
+    <li>
+      <a href="https://alexbutenschoen.com/about">About</a>
+    </li>
+    </ul>
+  </nav>
 
 
 
 
 
+    </div>
+</nav>
   </header>
   <main>
     
-  <a href="/posts">Posts</a>
-  <a href="/tags">Tags</a>
+  <h1 class="blogpost-title">Fix Booting Into Black Screen on Arch Linux</h1>
 
-  <h1>Fix Booting Into Black Screen on Arch Linux</h1>
 
 
   
-  
-  <time datetime="2025-06-20T23:44:16&#43;02:00">June 20, 2025</time>
 
-  <p>How I fixed booting into a black monitor for Asus Zenbook running Arch Linux (step by step):</p>
-<div class="highlight"><div class="chroma">
+ 
+
+
+<div class="pageinfo">
+    <ul>
+        <li><i></i> 20 Jun 2025</li> 
+        <li><i class="fa-regular fa-keyboard"></i> 151 words.</li>
+	
+    </ul>
+</div>
+
+   
+
+
+  <div class="single-content"><p>How I fixed booting into a black monitor for Asus Zenbook running Arch Linux (step by step):</p>
+<div class="code-block language-bash" data-lang="bash" id="code-186364c5b4bc9c48">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -51,20 +169,36 @@
 </span></span><span class="line"><span class="cl">sudo pacman -S xf86-video-amdgpu <span class="c1"># install those drivers</span>
 </span></span><span class="line"><span class="cl">sudo pacman -Rns vulkan-radeon <span class="c1"># remove conflicting drivers</span>
 </span></span><span class="line"><span class="cl">sudo mkinitcpio -P <span class="c1"># reload initramfs modules</span>
-</span></span><span class="line"><span class="cl">reboot
-</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl">reboot</span></span></code></pre></td></tr></table>
 </div>
-</div><p>Check kernel driver for gpu:</p>
-<div class="highlight"><div class="chroma">
+</div>
+</div>
+
+
+
+<p>Check kernel driver for gpu:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-186364c5b4da6569">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lspci -k <span class="p">|</span> grep -A <span class="m">3</span> -E <span class="s2">&#34;(VGA|3D)&#34;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lspci -k <span class="p">|</span> grep -A <span class="m">3</span> -E <span class="s2">&#34;(VGA|3D)&#34;</span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>Output:</p>
-<div class="highlight"><div class="chroma">
+</div>
+</div>
+
+
+
+<p>Output:</p>
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-186364c5b53e22a8">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -75,33 +209,66 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">04:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev c1)
 </span></span><span class="line"><span class="cl">	Subsystem: ASUSTeK Computer Inc. Device 161c
 </span></span><span class="line"><span class="cl">	Kernel driver in use: amdgpu
-</span></span><span class="line"><span class="cl">	Kernel modules: amdgpu
-</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl">	Kernel modules: amdgpu</span></span></code></pre></td></tr></table>
 </div>
-</div><hr>
+</div>
+</div>
+
+
+
+<hr>
 <p>Run <code>xrandr</code> or <code>arandr</code> to adjust monitors</p>
 <p>Enable and set resolution of embedded monitor (usually eDP-1):</p>
-<div class="highlight"><div class="chroma">
+<div class="code-block language-bash" data-lang="bash" id="code-186364c5b542ad2d">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">xrandr --output eDP-1 --mode 1920x1080
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">xrandr --output eDP-1 --mode 1920x1080</span></span></code></pre></td></tr></table>
 </div>
 </div>
+</div></div>
+
+
+
+
+
+<div class="readon">
   
-  <div>
-    <div>Tags:</div>
-    <ul>
-        <li><a href="/tags/blue/">Blue</a></li>
-    </ul>
+<div class="post-navigation">
+
+
+  <div class="prev">
+      
+	<p>&lt;-- Previous on</p>
+        <a class="previous-post" href="https://kb.alexbutenschoen.com/posts/troubleshooting-arch-linux/">Troubleshooting Arch Linux</a>
+      
+  </div>
+  <div class="next">
+      
+	<p>Up next --></p>
+        <a class="next-post" href="https://kb.alexbutenschoen.com/posts/flash-usb-drive/">Flashing USB Drives</a>
+      
+
   </div>
 
+</div>
 
+
+</div>
+
+
+  
+
+  
+  
   </main>
   <footer>
-    <p>Alexander Butenschön &copy; 2025. All rights reserved.</p>
+    <p>Alex' Knowledge Base &copy; 2025.</p>
   </footer>
 </body>
 </html>

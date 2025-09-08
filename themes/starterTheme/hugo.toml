@@ -4,7 +4,8 @@ title = "Starter Theme"
 # theme = 'starterTheme'
 
 [params]
-  description = ""
+   description = ""
+   defaultImage = "/images/default.png"
 
 
 [taxonomies]

@@ -2,60 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Alex&#39; KB</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://kb.alexbutenschoen.com/posts/</link>
     <description>Recent content in Posts on Alex&#39; KB</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Jun 2025 01:47:00 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Sep 2025 19:49:07 +0200</lastBuildDate>
+    <atom:link href="https://kb.alexbutenschoen.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout</title>
+      <link>https://kb.alexbutenschoen.com/posts/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout/</link>
+      <pubDate>Mon, 08 Sep 2025 19:49:07 +0200</pubDate>
+      <guid>https://kb.alexbutenschoen.com/posts/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout/</guid>
+      <description>&lt;p&gt;Insight: My laptop has an german iso keyboard layout. I bought an us ansi keyboard for faster typing as i am programming. Now it flips the y and z key everytime I switch between de and us grrrr.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Flashing USB Drives</title>
-      <link>http://localhost:1313/posts/flash-usb-drive/</link>
+      <link>https://kb.alexbutenschoen.com/posts/flash-usb-drive/</link>
       <pubDate>Sun, 29 Jun 2025 01:47:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/flash-usb-drive/</guid>
+      <guid>https://kb.alexbutenschoen.com/posts/flash-usb-drive/</guid>
       <description></description>
     </item>
     <item>
       <title>Fix Booting Into Black Screen on Arch Linux</title>
-      <link>http://localhost:1313/posts/fix-booting-into-black-screen-on-arch-linux/</link>
+      <link>https://kb.alexbutenschoen.com/posts/fix-booting-into-black-screen-on-arch-linux/</link>
       <pubDate>Fri, 20 Jun 2025 23:44:16 +0200</pubDate>
-      <guid>http://localhost:1313/posts/fix-booting-into-black-screen-on-arch-linux/</guid>
+      <guid>https://kb.alexbutenschoen.com/posts/fix-booting-into-black-screen-on-arch-linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Troubleshooting Arch Linux</title>
-      <link>http://localhost:1313/posts/troubleshooting-arch-linux/</link>
+      <link>https://kb.alexbutenschoen.com/posts/troubleshooting-arch-linux/</link>
       <pubDate>Fri, 20 Jun 2025 22:32:50 +0200</pubDate>
-      <guid>http://localhost:1313/posts/troubleshooting-arch-linux/</guid>
+      <guid>https://kb.alexbutenschoen.com/posts/troubleshooting-arch-linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Setup Windows 11 Inside of Linux</title>
-      <link>http://localhost:1313/posts/setup-windows11-inside-of-linux/</link>
+      <link>https://kb.alexbutenschoen.com/posts/setup-windows11-inside-of-linux/</link>
       <pubDate>Tue, 17 Jun 2025 23:24:25 +0200</pubDate>
-      <guid>http://localhost:1313/posts/setup-windows11-inside-of-linux/</guid>
+      <guid>https://kb.alexbutenschoen.com/posts/setup-windows11-inside-of-linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Running Windows Apps on Linux with Wine</title>
-      <link>http://localhost:1313/posts/windows-apps-on-linux/</link>
+      <link>https://kb.alexbutenschoen.com/posts/windows-apps-on-linux/</link>
       <pubDate>Mon, 16 Jun 2025 00:34:06 +0200</pubDate>
-      <guid>http://localhost:1313/posts/windows-apps-on-linux/</guid>
+      <guid>https://kb.alexbutenschoen.com/posts/windows-apps-on-linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Online Identity Verification</title>
-      <link>http://localhost:1313/posts/online-identity-verification/</link>
+      <link>https://kb.alexbutenschoen.com/posts/online-identity-verification/</link>
       <pubDate>Mon, 02 Jun 2025 14:39:05 +0200</pubDate>
-      <guid>http://localhost:1313/posts/online-identity-verification/</guid>
+      <guid>https://kb.alexbutenschoen.com/posts/online-identity-verification/</guid>
       <description>&lt;p&gt;How to reliably set up verification for your online identity (Email and Socials).&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Post 3</title>
-      <link>http://localhost:1313/posts/post-3/</link>
-      <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
-      <guid>http://localhost:1313/posts/post-3/</guid>
-      <description>&lt;p&gt;Occaecat aliqua consequat laborum ut ex aute aliqua culpa quis irure esse magna dolore quis. Proident fugiat labore eu laboris officia Lorem enim. Ipsum occaecat cillum ut tempor id sint aliqua incididunt nisi incididunt reprehenderit. Voluptate ad minim sint est aute aliquip esse occaecat tempor officia qui sunt. Aute ex ipsum id ut in est velit est laborum incididunt. Aliqua qui id do esse sunt eiusmod id deserunt eu nostrud aute sit ipsum. Deserunt esse cillum Lorem non magna adipisicing mollit amet consequat.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
