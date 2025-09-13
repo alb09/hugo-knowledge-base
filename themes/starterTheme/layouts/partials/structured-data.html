@@ -33,6 +33,14 @@
     "@type": "Person",
     "name": "{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Params.author }}{{ end }}"
   },
+
+
+  "genre": [{{ range $i, $cat := .Params.categories }}{{ if $i }}, {{ end }}"{{ $cat }}"{{ end }}]
+  "keywords": [{{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}"{{ $tag }}"{{ end }}],
+
+  "wordCount": "{{ .WordCount }}",
+
+
   "publisher": {
     "@type": "Organization",
     "name": "{{ .Site.Params.author }}",
