@@ -36,7 +36,8 @@
 
 
   "genre": [{{ range $i, $cat := .Params.categories }}{{ if $i }}, {{ end }}"{{ $cat }}"{{ end }}]
-  "keywords": [{{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}"{{ $tag }}"{{ end }}],
+  "keywords": {{ with .Params.tags }}"{{ . }}"{{ end }}
+
 
   "wordCount": "{{ .WordCount }}",
 
