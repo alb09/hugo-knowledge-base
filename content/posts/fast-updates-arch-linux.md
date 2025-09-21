@@ -7,9 +7,12 @@ topic:
 draft: false
 ---
 
-I just found the `reflector` cli tool which can help you manage the mirrorlist in Arch. Just wow, it is so fast to update anything, it feels like a breeze. 
-
+I just found the reflector cli tool which can help you manage the mirrorlist in Arch. Just wow, it is so fast to update anything now, it feels like a breeze.
 <!--more-->
+
+
+>[!FYI]
+>Changing a the mirrorlist (list of update servers) to a nearby located mirror resolves in faster updates. Really amazing!
 
 Quick setup:
 
