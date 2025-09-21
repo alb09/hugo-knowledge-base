@@ -8,7 +8,7 @@
 <meta property="og:site_name" content="Alex Knowledge Base" />
 <meta name="fediverse:creator" content="@alexb@defcon.social" />
 
-<title>Running Windows Apps on Linux with Wine | Alex&#39; KB</title>
+<title>Fast Updates Arch Linux | Alex&#39; KB</title>
 
 
 
@@ -67,7 +67,7 @@
 
 
 
-<meta name="date" content="2025-06-16" />
+<meta name="date" content="2025-09-22" />
 
 
 
@@ -78,8 +78,8 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "@id": "https:\/\/kb.alexbutenschoen.com\/posts\/windows-apps-on-linux\/#blogposting",
-  "headline": "Running Windows Apps on Linux with Wine",
+  "@id": "https:\/\/kb.alexbutenschoen.com\/posts\/fast-updates-arch-linux\/#blogposting",
+  "headline": "Fast Updates Arch Linux",
   "image": "",
   "author": {
     "@type": "Person",
@@ -91,7 +91,7 @@
   "keywords": 
 
 
-  "wordCount": "34",
+  "wordCount": "122",
 
 
   "publisher": {
@@ -102,11 +102,11 @@
       "url": ""
     }
   },
-  "url": "https:\/\/kb.alexbutenschoen.com\/posts\/windows-apps-on-linux\/",
-  "datePublished": "2025-06-16T00:34:06\u002b02:00",
-  "dateModified": "2025-06-16T00:34:06\u002b02:00",
-  "description": "",
-  "mainEntityOfPage": "https:\/\/kb.alexbutenschoen.com\/posts\/windows-apps-on-linux\/"
+  "url": "https:\/\/kb.alexbutenschoen.com\/posts\/fast-updates-arch-linux\/",
+  "datePublished": "2025-09-22T00:58:55\u002b02:00",
+  "dateModified": "2025-09-22T00:58:55\u002b02:00",
+  "description": "\u003cp\u003eI just found the reflector cli tool which can help you manage the mirrorlist in Arch. Just wow, it is so fast to update anything now, it feels like a breeze.\u003c\/p\u003e",
+  "mainEntityOfPage": "https:\/\/kb.alexbutenschoen.com\/posts\/fast-updates-arch-linux\/"
 }
 </script>
 
@@ -118,7 +118,7 @@
 <meta property="og:type" content="article" />
   
 
-<meta property="article:published_time" content="2025-06-16T00:34:06&#43;02:00" />
+<meta property="article:published_time" content="2025-09-22T00:58:55&#43;02:00" />
 
 
 
@@ -126,9 +126,9 @@
 
 
 
-<meta property="og:title" content="Running Windows Apps on Linux with Wine" />
+<meta property="og:title" content="Fast Updates Arch Linux" />
 <meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
-<meta property="og:url" content="https://kb.alexbutenschoen.com/posts/windows-apps-on-linux/" />
+<meta property="og:url" content="https://kb.alexbutenschoen.com/posts/fast-updates-arch-linux/" />
 
 
 <meta property="og:image" content="https://kb.alexbutenschoen.com/images/default.png" />
@@ -177,7 +177,7 @@
   </header>
   <main>
     
-  <h1 class="blogpost-title">Running Windows Apps on Linux with Wine</h1>
+  <h1 class="blogpost-title">Fast Updates Arch Linux</h1>
 
 
 
@@ -188,8 +188,8 @@
 
 <div class="pageinfo">
     <ul>
-        <li><i></i> 16 Jun 2025</li> 
-        <li><i class="fa-regular fa-keyboard"></i> 34 words.</li>
+        <li><i></i> 22 Sep 2025</li> 
+        <li><i class="fa-regular fa-keyboard"></i> 122 words.</li>
 	
     </ul>
 </div>
@@ -197,9 +197,17 @@
    
 
 
-  <div class="single-content"><p>Download desired Windows <code>.exe</code> or <code>.msi</code>.</p>
-<p>Configuring Wine:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18676f7115d9278e">
+  <div class="single-content"><p>I just found the reflector cli tool which can help you manage the mirrorlist in Arch. Just wow, it is so fast to update anything now, it feels like a breeze.</p>
+<p><img src="/mirrorlist.png" alt="Mirrorlist"></p>
+
+  <blockquote class="alert-fyi">
+    <span class="alert-heading"></span>
+    <p>Changing a the mirrorlist (list of update servers) to a nearby located mirror resolves in faster updates. Really amazing!</p>
+  </blockquote>
+
+
+<p>Quick setup:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-18676f7115db9bc5">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -208,15 +216,15 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">winecfg</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -Sy reflector</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
 
 
-<p>Installing a Windows Program:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18676f7115ec3432">
+<p>Test mirrors and add the fastest to your mirrorlist:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-18676f7115ede2c6">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -225,15 +233,23 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wine foobar2000.exe</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo reflector --latest <span class="m">20</span> --protocol https --sort rate --save /etc/pacman.d/mirrorlist</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
 
 
-<p>Uninstalling a program:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18676f7115ef17de">
+
+  <blockquote class="alert-note">
+    <span class="alert-heading"></span>
+    <p>You can also use the <code>--country</code> flag to specify your country.
+For example:  <code>--country Germany</code></p>
+  </blockquote>
+
+
+<p>Refresh package databases:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-18676f7115f1f1b8">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -242,27 +258,33 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wine uninstaller</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -Syyu</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
 
 
-<p>Also remove desktop entries:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18676f7115f1f733">
+<p>Creating a systemd timer to refresh mirrors regularly:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-18676f7115f412e3">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm  /.local/share/applications/wine/Programs/foobar2000.desktop</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> reflector.timer
+</span></span><span class="line"><span class="cl">sudo systemctl start reflector.timer</span></span></code></pre></td></tr></table>
 </div>
 </div>
-</div></div>
+</div>
+
+
+
+<p>Speedy!</p></div>
 
 
 
@@ -276,13 +298,12 @@
   <div class="prev">
       
 	<p>&lt;-- Previous on</p>
-        <a class="previous-post" href="https://kb.alexbutenschoen.com/posts/online-identity-verification/">Online Identity Verification</a>
+        <a class="previous-post" href="https://kb.alexbutenschoen.com/posts/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout/">Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout</a>
       
   </div>
   <div class="next">
       
-	<p>Up next --></p>
-        <a class="next-post" href="https://kb.alexbutenschoen.com/posts/setup-windows11-inside-of-linux/">Setup Windows 11 Inside of Linux</a>
+        <span class="no-next"></span>
       
 
   </div>

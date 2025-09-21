@@ -6,8 +6,15 @@
     <description>Recent content in Alex Knowledge Base on Alex&#39; KB</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Sep 2025 19:49:07 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 22 Sep 2025 00:58:55 +0200</lastBuildDate>
     <atom:link href="https://kb.alexbutenschoen.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fast Updates Arch Linux</title>
+      <link>https://kb.alexbutenschoen.com/posts/fast-updates-arch-linux/</link>
+      <pubDate>Mon, 22 Sep 2025 00:58:55 +0200</pubDate>
+      <guid>https://kb.alexbutenschoen.com/posts/fast-updates-arch-linux/</guid>
+      <description>&lt;p&gt;I just found the reflector cli tool which can help you manage the mirrorlist in Arch. Just wow, it is so fast to update anything now, it feels like a breeze.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout</title>
       <link>https://kb.alexbutenschoen.com/posts/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout/</link>
