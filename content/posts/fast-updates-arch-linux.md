@@ -1,9 +1,9 @@
 ---
-title: 'Fast Updates Arch Linux'
+title: 'Fast Updates - Arch Linux'
 date: 2025-09-22T00:58:55+02:00
-tags:
-category:
-topic:
+tags: [ 'linux', 'updates', 'arch' ]
+category: Technology
+topic: Linux
 draft: false
 ---
 
