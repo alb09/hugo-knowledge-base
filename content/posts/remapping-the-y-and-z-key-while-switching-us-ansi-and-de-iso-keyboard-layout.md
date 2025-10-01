@@ -16,7 +16,7 @@ Insight: My laptop has a German ISO keyboard layout. I bought an US ANSI keyboar
 
 
 ## How I switch between layouts
-sxhkd (Hotkey Daemon): switch between us ansi and de with a key binding
+sxhkd (Hotkey Daemon): Switch between us ansi and de with a key binding
 
 The config: `~/.config/sxhkd/sxhkdrc`
 
