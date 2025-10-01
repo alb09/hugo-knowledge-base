@@ -16,11 +16,11 @@ document.addEventListener('keydown', e => {
     keysPressed.add(e.key);
   }
 
-  if (e.ctrlKey && e.key === 'b') {
+  if (e.key === 'b') {
     const prevLink = document.querySelector('.prev .previous-post');
     if (prevLink) window.location.href = prevLink.href;
   }
-  if (e.ctrlKey && e.key === 'm') {
+  if (e.key === 'n') {
     const nextLink = document.querySelector('.next .next-post');
     if (nextLink) window.location.href = nextLink.href;
   }
@@ -33,10 +33,15 @@ document.addEventListener('keydown', e => {
   if (e.key === 'l' && !e.ctrlKey) {
     window.history.forward();
   }
-  // Search: /
-  if (e.key === '/' && !e.ctrlKey) {
-    e.preventDefault();
-    document.getElementById('searchInput').focus(); // Ensure you have a search input with this id
+
+
+
+  if (e.key === 'd') {
+    document.body.classList.toggle('dark-mode');
+  }
+
+  if (e.key === 'g') {
+    window.location.href = '/'; 
   }
 });
 
