@@ -108,4 +108,31 @@ strong {
 }
 
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+  font-family: Arial, sans-serif;
+}
 
+thead th {
+  background-color: #007acc;
+  color: white;
+  padding: 0.3em;
+  text-align: left;
+  border-bottom: none;
+}
+
+tbody td {
+  padding: 0.3em;
+  border-bottom: 1px solid #ddd;
+}
+
+th, td {
+  padding: 0.3em;
+  border-bottom: 1px solid #ddd; /* Optional: line below each row */
+}
+
+td + td, th + th {
+  border-left: 1px solid #ccc; /* Vertical line between each column */
+}
