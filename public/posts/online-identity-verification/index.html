@@ -55,7 +55,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
-      <script src="/js/main.ac5f2cf5ee78619c5a92be5a0d5e287ecf3f696a8a5da8ee4d31609e912bd598.js" integrity="sha256-rF8s9e54YZxakr5aDV4ofs8/aWqKXajuTTFgnpEr1Zg=" crossorigin="anonymous"></script>
+
+
+    <script src="/js/bundle.3a8ef326d8ac36a5fa458ff1d5e7f4c40ba6e422449df36f039d66821a4315c1.js" integrity="sha256-Oo7zJtisNqX6RY/x1ef0xAum5CJEnfNvA51mghpDFcE=" crossorigin="anonymous" defer></script>
 
 
 
@@ -205,7 +207,7 @@
 </ul>
 <h2 id="1-creating-a-private-openpgp-key">1. Creating a private OpenPGP key</h2>
 <p>Make sure <code>gnupg</code> is installed (additionally install gpg-tui):</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5e938ad32a78">
+<div class="code-block language-bash" data-lang="bash" id="code-186a60103ee7a88d">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -230,7 +232,7 @@
 
 
 <p>Generate a private key:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5e938aff33c1">
+<div class="code-block language-bash" data-lang="bash" id="code-186a60103f03b9d9">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -256,7 +258,7 @@
 
 <hr>
 <p>Listing all secret keys:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5e938b053e73">
+<div class="code-block language-bash" data-lang="bash" id="code-186a60103f0648b5">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -273,7 +275,7 @@
 
 
 <p>Listing all public keys:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5e938b0b81da">
+<div class="code-block language-bash" data-lang="bash" id="code-186a60103f088b4c">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -292,7 +294,7 @@
 <p>This way you can check out all your keys and their fingerprint (FPR)</p>
 <hr>
 <h3 id="editing-your-private-key">Editing your private key</h3>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5e938b116496">
+<div class="code-block language-bash" data-lang="bash" id="code-186a60103f0ad9fa">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -309,7 +311,7 @@
 
 
 <p>or interactively:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5e938b16fd29">
+<div class="code-block language-bash" data-lang="bash" id="code-186a60103f0d3904">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -327,7 +329,7 @@
 
 <h3 id="basic-operations">Basic operations:</h3>
 <p>Selecting an uid:</p>
-<div class="code-block language-gpg" data-lang="gpg" id="code-186a5e938b80dc10">
+<div class="code-block language-gpg" data-lang="gpg" id="code-186a60103f71f2ea">
   <div class="code-header">
     <span class="code-language">gpg</span>
   </div>
@@ -344,7 +346,7 @@
 
 
 <p>Deleting an uid:</p>
-<div class="code-block language-gpg" data-lang="gpg" id="code-186a5e938b8559a4">
+<div class="code-block language-gpg" data-lang="gpg" id="code-186a60103f7497cf">
   <div class="code-header">
     <span class="code-language">gpg</span>
   </div>
@@ -361,7 +363,7 @@
 
 
 <p>Add secondary Emails to your encryption key:</p>
-<div class="code-block language-gpg" data-lang="gpg" id="code-186a5e938b882ee9">
+<div class="code-block language-gpg" data-lang="gpg" id="code-186a60103f76cfde">
   <div class="code-header">
     <span class="code-language">gpg</span>
   </div>
@@ -378,7 +380,7 @@
 
 
 <p>Set primary Email!</p>
-<div class="code-block language-gpg" data-lang="gpg" id="code-186a5e938b8a9707">
+<div class="code-block language-gpg" data-lang="gpg" id="code-186a60103f78c045">
   <div class="code-header">
     <span class="code-language">gpg</span>
   </div>
@@ -399,7 +401,7 @@
 
 
 <p>Add identity claim to your private key:</p>
-<div class="code-block language-gpg" data-lang="gpg" id="code-186a5e938b8d4732">
+<div class="code-block language-gpg" data-lang="gpg" id="code-186a60103f7aff38">
   <div class="code-header">
     <span class="code-language">gpg</span>
   </div>
@@ -422,7 +424,7 @@
 <p>You are totally free to add your accounts to your PGP Key instead but Keyoxide is easier to maintain in my opinion.</p>
 <h2 id="2-export-and-upload-public-key">2. Export and upload public key</h2>
 <p>Quick upload:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5e938b8f94b4">
+<div class="code-block language-bash" data-lang="bash" id="code-186a60103f7d7010">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -441,7 +443,7 @@
 
 
 <p>For example:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5e938b93c18c">
+<div class="code-block language-bash" data-lang="bash" id="code-186a60103f816b8e">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -460,7 +462,7 @@
 <hr>
 <p>Be careful where you export the keys into!</p>
 <p>Export secret key into file:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5e938b963d09">
+<div class="code-block language-bash" data-lang="bash" id="code-186a60103f83e839">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -477,7 +479,7 @@
 
 
 <p>Export public key to upload later:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5e938b995b91">
+<div class="code-block language-bash" data-lang="bash" id="code-186a60103f87115c">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
