@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="me" href="https://defcon.social/@alexb">
 <meta name="theme-color" content="#313751">
 <meta property="og:site_name" content="Alex Knowledge Base" />
-<meta name="fediverse:creator" content="@alexb@defcon.social" />
+<meta name="fediverse:creator" content="https://defcon.social/@alexb" />
 
-<title>Fast Updates Arch Linux | Alex&#39; KB</title>
+<title>Fast Updates - Arch Linux | Alex&#39; KB</title>
 
 
 
@@ -55,7 +55,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
-      <script src="/js/main.ac5f2cf5ee78619c5a92be5a0d5e287ecf3f696a8a5da8ee4d31609e912bd598.js" integrity="sha256-rF8s9e54YZxakr5aDV4ofs8/aWqKXajuTTFgnpEr1Zg=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -78,8 +78,8 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "@id": "https:\/\/kb.alexbutenschoen.com\/posts\/fast-updates-arch-linux\/#blogposting",
-  "headline": "Fast Updates Arch Linux",
+  "@id": "http:\/\/localhost:1313\/posts\/fast-updates-arch-linux\/#blogposting",
+  "headline": "Fast Updates - Arch Linux",
   "image": "",
   "author": {
     "@type": "Person",
@@ -88,7 +88,7 @@
 
 
   "genre": []
-  "keywords": 
+  "keywords": "[linux updates arch]"
 
 
   "wordCount": "122",
@@ -102,11 +102,11 @@
       "url": ""
     }
   },
-  "url": "https:\/\/kb.alexbutenschoen.com\/posts\/fast-updates-arch-linux\/",
+  "url": "http:\/\/localhost:1313\/posts\/fast-updates-arch-linux\/",
   "datePublished": "2025-09-22T00:58:55\u002b02:00",
   "dateModified": "2025-09-22T00:58:55\u002b02:00",
   "description": "\u003cp\u003eI just found the reflector cli tool which can help you manage the mirrorlist in Arch. Just wow, it is so fast to update anything now, it feels like a breeze.\u003c\/p\u003e",
-  "mainEntityOfPage": "https:\/\/kb.alexbutenschoen.com\/posts\/fast-updates-arch-linux\/"
+  "mainEntityOfPage": "http:\/\/localhost:1313\/posts\/fast-updates-arch-linux\/"
 }
 </script>
 
@@ -126,12 +126,12 @@
 
 
 
-<meta property="og:title" content="Fast Updates Arch Linux" />
+<meta property="og:title" content="Fast Updates - Arch Linux" />
 <meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
-<meta property="og:url" content="https://kb.alexbutenschoen.com/posts/fast-updates-arch-linux/" />
+<meta property="og:url" content="http://localhost:1313/posts/fast-updates-arch-linux/" />
 
 
-<meta property="og:image" content="https://kb.alexbutenschoen.com/images/default.png" />
+<meta property="og:image" content="http://localhost:1313/images/default.png" />
 
 
 
@@ -177,7 +177,7 @@
   </header>
   <main>
     
-  <h1 class="blogpost-title">Fast Updates Arch Linux</h1>
+  <h1 class="blogpost-title">Fast Updates - Arch Linux</h1>
 
 
 
@@ -198,7 +198,7 @@
 
 
   <div class="single-content"><p>I just found the reflector cli tool which can help you manage the mirrorlist in Arch. Just wow, it is so fast to update anything now, it feels like a breeze.</p>
-<p><img src="/mirrorlist.png" alt="Mirrorlist"></p>
+<p><img src="/images/mirrorlist.png" alt="Mirrorlist"></p>
 
   <blockquote class="alert-fyi">
     <span class="alert-heading"></span>
@@ -207,7 +207,7 @@
 
 
 <p>Quick setup:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18676f7115db9bc5">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5cef74e14162">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -224,7 +224,7 @@
 
 
 <p>Test mirrors and add the fastest to your mirrorlist:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18676f7115ede2c6">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5cef74f8c240">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -249,7 +249,7 @@ For example:  <code>--country Germany</code></p>
 
 
 <p>Refresh package databases:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18676f7115f1f1b8">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5cef7501d32d">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -266,7 +266,7 @@ For example:  <code>--country Germany</code></p>
 
 
 <p>Creating a systemd timer to refresh mirrors regularly:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18676f7115f412e3">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5cef7507944d">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -298,7 +298,7 @@ For example:  <code>--country Germany</code></p>
   <div class="prev">
       
 	<p>&lt;-- Previous on</p>
-        <a class="previous-post" href="https://kb.alexbutenschoen.com/posts/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout/">Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout</a>
+        <a class="previous-post" href="http://localhost:1313/posts/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout/">Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout</a>
       
   </div>
   <div class="next">

@@ -8,6 +8,7 @@ draft: false
 ---
 
 I just found the reflector cli tool which can help you manage the mirrorlist in Arch. Just wow, it is so fast to update anything now, it feels like a breeze.
+
 <!--more-->
 
 

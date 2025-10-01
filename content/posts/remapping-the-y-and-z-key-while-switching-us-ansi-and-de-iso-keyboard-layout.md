@@ -9,7 +9,11 @@ author = 'Alexander B'
 Insight: My laptop has a German ISO keyboard layout. I bought an US ANSI keyboard for faster typing as I am programming. Now it flips the Y and Z key everytime I switch between DE and US grrrr.
 
 
+
 <!--more-->
+
+![Keyboard](/images/keyboard.jpg)
+
 
 ## How I switch between layouts
 sxhkd (Hotkey Daemon): switch between us ansi and de with a key binding
