@@ -1,28 +1,31 @@
-document.addEventListener('keydown', function(e) {
-  // Previous post with Ctrl+B
-  if (e.ctrlKey && e.key === 'b') {
-    const prevLink = document.querySelector('.prev .previous-post');
-    if (prevLink) {
-      window.location.href = prevLink.href;
-    }
+const scrollSpeed = 30; // pixels per step
+const scrollIntervalMs = 16; // approx 60 frames per second (~smooth)
+const keysPressed = new Set();
+
+function scrollTick() {
+  if (keysPressed.has('j')) {
+    window.scrollBy(0, scrollSpeed); // instant scroll
   }
-  // Next post with Ctrl+N
-  if (e.ctrlKey && e.key === 'n') {
-    const nextLink = document.querySelector('.next .next-post');
-    if (nextLink) {
-      window.location.href = nextLink.href;
-    }
+  if (keysPressed.has('k')) {
+    window.scrollBy(0, -scrollSpeed); // instant scroll
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if ((e.key === 'j' || e.key === 'k') && !e.ctrlKey) {
+    keysPressed.add(e.key);
   }
 
-  // Scroll Down: J
-  if (e.key === 'j' && !e.ctrlKey) {
-    window.scrollBy(0, 60);
+  if (e.ctrlKey && e.key === 'b') {
+    const prevLink = document.querySelector('.prev .previous-post');
+    if (prevLink) window.location.href = prevLink.href;
   }
-  // Scroll Up: K
-  if (e.key === 'k' && !e.ctrlKey) {
-    window.scrollBy(0, -60);
+  if (e.ctrlKey && e.key === 'm') {
+    const nextLink = document.querySelector('.next .next-post');
+    if (nextLink) window.location.href = nextLink.href;
   }
-  // Go Back Page: H
+
+ // Go Back Page: H
   if (e.key === 'h' && !e.ctrlKey) {
     window.history.back();
   }
@@ -36,4 +39,11 @@ document.addEventListener('keydown', function(e) {
     document.getElementById('searchInput').focus(); // Ensure you have a search input with this id
   }
 });
+
+document.addEventListener('keyup', e => {
+  keysPressed.delete(e.key);
+});
+
+setInterval(scrollTick, scrollIntervalMs);
+
 
