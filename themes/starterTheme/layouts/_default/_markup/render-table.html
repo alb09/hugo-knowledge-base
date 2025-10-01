@@ -1,4 +1,4 @@
-<table
+<table class="content-table"
   {{- range $k, $v := .Attributes }}
     {{- if $v }}
       {{- printf " %s=%q" $k $v | safeHTMLAttr }}

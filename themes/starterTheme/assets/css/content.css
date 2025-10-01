@@ -108,31 +108,35 @@ strong {
 }
 
 
-table {
+.content-table table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1em;
   font-family: Arial, sans-serif;
 }
 
-thead th {
+.content-table thead th {
   background-color: #007acc;
   color: white;
   padding: 0.3em;
+  padding-right: 1em;
+  padding-left: 0.5em;
   text-align: left;
   border-bottom: none;
 }
 
-tbody td {
+.content-table tbody td {
   padding: 0.3em;
+  padding-left: 0.5em;
   border-bottom: 1px solid #ddd;
 }
 
-th, td {
+.content-table th, .content-table td {
   padding: 0.3em;
+  padding-left: 0.5em;
   border-bottom: 1px solid #ddd; /* Optional: line below each row */
 }
 
-td + td, th + th {
-  border-left: 1px solid #ccc; /* Vertical line between each column */
+.content-table td + td, .content-table th + th {
+  border-left: 1px solid #ddd; /* Vertical line between each column */
 }
