@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Alex&#39; KB</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://kb.alexbutenschoen.com/tags/</link>
     <description>Recent content in Tags on Alex&#39; KB</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 22 Sep 2025 00:58:55 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://kb.alexbutenschoen.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Arch</title>
-      <link>http://localhost:1313/tags/arch/</link>
+      <link>https://kb.alexbutenschoen.com/tags/arch/</link>
       <pubDate>Mon, 22 Sep 2025 00:58:55 +0200</pubDate>
-      <guid>http://localhost:1313/tags/arch/</guid>
+      <guid>https://kb.alexbutenschoen.com/tags/arch/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux</title>
-      <link>http://localhost:1313/tags/linux/</link>
+      <link>https://kb.alexbutenschoen.com/tags/linux/</link>
       <pubDate>Mon, 22 Sep 2025 00:58:55 +0200</pubDate>
-      <guid>http://localhost:1313/tags/linux/</guid>
+      <guid>https://kb.alexbutenschoen.com/tags/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Updates</title>
-      <link>http://localhost:1313/tags/updates/</link>
+      <link>https://kb.alexbutenschoen.com/tags/updates/</link>
       <pubDate>Mon, 22 Sep 2025 00:58:55 +0200</pubDate>
-      <guid>http://localhost:1313/tags/updates/</guid>
+      <guid>https://kb.alexbutenschoen.com/tags/updates/</guid>
       <description></description>
     </item>
     <item>
       <title>Blue</title>
-      <link>http://localhost:1313/tags/blue/</link>
+      <link>https://kb.alexbutenschoen.com/tags/blue/</link>
       <pubDate>Fri, 20 Jun 2025 23:44:16 +0200</pubDate>
-      <guid>http://localhost:1313/tags/blue/</guid>
+      <guid>https://kb.alexbutenschoen.com/tags/blue/</guid>
       <description></description>
     </item>
   </channel>
