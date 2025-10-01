@@ -18,5 +18,4 @@ sudo pacman -S meld
 
 
 
-
 The `diff command`:
