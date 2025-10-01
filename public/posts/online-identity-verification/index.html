@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="me" href="https://defcon.social/@alexb">
@@ -55,7 +55,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
-      <script src="/js/main.js"></script>
+      <script src="/js/main.ac5f2cf5ee78619c5a92be5a0d5e287ecf3f696a8a5da8ee4d31609e912bd598.js" integrity="sha256-rF8s9e54YZxakr5aDV4ofs8/aWqKXajuTTFgnpEr1Zg=" crossorigin="anonymous"></script>
 
 
 
@@ -78,7 +78,7 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "@id": "http:\/\/localhost:1313\/posts\/online-identity-verification\/#blogposting",
+  "@id": "https:\/\/kb.alexbutenschoen.com\/posts\/online-identity-verification\/#blogposting",
   "headline": "Online Identity Verification",
   "image": "",
   "author": {
@@ -102,11 +102,11 @@
       "url": ""
     }
   },
-  "url": "http:\/\/localhost:1313\/posts\/online-identity-verification\/",
+  "url": "https:\/\/kb.alexbutenschoen.com\/posts\/online-identity-verification\/",
   "datePublished": "2025-06-02T14:39:05\u002b02:00",
   "dateModified": "2025-06-02T14:39:05\u002b02:00",
   "description": "\u003cp\u003eHow to reliably set up verification for your online identity (Email and Socials).\u003c\/p\u003e",
-  "mainEntityOfPage": "http:\/\/localhost:1313\/posts\/online-identity-verification\/"
+  "mainEntityOfPage": "https:\/\/kb.alexbutenschoen.com\/posts\/online-identity-verification\/"
 }
 </script>
 
@@ -128,10 +128,10 @@
 
 <meta property="og:title" content="Online Identity Verification" />
 <meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
-<meta property="og:url" content="http://localhost:1313/posts/online-identity-verification/" />
+<meta property="og:url" content="https://kb.alexbutenschoen.com/posts/online-identity-verification/" />
 
 
-<meta property="og:image" content="http://localhost:1313/images/default.png" />
+<meta property="og:image" content="https://kb.alexbutenschoen.com/images/default.png" />
 
 
 
@@ -205,7 +205,7 @@
 </ul>
 <h2 id="1-creating-a-private-openpgp-key">1. Creating a private OpenPGP key</h2>
 <p>Make sure <code>gnupg</code> is installed (additionally install gpg-tui):</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5cef74c82b57">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5d6faf4bab31">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -230,7 +230,7 @@
 
 
 <p>Generate a private key:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5cef74eb9ee4">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5d6faf67fd55">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -256,7 +256,7 @@
 
 <hr>
 <p>Listing all secret keys:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5cef74f65c5c">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5d6faf6bca41">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -273,7 +273,7 @@
 
 
 <p>Listing all public keys:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5cef74ff402a">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5d6faf6edf3c">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -292,7 +292,7 @@
 <p>This way you can check out all your keys and their fingerprint (FPR)</p>
 <hr>
 <h3 id="editing-your-private-key">Editing your private key</h3>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5cef75086a2e">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5d6faf721a56">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -309,7 +309,7 @@
 
 
 <p>or interactively:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5cef7510a884">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5d6faf75a198">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -327,7 +327,7 @@
 
 <h3 id="basic-operations">Basic operations:</h3>
 <p>Selecting an uid:</p>
-<div class="code-block language-gpg" data-lang="gpg" id="code-186a5cef75628ea4">
+<div class="code-block language-gpg" data-lang="gpg" id="code-186a5d6fafd41165">
   <div class="code-header">
     <span class="code-language">gpg</span>
   </div>
@@ -344,7 +344,7 @@
 
 
 <p>Deleting an uid:</p>
-<div class="code-block language-gpg" data-lang="gpg" id="code-186a5cef7564896a">
+<div class="code-block language-gpg" data-lang="gpg" id="code-186a5d6fafd6a63f">
   <div class="code-header">
     <span class="code-language">gpg</span>
   </div>
@@ -361,7 +361,7 @@
 
 
 <p>Add secondary Emails to your encryption key:</p>
-<div class="code-block language-gpg" data-lang="gpg" id="code-186a5cef7566027e">
+<div class="code-block language-gpg" data-lang="gpg" id="code-186a5d6fafd82c65">
   <div class="code-header">
     <span class="code-language">gpg</span>
   </div>
@@ -378,7 +378,7 @@
 
 
 <p>Set primary Email!</p>
-<div class="code-block language-gpg" data-lang="gpg" id="code-186a5cef7567639e">
+<div class="code-block language-gpg" data-lang="gpg" id="code-186a5d6fafd98ff2">
   <div class="code-header">
     <span class="code-language">gpg</span>
   </div>
@@ -399,7 +399,7 @@
 
 
 <p>Add identity claim to your private key:</p>
-<div class="code-block language-gpg" data-lang="gpg" id="code-186a5cef7568e68e">
+<div class="code-block language-gpg" data-lang="gpg" id="code-186a5d6fafdb203a">
   <div class="code-header">
     <span class="code-language">gpg</span>
   </div>
@@ -422,7 +422,7 @@
 <p>You are totally free to add your accounts to your PGP Key instead but Keyoxide is easier to maintain in my opinion.</p>
 <h2 id="2-export-and-upload-public-key">2. Export and upload public key</h2>
 <p>Quick upload:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5cef756a9785">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5d6fafdca796">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -441,7 +441,7 @@
 
 
 <p>For example:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5cef756d16ce">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5d6fafdf2907">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -460,7 +460,7 @@
 <hr>
 <p>Be careful where you export the keys into!</p>
 <p>Export secret key into file:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5cef756ecf8f">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5d6fafe0f164">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -477,7 +477,7 @@
 
 
 <p>Export public key to upload later:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186a5cef757116ba">
+<div class="code-block language-bash" data-lang="bash" id="code-186a5d6fafe3204b">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -565,7 +565,7 @@ https://docs.keyoxide.org/getting-started/creating-profile-openpgp/
   <div class="next">
       
 	<p>Up next --></p>
-        <a class="next-post" href="http://localhost:1313/posts/windows-apps-on-linux/">Running Windows Apps on Linux with Wine</a>
+        <a class="next-post" href="https://kb.alexbutenschoen.com/posts/windows-apps-on-linux/">Running Windows Apps on Linux with Wine</a>
       
 
   </div>
