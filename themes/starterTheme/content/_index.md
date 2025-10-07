@@ -19,7 +19,7 @@ I am using Arch Linux. But all the information shown should work on your machine
 | l        | Go back again    |
 | b        | Previous Post    |
 | n        | Next Post        |
-| d        | Toggle Dark Mode |
+| d / s    | Toggle Dark Mode |
 | g        | Go Home          |
 
 

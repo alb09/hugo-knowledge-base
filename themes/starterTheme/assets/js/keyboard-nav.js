@@ -38,8 +38,10 @@ document.addEventListener('keydown', e => {
 
   if (e.key === 'd') {
     document.body.classList.toggle('dark-mode');
+  } else if (e.key === 's') {	
+    document.body.classList.toggle('dark-mode');
   }
-
+	
   if (e.key === 'g') {
     window.location.href = '/'; 
   }
