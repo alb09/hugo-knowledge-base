@@ -5,12 +5,12 @@
 {{- if eq hugo.Environment "development" }}
   {{- $opts := dict "sourcemap" "inline" }}
   {{- with $bundle | js.Build $opts }}
-    <script src="{{ .RelPermalink }}" defer></script>
+<script src="{{ .RelPermalink }}" defer></script>
   {{- end }}
 {{- else }}
   {{- $opts := dict "minify" true }}
   {{- with $bundle | js.Build $opts | fingerprint }}
-    <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{- end }}
 {{- end }}
 
