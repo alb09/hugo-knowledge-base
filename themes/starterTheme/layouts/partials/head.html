@@ -18,15 +18,11 @@
 {{ end }}
 
 
-{{ with .Params.author }}
-<meta name="author" content="{{ . }}" />
-{{ end }}
+{{ with .Params.author }}<meta name="author" content="{{ . }}" />{{ end }}
 
 {{ with .PublishDate }}
 <meta name="date" content="{{ .Format "2006-01-02" }}" />
 {{ end }}
-
-{{ partial "structured-data.html" . }}
 
 <!-- OpenGraph Meta Tags -->
 {{ if .IsPage }}
@@ -57,6 +53,9 @@
 <meta property="og:image" content="{{ .Site.Params.defaultImage | absURL }}" />
 {{ else }}
 {{ end }}
+
+{{ partial "structured-data.html" . }}
+
 
 
 
