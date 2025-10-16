@@ -19,10 +19,7 @@
 
 
 {{ with .Params.author }}<meta name="author" content="{{ . }}" />{{ end }}
-
-{{ with .PublishDate }}
-<meta name="date" content="{{ .Format "2006-01-02" }}" />
-{{ end }}
+{{ with .PublishDate }}<meta name="date" content="{{ .Format "2006-01-02" }}" />{{ end }}
 
 <!-- OpenGraph Meta Tags -->
 {{ if .IsPage }}
