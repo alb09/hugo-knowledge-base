@@ -1,13 +1,3 @@
-<!--
-
-Automated CSS processing:
-1. Finds all CSS files in the "css" directory
-2. Combines them into a single file
-3. Minifies and fingerprints the result
-4. Outputs a single <link> tag for the processed CSS
-
--->
-
 {{ $cssFiles := resources.Match "css/*.css" }}
 {{ $cssResources := slice }}
 {{ range $cssFiles }}
