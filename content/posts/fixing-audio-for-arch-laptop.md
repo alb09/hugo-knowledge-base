@@ -20,12 +20,12 @@ ASUS Zenbook laptops with Ryzen APUs and Realtek ALC294 audio codec suffer from 
 **4. ASUS Firmware Quirks**: Fast Boot (UEFI + Windows) leaves codec in inconsistent state; Linux needs explicit pin control.[2]
 
 ## Complete Working Solution
-# 1. Install tools
+1. Install tools
 ```bash
 sudo pacman -S alsa-utils alsa-tools alsa-firmware sof-firmware
 ```
 
-# 2. Unmute codec (critical for ALC294)
+2. Unmute codec (critical for ALC294)
 ```bash
 alsamixer -c 1
 ```
@@ -39,33 +39,32 @@ sudo hda-verb /dev/snd/hwC1D0 0x21 SET_PIN_WIDGET_CONTROL 0x40
 sudo hda-verb /dev/snd/hwC1D0 0x1b SET_PIN_WIDGET_CONTROL 0x40
 ```
 
-# 3. Test ALSA directly
+3. Test ALSA directly
 ```bash
 speaker-test -c 2 -D plughw:1,0 -t sine -f 1000  # Hears tone
 ```
 
-# 4. Persist hda-verb via udev
+4. Persist hda-verb via udev
 ```bash
 echo 'ACTION=="change", SUBSYSTEM=="sound", KERNEL=="card1", RUN+="/usr/bin/hda-verb /dev/snd/hwC1D0 0x20 SET_PIN_WIDGET_CONTROL 0x40"' | sudo tee /etc/udev/rules.d/90-alc294.rules
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
 
-# 5. Set Pro Audio profile (key step)
+5. Set Pro Audio profile (key step)
 pavucontrol → Configuration → "Ryzen HD Audio Controller" → Pro Audio
 
-# 6. Restart PipeWire 
+6. Restart PipeWire 
 ```bash
 systemctl --user restart pipewire pipewire-pulse wireplumber
 ```
 
-# 7. Verify
+7. Verify
 ```bash
 wpctl status  # ALC294 sink appears
 pw-play /usr/share/sounds/alsa/Front_Left.wav  # Speakers work
 ```
 
 ## Technical Explanation
-```
 ALSA (hw:1,0) → [hda-verb unmute] → speaker-test WORKS
                            ↓
 PipeWire → [Pro Audio profile bypasses port detection] → ALC294 sink created → Apps play through speakers
