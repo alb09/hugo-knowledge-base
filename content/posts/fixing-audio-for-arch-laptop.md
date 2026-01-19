@@ -70,6 +70,10 @@ wpctl status  # ALC294 sink appears
 pw-play /usr/share/sounds/alsa/Front_Left.wav  # Speakers work
 ```
 
+
+---
+
+
 ### Overview
 ALSA (hw:1,0) → [hda-verb unmute] → speaker-test WORKS
                            ↓
