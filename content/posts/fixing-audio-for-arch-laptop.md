@@ -89,17 +89,3 @@ PipeWire → [Pro Audio profile bypasses port detection] → ALC294 sink created
 - **Solution identical** across distros: hda-verb + Pro Audio profile
 
 
----
-
-Sources:
-- [Low audio volume on Realtek ALC294 using sof firmware](https://bbs.archlinux.org/viewtopic.php?id=297271)  
-- [Fixing audio on Asus ZenBook UX363 with ALC294 chipset](https://www.reddit.com/r/archlinux/comments/12rhy5p/fixing_audio_on_asus_zenbook_ux363_with_alc294/)  
-- [206589 – No way of getting sound with the ALC294 from ...](https://bugzilla.kernel.org/show_bug.cgi?id=206589)  
-[Realtek ALC294: no sound](https://forums.freebsd.org/threads/realtek-alc294-no-sound.97207/)  
-- [Bug #1784485 ZenBook S UX391UA, Realtek ALC294, Mic ...](https://bugs.launchpad.net/bugs/1784485)  
-- [Asus Zenbook 15 UX534F Realtek HD Audio ...](https://www.linux.org/threads/solved-asus-zenbook-15-ux534f-realtek-hd-audio-problem.27384/)  
-- [Awful sound quality through the speakers](https://forum.manjaro.org/t/awful-sound-quality-through-the-speakers/157614)  
-- [How to fix 5.1 surround sound issue on Debian ...](https://www.facebook.com/groups/lifewithdebian/posts/10160009714258977/)  
-- [Audio not working on ASUS Zenbook 14 UX3405MA](https://discussion.fedoraproject.org/t/audio-not-working-on-asus-zenbook-14-ux3405ma/126838)  
-- [PipeWire - ArchWiki](https://wiki.archlinux.org/title/PipeWire)  
-- [AMD Family 17h/19h HD Audio has no ...](https://bbs.archlinux.org/viewtopic.php?id=291324)
