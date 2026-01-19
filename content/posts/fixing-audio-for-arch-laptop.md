@@ -11,18 +11,24 @@ draft: false
 
 
 ## Problem Overview
-ASUS Zenbook laptops with Ryzen APUs and Realtek ALC294 audio codec suffer from **no analog speaker output** on Arch Linux with PipeWire. Hardware detects fine (`aplay -l` shows Card 1 Device 0: ALC294 Analog), `speaker-test -D plughw:1,0` requires manual codec unmuting, but PipeWire/WirePlumber **never creates ALC294 playback sinks**—only HDMI and microphone appear in `wpctl status`. HiFi profiles fail due to broken port detection; **Pro Audio profile works reliably**.[1][2]
-
+ASUS Zenbook laptops with Ryzen APUs and Realtek ALC294 audio codec suffer from **no analog speaker output** on Arch Linux with PipeWire. Hardware detects fine (`aplay -l` shows Card 1 Device 0: ALC294 Analog), `speaker-test -D plughw:1,0` requires manual codec unmuting, but PipeWire/WirePlumber **never creates ALC294 playback sinks**—only HDMI and microphone appear in `wpctl status`. HiFi profiles fail due to broken port detection; **Pro Audio profile works reliably**.
 ## Root Causes
-**1. ALC294 Codec Mute State**: Realtek laptop codecs default to hardware-muted speakers post-boot. Windows firmware handles unmuting; Linux needs `hda-verb` on pins 0x20/0x21/0x1b.[10]
-**2. Ryzen HD Audio Controller**: AMD ACP (Audio Co-Processor) confuses WirePlumber—device appears as both capture (mic works) and potential playback, but analog profile never activates.[11]
+**1. ALC294 Codec Mute State**: Realtek laptop codecs default to hardware-muted speakers post-boot. Windows firmware handles unmuting; Linux needs `hda-verb` on pins 0x20/0x21/0x1b.
+
+**2. Ryzen HD Audio Controller**: AMD ACP (Audio Co-Processor) confuses WirePlumber—device appears as both capture (mic works) and potential playback, but analog profile never activates.
+
 **3. WirePlumber Port Detection**: HiFi profiles expect jack sensing/speaker switching that ALC294 doesn't implement properly, causing sink creation to fail silently.
-**4. ASUS Firmware Quirks**: Fast Boot (UEFI + Windows) leaves codec in inconsistent state; Linux needs explicit pin control.[2]
+
+**4. ASUS Firmware Quirks**: Fast Boot (UEFI + Windows) leaves codec in inconsistent state; Linux needs explicit pin control.
+
+
+---
+
 
 ## Complete Working Solution
 1. Install tools
 ```bash
-sudo pacman -S alsa-utils alsa-tools alsa-firmware sof-firmware
+sudo pacman -S alsa-utils alsa-tools alsa-firmware sof-firmware pavucontrol
 ```
 
 2. Unmute codec (critical for ALC294)
@@ -64,24 +70,19 @@ wpctl status  # ALC294 sink appears
 pw-play /usr/share/sounds/alsa/Front_Left.wav  # Speakers work
 ```
 
-## Technical Explanation
+### Overview
 ALSA (hw:1,0) → [hda-verb unmute] → speaker-test WORKS
                            ↓
 PipeWire → [Pro Audio profile bypasses port detection] → ALC294 sink created → Apps play through speakers
 
-**Pro Audio** uses raw ALSA `hw:1,0` access with manual FL/FR channel mapping—no reliance on ALC294's broken jack sensing or port routing that breaks HiFi profiles. Full 24-bit/48kHz quality preserved.[10]
-
-## Permanent Configuration
+**Pro Audio** uses raw ALSA `hw:1,0` access with manual FL/FR channel mapping—no reliance on ALC294's broken jack sensing or port routing that breaks HiFi profiles. Full 24-bit/48kHz quality preserved.
+### Permanent Configuration
 **`/etc/udev/rules.d/90-alc294.rules`** ensures codec unmuting on every boot. **Pro Audio profile** in pavucontrol persists via PipeWire session state. Reboot-safe.
 
-## Why ASUS Zenbook + Arch Linux?
 - **Identical hardware** across UX3405/UX363/S13 models (Ryzen + ALC294)
 - **Same failure pattern** documented since 2020 across Ubuntu/Fedora/Manjaro
 - **Arch bleeding-edge kernels** expose the issue most reliably (newer SOF firmware helps detection but not activation)
-- **Solution identical** across distros: hda-verb + Pro Audio profile[4][1][2]
-
-Your audio now works identically to Windows—full volume, reliable playback through internal speakers via PipeWire applications.
-
+- **Solution identical** across distros: hda-verb + Pro Audio profile
 
 
 ---

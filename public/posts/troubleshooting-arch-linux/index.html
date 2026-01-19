@@ -2,18 +2,11 @@
 <html lang="en-us" dir="ltr">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="me" href="https://defcon.social/@alexb">
-<meta name="theme-color" content="#313751">
-<meta property="og:site_name" content="Alex Knowledge Base" />
-<meta name="fediverse:creator" content="https://defcon.social/@alexb" />
-
 <title>Troubleshooting Arch Linux | Alex&#39; KB</title>
 
 
 
 
-
   
 
   
@@ -35,11 +28,9 @@
   
 
   
-
 
 
 <link rel="stylesheet" href="/css/combined.min.7799b065e22a7e40b8c8f26557c8a35f60fae8cf71a555a2d627ea4c46e608e4.css" integrity="sha256-d5mwZeIqfkC4yPJlV8ijX2D66M9xpVWi1ifqTEbmCOQ=" crossorigin="anonymous">
-
 
 
 <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet">
@@ -49,28 +40,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&display=swap" rel="stylesheet">
 
 
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
+<script src="/js/bundle.js" defer></script>
 
-
-    <script src="/js/bundle.js" defer></script>
-
-
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="me" href="https://defcon.social/@alexb">
+<meta name="theme-color" content="#313751">
+<meta property="og:site_name" content="Alex Knowledge Base" />
+<meta name="fediverse:creator" content="@alexb@defcon.social" />
 <meta name="description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
-
-
-
-
 
 
 <meta name="date" content="2025-06-20" />
 
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-06-20T22:32:50&#43;02:00" />
+
+
+<meta property="og:title" content="Troubleshooting Arch Linux" />
+<meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
+<meta property="og:url" content="http://localhost:1313/posts/troubleshooting-arch-linux/" />
+<meta property="og:image" content="http://localhost:1313/images/default.png" />
 
 
 
@@ -111,33 +106,6 @@
   "mainEntityOfPage": "http:\/\/localhost:1313\/posts\/troubleshooting-arch-linux\/"
 }
 </script>
-
-
-
-
-
-
-<meta property="og:type" content="article" />
-  
-
-<meta property="article:published_time" content="2025-06-20T22:32:50&#43;02:00" />
-
-
-
-
-
-
-
-<meta property="og:title" content="Troubleshooting Arch Linux" />
-<meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
-<meta property="og:url" content="http://localhost:1313/posts/troubleshooting-arch-linux/" />
-
-
-<meta property="og:image" content="http://localhost:1313/images/default.png" />
-
-
-
-
 
 
 
@@ -202,7 +170,7 @@
   <div class="single-content"><p>After an update interruption the screen of my Laptop stopped working.</p>
 <p>I found the USB ISO of my initial Arch Linux installation and booted into the live environment:</p>
 <p>Arch Linux tty:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186c48738574c2d4">
+<div class="code-block language-bash" data-lang="bash" id="code-188c21ea9fd43dd8">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -220,7 +188,7 @@
 
 <h2 id="enable-wireless-connection-wifi">Enable wireless connection (WIFI)</h2>
 <p>(run commands one by one)</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186c48738589e250">
+<div class="code-block language-bash" data-lang="bash" id="code-188c21ea9ff900af">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -249,7 +217,7 @@
 <hr>
 <h2 id="access-your-system">Access your system</h2>
 <p>List block devices:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186c4873858f8485">
+<div class="code-block language-bash" data-lang="bash" id="code-188c21eaa0080580">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -266,7 +234,7 @@
 
 
 <p>Result:</p>
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-186c487385d90d0e">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-188c21eaa0949d7e">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -289,7 +257,7 @@
 
 
 <p>Mount your root partition:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186c487385dcd87e">
+<div class="code-block language-bash" data-lang="bash" id="code-188c21eaa09b8ffd">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -306,7 +274,7 @@
 
 
 <p>Access your root partition:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186c487385df3e6c">
+<div class="code-block language-bash" data-lang="bash" id="code-188c21eaa09fb3e2">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -324,7 +292,7 @@
 
 <p>Troubleshoot something&hellip;</p>
 <p>When you finished:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-186c487385e16e2f">
+<div class="code-block language-bash" data-lang="bash" id="code-188c21eaa0a220d1">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -375,7 +343,7 @@
   
   </main>
   <footer>
-    <p>Alex' Knowledge Base &copy; 2025.</p>
+    <p>Alex' Knowledge Base &copy; 2026.</p>
   </footer>
 </body>
 </html>
