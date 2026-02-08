@@ -48,7 +48,7 @@ alsamixer
 
 Extra:
 
-I am running snapcast-client in a Proxmox LSC Container, so I needed to passthrough the AUX Output Hardware Device. I did this with this config (might not work for you!!)
+I am running snapcast-client in a Proxmox LXC Container, so I needed to passthrough the AUX Output Hardware Device. I did this with this config (might not work for you!!)
 
 ```
 lxc.cgroup2.devices.allow: c 116:* rwm
