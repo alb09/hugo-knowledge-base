@@ -1,0 +1,25 @@
+baseURL = 'https://kb.alexbutenschoen.com'
+languageCode = 'en-us'
+title = "Alex' KB"
+theme = 'starterTheme'
+
+[params]
+  description = "This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog."
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  topic = "topic"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      attribute = true
+
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false
+    style = "dracula"

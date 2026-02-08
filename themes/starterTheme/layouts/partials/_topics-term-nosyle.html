@@ -1,0 +1,11 @@
+
+{{- with or .Params.topic .Params.topics }}
+<div>
+  <p>Topic: /n</p>
+  <ul>
+    {{- range . }}
+      <li><a href="{{ . }}">{{ . }}</a></li>
+    {{- end }}
+  </ul>
+</div>
+{{- end }}

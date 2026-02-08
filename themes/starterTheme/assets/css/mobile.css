@@ -1,0 +1,115 @@
+/* Responsive Styles */
+@media screen and (max-width: 800px) {
+      
+    
+    body {
+        font-size: 18px;
+        max-width: 90%;
+        margin: 85px auto;
+    }
+
+    header {
+        width: 90%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding: 0;
+    }
+
+    .each-listed-post h2 a {
+	font-weight: 800;
+	font-size: 2rem;
+    }
+
+    .each-listed-post {
+        margin-top: 2rem;
+        margin-bottom: 0;
+    }
+
+
+    .blogpost-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0;
+    }
+
+    .pageinfo li {
+        font-size: 14px;
+    }
+
+
+    .navbar-title {
+        font-size: 28px;
+    }
+
+    .navbar-list {
+        font-size: 20px;
+    }
+
+
+
+    .chroma {
+        padding: 0.5rem;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+
+    .single-content p {
+        font-size: 20px;
+        line-height: 1.2;
+        font-weight: 300;
+    }
+
+
+    .highlight code {
+        font-size: 1rem;
+        font-family: var(--code-fonts);
+        line-height: 0;
+    }
+
+    .code-language {
+
+        font-size: 14px;
+    }
+
+
+   
+
+    .code-language {
+        margin-left: 20px;
+        user-select: none;
+    }
+
+
+
+
+    .previous-post, .next-post {
+    
+    color: var(--text-color-offset);
+    font-size: 1.4rem;
+    font-weight: 860;
+    text-decoration: underline;
+    }
+
+    /* Text in the navbar (primarly size and color) */
+    .navbar-title a {
+        font-size: 28px;
+        color: var(--text-color);
+    }
+
+    /* Text in the navbar (primarly size and color) */
+    .navbar-list a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-size: 25px;
+    }
+
+}
+
+
+
+
+
+
+

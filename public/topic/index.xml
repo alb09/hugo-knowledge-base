@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Topics on Alex&#39; KB</title>
+    <link>http://localhost:1313/topic/</link>
+    <description>Recent content in Topics on Alex&#39; KB</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 22 Sep 2025 00:58:55 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/topic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux</title>
+      <link>http://localhost:1313/topic/linux/</link>
+      <pubDate>Mon, 22 Sep 2025 00:58:55 +0200</pubDate>
+      <guid>http://localhost:1313/topic/linux/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

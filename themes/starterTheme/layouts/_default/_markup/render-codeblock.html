@@ -1,0 +1,13 @@
+{{- $lang := .Type | default "plaintext" -}}
+{{- $uniqueId := printf "code-%s" (now.UnixNano | printf "%x") -}}
+{{- $result := transform.HighlightCodeBlock . -}}
+
+<div class="code-block language-{{ $lang }}" data-lang="{{ $lang }}" id="{{ $uniqueId }}">
+  <div class="code-header">
+    <span class="code-language">{{ $lang }}</span>
+  </div>
+  {{ $result.Wrapped | safeHTML }}
+</div>
+
+
+

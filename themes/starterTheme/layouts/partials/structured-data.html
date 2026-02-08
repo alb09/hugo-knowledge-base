@@ -1,0 +1,61 @@
+{{ if .IsHome }}
+<!-- Website Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "{{ .Site.BaseURL }}#website",
+  "url": "{{ .Site.BaseURL }}",
+  "name": "{{ .Site.Title }}",
+  "description": "{{ .Site.Params.description }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Params.author }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.Params.logo }}"
+    }
+  }
+}
+</script>
+{{ end }}
+
+{{ if .IsPage }}
+<!-- BlogPosting Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{ .Permalink }}#blogposting",
+  "headline": "{{ .Title }}",
+  "image": "{{ with .Params.featuredImage }}{{ . }}{{ end }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Params.author }}{{ end }}"
+  },
+
+
+  "genre": [{{ range $i, $cat := .Params.categories }}{{ if $i }}, {{ end }}"{{ $cat }}"{{ end }}]
+  "keywords": {{ with .Params.tags }}"{{ . }}"{{ end }}
+
+
+  "wordCount": "{{ .WordCount }}",
+
+
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Params.author }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.Params.logo }}"
+    }
+  },
+  "url": "{{ .Permalink }}",
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}",
+  "mainEntityOfPage": "{{ .Permalink }}"
+}
+</script>
+{{ end }}
+

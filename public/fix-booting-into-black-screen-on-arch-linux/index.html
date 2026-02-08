@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Fix Booting Into Black Screen on Arch Linux | Alex&#39; KB</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1 class="page-title"><a href="/">Alex&#39; KB</a></h1>
+
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+  </header>
+  <main>
+    
+  <h1>Fix Booting Into Black Screen on Arch Linux</h1>
+
+  
+  
+  <time datetime="2025-06-20T23:44:16&#43;02:00">June 20, 2025</time>
+
+  <p>How I fixed booting into a black monitor for Asus Zenbook running Arch Linux (step by step):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pacman -Qs radeon <span class="c1"># search system wide radeon driver</span>
+</span></span><span class="line"><span class="cl">pacman -Qs amdgpu
+</span></span><span class="line"><span class="cl">sudo pacman -Ss amdgpu <span class="c1"># search for amdgpu drivers in the repo</span>
+</span></span><span class="line"><span class="cl">sudo pacman -S xf86-video-amdgpu <span class="c1"># install those drivers</span>
+</span></span><span class="line"><span class="cl">sudo pacman -Rns vulkan-radeon <span class="c1"># remove conflicting drivers</span>
+</span></span><span class="line"><span class="cl">sudo mkinitcpio -P <span class="c1"># reload initramfs modules</span>
+</span></span><span class="line"><span class="cl">reboot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Check kernel driver for gpu:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lspci -k <span class="p">|</span> grep -A <span class="m">3</span> -E <span class="s2">&#34;(VGA|3D)&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Output:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">04:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev c1)
+</span></span><span class="line"><span class="cl">	Subsystem: ASUSTeK Computer Inc. Device 161c
+</span></span><span class="line"><span class="cl">	Kernel driver in use: amdgpu
+</span></span><span class="line"><span class="cl">	Kernel modules: amdgpu
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>Run <code>xrandr</code> or <code>arandr</code> to adjust monitors</p>
+<p>Enable and set resolution of embedded monitor (usually eDP-1):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">xrandr --output eDP-1 --mode 1920x1080
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+  
+
+
+  </main>
+  <footer>
+    <p>Alexander Butenschön &copy; 2025. All rights reserved.</p>
+  </footer>
+</body>
+</html>

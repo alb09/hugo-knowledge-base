@@ -1,0 +1,11 @@
+
+{{- with or .Params.topic .Params.topics }}
+<div class="tags-box">
+  <div>Topic: &nbsp</div>
+  <ul class="tags">
+    {{- range . }}
+      <li><a href="{{ . }}">{{ . }}</a></li>
+    {{- end }}
+  </ul>
+</div>
+{{- end }}

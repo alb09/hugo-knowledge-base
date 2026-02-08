@@ -1,0 +1,24 @@
+
+<div class="post-navigation">
+
+
+  <div class="prev">
+      {{ with .PrevInSection }}
+	<p><-- Previous on</p>
+        <a class="previous-post" href="{{ .Permalink }}">{{ .Title }}</a>
+      {{ else }}
+        <span class="no-prev"></span>
+      {{ end }}
+  </div>
+  <div class="next">
+      {{ with .NextInSection }}
+	<p>Up next --></p>
+        <a class="next-post" href="{{ .Permalink }}">{{ .Title }}</a>
+      {{ else }}
+        <span class="no-next"></span>
+      {{ end }}
+
+  </div>
+
+</div>
+

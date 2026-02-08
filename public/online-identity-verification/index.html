@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Online Identity Verification | Alex&#39; KB</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1 class="page-title"><a href="/">Alex&#39; KB</a></h1>
+
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+  </header>
+  <main>
+    
+  <h1>Online Identity Verification</h1>
+
+  
+  
+  <time datetime="2025-06-02T14:39:05&#43;02:00">June 2, 2025</time>
+
+  <p>How to reliably set up verification for your online identity (Email and Socials).</p>
+<p>Terminology:</p>
+<ul>
+<li>PGP: Pretty Good Privacy</li>
+<li>GPG: Gnu Privacy Guard</li>
+</ul>
+<h2 id="1-creating-a-private-openpgp-key">1. Creating a private OpenPGP key</h2>
+<p>Make sure <code>gnupg</code> is installed (additionally install gpg-tui):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S gnupg gpg-tui
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<blockquote>
+<p>[!Note]
+We will add your official Emails and Socials to this key later</p></blockquote>
+<p>Generate a private key:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --full-generate-key
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>I recommend a full generation and going with the defaults.</p>
+<blockquote>
+<p>[!Warning]
+Deleting a key: <code>gpg --delete-secret-key [FPR or Email]</code>)</p></blockquote>
+<hr>
+<p>Listing all secret keys:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --list-secret-keys
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Listing all public keys:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --list-public-keys
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This way you can check out all your keys and their fingerprint (FPR)</p>
+<hr>
+<h3 id="editing-your-private-key">Editing your private key</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --edit-key <span class="o">[</span>FPR<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>or interactively:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg-tui
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="basic-operations">Basic operations:</h3>
+<p>Selecting an uid:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">uid [number]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Deleting an uid:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">deluid
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Add secondary Emails to your encryption key:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">adduid
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Set primary Email!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">uid [number]
+</span></span><span class="line"><span class="cl">primary
+</span></span><span class="line"><span class="cl">save
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Add identity claim to your private key:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">notation
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>At this point I recommend to create an Keyoxide Profile for online identity verification and easier claim of multiple accounts.</p>
+<p>Get your key fingerprint and add this into the notation: <code>proof@ariadne.id=https://keyoxide.org/aspe:keyoxide.org:FPR</code>.</p>
+<p>This will link your Keyoxide Profile to your OpenPGP Key (both ways). Remember to add the PGP Key to Keyoxide as well.</p>
+<p>Add some services and complete your Keyoxide Profile afterwards.</p>
+<p>You are totally free to add your accounts to your PGP Key instead but Keyoxide is easier to maintain in my opinion.</p>
+<h2 id="2-export-and-upload-public-key">2. Export and upload public key</h2>
+<p>Quick upload:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --send-keys <span class="o">[</span>FPR<span class="o">]</span>
+</span></span><span class="line"><span class="cl">gpg --keyserver hkps://keys.openpgp.org --send-keys <span class="o">[</span>FPR<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>For example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --send-keys LD2C49IENMLNS287A12AC5D8CB1846291B4819D
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>Be careful where you export the keys into!</p>
+<p>Export secret key into file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --armor --export-secret-keys --output private.asc <span class="o">[</span>Email-address or KEYID<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Export public key to upload later:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gpg --armor --export --output public.asc <span class="o">[</span>Email-address or KEYID<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Upload your public key <code>public.asc</code> to <a href="https://keys.openpgp.org/upload/submit">OpenPGP</a></p>
+<h2 id="3-check-if-keyoxide-shows-your-public-information">3. Check if Keyoxide shows your public information</h2>
+<p>Go to <code>https://keyoxide.org/FPR</code> and check your profile.</p>
+<p>Change <code>FPR</code> to your key fingerprint or paste your fingerprint directly here <a href="https://keyoxide.org">Keyoxide</a>.</p>
+<p>Then add your Keyoxide link to your socials to proof your identity. (e.g. Mastodon)</p>
+<p>Last step: Check if Keyoxide realises the linked PGP Key and Socials: <code>https://keyoxide.org/aspe:keyoxide.org:FPR</code></p>
+<p>Congratulations, you are now verified on Mastodon, have an encrypted Mail and you claimed the accounts you use online.</p>
+<hr>
+<p>Also look into <a href="https://wiki.archlinux.org/title/Keybase">Keybase</a>!</p>
+<hr>
+<p>References:</p>
+<ul>
+<li><a href="https://docs.keyoxide.org/getting-started/creating-profile-openpgp/">https://docs.keyoxide.org/getting-started/creating-profile-openpgp/</a></li>
+</ul>
+  
+
+
+  </main>
+  <footer>
+    <p>Alexander Butenschön &copy; 2025. All rights reserved.</p>
+  </footer>
+</body>
+</html>

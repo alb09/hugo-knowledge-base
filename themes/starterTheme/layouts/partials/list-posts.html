@@ -1,0 +1,20 @@
+<div class="list-posts">
+    {{ range site.RegularPages }}
+  
+    <!-- <hr> -->
+ 
+    <!-- Create post boxes here instead of just the name of the post. -->
+    <div class="each-listed-post">
+      <div><h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2></div>
+      
+   
+      {{ partial "page-stats" . }}
+  
+  
+  
+{{ .Summary }}
+	
+</div>
+  
+    {{ end }}
+</div>

@@ -1,0 +1,73 @@
+.code-block {
+    position: relative;
+}
+
+/* Without the code copy bar
+   Reset the top borders of the code block underneath */
+.highlight {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    border-bottom-left-radius: var(--code-block-corners);
+    border-bottom-right-radius: var(--code-block-corners);
+}
+
+
+/* Border radius of code bar header */
+.code-header {
+    color: var(--code-text-color);
+    font-size: 1.3rem;
+    font-family: var(--code-fonts);
+    background-color: var(--code-bg-color-dracula);
+    
+
+    border-top-left-radius: var(--code-block-corners);
+    border-top-right-radius: var(--code-block-corners);
+
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+
+    line-height: 0;
+}
+
+.code-language {
+
+    font-size: 20px;
+    margin-left: 30px;
+    user-select: none;
+
+        
+    padding-top: 20px;
+    padding-bottom: 10px;
+    
+}
+
+/* Button for copying the inner code */
+.code-copy {
+    font-size: 20px;
+    background-color: transparent;
+
+    padding: 14px 0px 14px 0px;
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    width: 60px;
+    height: 105%;
+
+    border-top-right-radius: 8px;
+
+    border: solid;
+    border-style: none;
+    cursor: pointer;
+    display: flex;
+    
+}
+
+
+/* Style icons (Font awesome) */
+.fa-solid.fa-check, .fa-regular.fa-clipboard {
+    color: var(--code-text-color);
+}

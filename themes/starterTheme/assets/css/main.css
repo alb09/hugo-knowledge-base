@@ -1,0 +1,177 @@
+:root {
+    --bg-color: #fff;
+    --bg-color-contrast: whitesmoke;
+
+    --text-color: #222;
+    --text-color-off1: #333;
+    --text-color-off2: #444;
+    --link-color: blue;
+    --footer-bg-color: bisque;
+
+    --fonts: sans-serif;
+    --code-fonts: monospace;
+
+
+    --code-block-corners: 14px;
+}
+
+
+
+img {
+    max-width: 100%;
+    display: block;
+    width: 50%;
+    margin: auto;
+}
+
+body {
+    background-color: var(--bg-color);
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-color);
+
+    font-size: 25px;
+    font-family: var(--fonts);
+
+    line-height: 1.2;
+    margin: 140px auto;
+    max-width: 80%;
+    overflow-x: hidden;
+}
+
+
+/* Set the color of your navigation bar */
+header {
+    background-color: var(--bg-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Fixed header with navigation */
+header {
+    position: fixed;
+    top: 0;
+    width: 80%; /* Important to adjust the width of page!!*/
+    z-index: 1000;  
+}
+
+
+footer {
+    background-color: var(--footer-bg-color);
+    transition: background-color 0.3s, color 0.3s;
+    /*text-align: center;*/
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+
+
+
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-color);
+}
+
+/* Text in the navbar (primarly size and color) */
+.navbar-title a {
+    font-size: 35px;
+    color: var(--text-color);
+}
+
+.navbar-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* To adjust the format of the navbar items */
+.navbar-list li:last-child {
+    margin-right: 0;
+}
+
+.navbar-list li {
+    list-style: none;
+    display: inline-block;
+
+    margin-left: 0px;
+    margin-right: 30px;
+    
+    
+}
+
+/* Text in the navbar (primarly size and color) */
+.navbar-list a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 35px;
+}
+
+
+::selection {
+    background: rgba(189, 147, 249, 0.3);
+    text-shadow: none;
+}
+
+
+
+.post-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+  
+.previous-post, .next-post {
+    
+    color: var(--text-color-offset);
+    font-size: 1.9rem;
+    font-weight: 860;
+    text-decoration: underline;
+
+}
+
+a.previous-post {
+	display: block;
+	text-align: left;
+}
+
+a.next-post {
+	display: block;
+	text-align: right;
+}
+
+
+.next {
+	text-align: right;
+}
+
+.prev {
+	margin-right: 2rem;
+    
+}
+
+.prev *, .next * {
+	margin: 0;
+}
+
+
+/***
+Styling the informational and interactional area below the content of a post
+***
+.readon {
+    background-color: var(--bg-color-contrast);
+}
+**/

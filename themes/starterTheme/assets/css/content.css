@@ -1,0 +1,142 @@
+:root {
+    /*--single-code-bg-color: rgb(188, 188, 188);*/
+    --single-code-bg-color: #656c7633;
+}
+
+/** Change horizontal line appearance in your markdown content. **/
+.single-content hr {
+    color: var(--text-color);
+    width: 95%; /* Make the line shorter */
+    margin: 4rem auto; /* Add vertical spacing and center the line */
+    padding: 0;
+}
+
+/* Single post content standard text*/
+.single-content p {
+	font-size: 28px;
+	line-height: 1.5;
+	font-weight: 300;
+}
+
+
+.single-content h2 {
+	font-weight: 800;
+	font-size: 2rem;
+}
+
+
+/* Style title */
+.blogpost-title { 
+	font-size: 2.7rem;
+	font-weight: 800;
+	line-height: 1.2;
+	margin: 0;
+}
+
+
+
+.single-content {
+    margin-bottom: 0px; /* Add space between content and footer */
+}
+
+.single-content {
+    margin-top: 50px; /* Add space between content and header (navigation bar) */
+}
+
+
+/* Single line code like `this` */
+.single-content p code {
+    background-color: var(--single-code-bg-color);
+    /*padding: 2px 4px;*/
+    padding: .2em .4em;
+    margin: 0;
+    font-size: 80%;
+    border-radius: 6px;
+    font-family: 80% 'JetBrains Mono', monospace;
+}
+
+
+
+/* Styling the references links */
+.external-link {
+  color: var(--link-color);
+  font-weight: 480;
+}
+
+/* Checkboxes styling */
+li:has(input[type="checkbox"]) {
+  list-style-type: none;
+}
+
+
+input[type="checkbox"]:disabled:checked {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border: 2px solid;
+  border-radius: 4px;
+  position: relative;
+  
+
+  background: green;
+  border-color: black;
+  opacity: 0.4;
+}
+
+input[type="checkbox"] {
+  width: 1.4rem;      
+  height: 1.4rem;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+
+strong {
+  font-weight: 600;
+}
+
+
+.content-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+
+
+.content-table thead th {
+  background-color: #007acc;
+  color: white;
+  padding: 0.3em;
+  padding-right: 1em;
+  padding-left: 0.5em;
+  text-align: left;
+  border-bottom: none;
+}
+
+.content-table tbody td {
+  padding: 0.3em;
+  padding-left: 0.5em;
+  border-bottom: 1px solid #ddd;
+}
+
+.content-table th, .content-table td {
+  padding: 0.3em;
+  padding-left: 0.5em;
+  border-bottom: 1px solid #ddd; /* Optional: line below each row */
+}
+
+.content-table td + td, .content-table th + th {
+  border-left: 1px solid #ddd; /* Vertical line between each column */
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Running Windows Apps on Linux with Wine | Alex&#39; KB</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1 class="page-title"><a href="/">Alex&#39; KB</a></h1>
+
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+  </header>
+  <main>
+    
+  <h1>Running Windows Apps on Linux with Wine</h1>
+
+  
+  
+  <time datetime="2025-06-16T00:34:06&#43;02:00">June 16, 2025</time>
+
+  <p>Download desired Windows <code>.exe</code> or <code>.msi</code>.</p>
+<p>Configuring Wine:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">winecfg
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Installing a Windows Program:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wine foobar2000.exe
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Uninstalling a program:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wine uninstaller
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Also remove desktop entries:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm  /.local/share/applications/wine/Programs/foobar2000.desktop
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+  
+
+
+  </main>
+  <footer>
+    <p>Alexander Butenschön &copy; 2025. All rights reserved.</p>
+  </footer>
+</body>
+</html>

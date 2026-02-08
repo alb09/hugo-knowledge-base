@@ -1,0 +1,26 @@
+/* Dark theme */
+body.dark-mode {
+    --bg-color: #2e3440;
+    --bg-color-contrast: #3c4351;
+    /* --bg-color: #222; */
+    /* --bg-color-nord: #434c5e; */
+    --text-color: #fff;
+    --text-color-off1: whitesmoke;
+    --text-color-off2: whitesmoke;
+
+    --footer-bg-color: var(--bg-color);
+    --link-color: rgba(149, 204, 255, 0.8);
+}
+
+
+
+.toggle-dark-mode {
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}

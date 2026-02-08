@@ -1,0 +1,12 @@
+{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+{{ $dateHuman := .Date | time.Format "2 Jan 2006" }}
+ <!--  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time> -->
+
+
+<div class="pageinfo">
+    <ul>
+        <li><i></i> {{- with .Date }} {{ .Format "02 Jan 2006" }} {{- end }}</li> 
+        <li><i class="fa-regular fa-keyboard"></i> {{ .WordCount }} words.</li>
+	<!-- <li><i class="fa-regular fa-file-lines"></i> ca. {{ .ReadingTime }}min.</li> -->
+    </ul>
+</div>

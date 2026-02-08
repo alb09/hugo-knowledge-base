@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Troubleshooting Arch Linux | Alex&#39; KB</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1 class="page-title"><a href="/">Alex&#39; KB</a></h1>
+
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+  </header>
+  <main>
+    
+  <h1>Troubleshooting Arch Linux</h1>
+
+  
+  
+  <time datetime="2025-06-20T22:32:50&#43;02:00">June 20, 2025</time>
+
+  <p>After an update interruption the screen of my Laptop stopped working.</p>
+<p>I found the USB ISO of my initial Arch Linux installation and booted into the live environment:</p>
+<p>Arch Linux tty:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@archiso ~ <span class="c1">#</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="enable-wireless-connection-wifi">Enable wireless connection (WIFI)</h2>
+<p>(run commands one by one)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">iwctl
+</span></span><span class="line"><span class="cl">device list
+</span></span><span class="line"><span class="cl">station wlan0 scan
+</span></span><span class="line"><span class="cl">station wlan0 get-networks
+</span></span><span class="line"><span class="cl">station wlan0 connect <span class="s2">&#34;SSID&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="access-your-system">Access your system</h2>
+<p>List block devices:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lsblk
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Result:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">nvme0n1     259:0    0 476.9G  0 disk 
+</span></span><span class="line"><span class="cl">├─nvme0n1p1 259:1    0   100M  0 part /boot/efi
+</span></span><span class="line"><span class="cl">├─nvme0n1p2 259:2    0     8G  0 part [SWAP]
+</span></span><span class="line"><span class="cl">└─nvme0n1p3 259:3    0 468.8G  0 part /
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Mount your root partition:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mount /dev/nvme0n1p3 /mnt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Access your root partition:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">arch-chroot /mnt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Troubleshoot something&hellip;</p>
+<p>When you finished:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">reboot
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+  
+
+
+  </main>
+  <footer>
+    <p>Alexander Butenschön &copy; 2025. All rights reserved.</p>
+  </footer>
+</body>
+</html>
