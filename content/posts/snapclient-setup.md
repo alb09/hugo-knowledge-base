@@ -24,7 +24,7 @@ Add this config:
 vim /etc/default/snapclient 
 ```
 
->`SNAPCLIENT_OPTS="--host <ip> --port 1704 --player alsa --device hw:0,0 --latency 200"`
+`SNAPCLIENT_OPTS="--host <ip> --port 1704 --player alsa --device hw:0,0 --latency 200"`
 
 But keep in mind to configure your own hw-output device.
 
