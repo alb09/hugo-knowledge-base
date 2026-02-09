@@ -170,7 +170,7 @@
   <div class="single-content"><p>I have a small server at home with little specs but great ideas. Now that I am using more containers and assigned more RAM to them than I got, Swapping got to a level of 42.2%. And that&rsquo;s not good. So I fixed it.</p>
 <p>Paperless-ngx did not fully work, so I checked for memory issues on the Proxmox host.</p>
 <h3 id="oom-memory-issues">OOM Memory Issues</h3>
-<div class="code-block language-bash" data-lang="bash" id="code-1892978020484f96">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce6be2b1b">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -187,7 +187,7 @@
 
 
 <p>My output</p>
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892978020dcd400">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892985ce7826719">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -213,7 +213,7 @@
 
 <p>Memory ran out, so Proxmox killed a process I wanted to run.</p>
 <p>Check RAM Situation:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-189297802127f512">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce7c21457">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -230,7 +230,7 @@
 
 
 <p>My output</p>
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-18929780212b37f5">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892985ce7c50f24">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -256,7 +256,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 <hr>
 <p>Now let&rsquo;s check what filesystem we&rsquo;re on: <strong>ZFS</strong> is common but has high memory usage and slow performance at &gt;80%, in comparison to <strong>ext4</strong>.</p>
 <p>Check if using ZFS</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18929780212f1597">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce7c82217">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -273,7 +273,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>My output</p>
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-189297802131fe27">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892985ce7ca3d1c">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -290,7 +290,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>or</p>
-<div class="code-block language-bash" data-lang="bash" id="code-189297802134e99c">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce7cc3326">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -307,7 +307,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>My output</p>
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-189297802138108e">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892985ce7ce54b5">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -329,7 +329,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 <hr>
 <h3 id="zram-swap-reduces-real-swap-usage-by-5070">ZRAM Swap: reduces real swap usage by ~50–70%</h3>
 <p>Check Swaps:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18929780213b4f38">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce7d146fa">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -345,7 +345,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-18929780213e2e77">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892985ce7d3c28c">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -366,7 +366,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>Install zram:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892978021417884">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce7d6b047">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -383,7 +383,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>Configure:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-189297802144ddb0">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce7d9b496">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -400,7 +400,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>Add this</p>
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-18929780214752ae">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892985ce7dbc7d2">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -421,7 +421,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>Enable</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18929780214995ef">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce7dddf70">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -439,7 +439,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-18929780214cf397">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892985ce7e0e044">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -460,7 +460,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>List swaps:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18929780215a9092">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce7ee6e13">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -476,7 +476,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-18929780215cdcab">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892985ce7f129fb">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -500,7 +500,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 <hr>
 <p>Change the swappiness to force Linux to prefer RAM (less aggressive swapping):</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892978021611a1b">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce7f53bc9">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -521,7 +521,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 <hr>
 <p>We are ready to check if the tweaks worked.</p>
 <p>Flushes swap usage and clears old RAM pages  (without reboot)</p>
-<div class="code-block language-bash" data-lang="bash" id="code-189297802165055b">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce7f87566">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -540,7 +540,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>Now check again:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-18929780216799ee">
+<div class="code-block language-bash" data-lang="bash" id="code-1892985ce7fad38a">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -560,7 +560,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-18929780216ac420">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892985ce7fd9ead">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -587,7 +587,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 <p>Paperless-ngx config:</p>
 <p>Configure in <code>/opt/paperless/paperless.conf</code></p>
 <p>Add</p>
-<div class="code-block language-conf" data-lang="conf" id="code-1892978021ee6910">
+<div class="code-block language-conf" data-lang="conf" id="code-1892985ce86fe389">
   <div class="code-header">
     <span class="code-language">conf</span>
   </div>
@@ -624,7 +624,8 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
   </div>
   <div class="next">
       
-        <span class="no-next"></span>
+	<p>Up next --></p>
+        <a class="next-post" href="https://kb.alexbutenschoen.com/posts/proxmox-health/">Proxmox Health</a>
       
 
   </div>
