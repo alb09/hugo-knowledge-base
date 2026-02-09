@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<title>Fix Exceeding Swapping on a Small Proxmox Server | Alex&#39; KB</title>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<link rel="stylesheet" href="/css/combined.min.7799b065e22a7e40b8c8f26557c8a35f60fae8cf71a555a2d627ea4c46e608e4.css" integrity="sha256-d5mwZeIqfkC4yPJlV8ijX2D66M9xpVWi1ifqTEbmCOQ=" crossorigin="anonymous">
+
+
+<link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+<script src="/js/bundle.js" defer></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="me" href="https://defcon.social/@alexb">
+<meta name="theme-color" content="#313751">
+<meta property="og:site_name" content="Alex Knowledge Base" />
+<meta name="fediverse:creator" content="@alexb@defcon.social" />
+<meta name="description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
+
+
+<meta name="date" content="2026-02-09" />
+
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-02-09T13:40:59&#43;01:00" />
+
+
+<meta property="og:title" content="Fix Exceeding Swapping on a Small Proxmox Server" />
+<meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
+<meta property="og:url" content="http://localhost:1313/posts/fix-exceeding-swapping/" />
+<meta property="og:image" content="http://localhost:1313/images/default.png" />
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "http:\/\/localhost:1313\/posts\/fix-exceeding-swapping\/#blogposting",
+  "headline": "Fix Exceeding Swapping on a Small Proxmox Server",
+  "image": "",
+  "author": {
+    "@type": "Person",
+    "name": ""
+  },
+
+
+  "genre": []
+  "keywords": 
+
+
+  "wordCount": "466",
+
+
+  "publisher": {
+    "@type": "Organization",
+    "name": "",
+    "logo": {
+      "@type": "ImageObject",
+      "url": ""
+    }
+  },
+  "url": "http:\/\/localhost:1313\/posts\/fix-exceeding-swapping\/",
+  "datePublished": "2026-02-09T13:40:59\u002b01:00",
+  "dateModified": "2026-02-09T13:40:59\u002b01:00",
+  "description": "\u003cp\u003eI have a small server at home with little specs but great ideas. Now that I am using more containers and assigned more RAM to them than I got, Swapping got to a level of 42.2%. And that\u0026rsquo;s not good. So I fixed it.\u003c\/p\u003e",
+  "mainEntityOfPage": "http:\/\/localhost:1313\/posts\/fix-exceeding-swapping\/"
+}
+</script>
+
+
+
+
+</head>
+<body>
+  <header>
+    <nav>
+    <div class="navbar-left">
+        <div class="navbar-title"><a href="/">Alex&#39; KB</a></div>
+
+    </div>
+
+    <div class="navbar-right">
+        <button class="toggle-dark-mode" id="themeToggle">
+    <i class="fa-solid fa-circle-half-stroke" style="color: var(--text-color);"></i>
+</button>
+        
+
+
+
+  <nav class="navbar-list">
+    <ul>
+
+
+
+    <li>
+      <a href="https://alexbutenschoen.com/about">About</a>
+    </li>
+    </ul>
+  </nav>
+
+
+
+
+
+    </div>
+</nav>
+  </header>
+  <main>
+    
+  <h1 class="blogpost-title">Fix Exceeding Swapping on a Small Proxmox Server</h1>
+
+
+
+  
+
+ 
+
+
+<div class="pageinfo">
+    <ul>
+        <li><i></i> 09 Feb 2026</li> 
+        <li><i class="fa-regular fa-keyboard"></i> 466 words.</li>
+	
+    </ul>
+</div>
+
+   
+
+
+  <div class="single-content"><p>I have a small server at home with little specs but great ideas. Now that I am using more containers and assigned more RAM to them than I got, Swapping got to a level of 42.2%. And that&rsquo;s not good. So I fixed it.</p>
+<p>Paperless-ngx did not fully work, so I checked for memory issues on the Proxmox host.</p>
+<h3 id="oom-memory-issues">OOM Memory Issues</h3>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f396259d2">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">dmesg <span class="p">|</span> grep -i oom</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>My output</p>
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a270b80">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="p">[</span><span class="mf">292157.680595</span><span class="p">]</span> <span class="n">systemd</span><span class="o">-</span><span class="n">network</span> <span class="n">invoked</span> <span class="n">oom</span><span class="o">-</span><span class="n">killer</span><span class="p">:</span> <span class="n">gfp_mask</span><span class="o">=</span><span class="mh">0x100cca</span><span class="p">(</span><span class="n">GFP_HIGHUSER_MOVABLE</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">oom_score_adj</span><span class="o">=</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mf">292157.680623</span><span class="p">]</span>  <span class="n">oom_kill_process</span><span class="o">+</span><span class="mh">0x110</span><span class="o">/</span><span class="mh">0x240</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mf">292157.680803</span><span class="p">]</span> <span class="p">[</span>  <span class="n">pid</span>  <span class="p">]</span>   <span class="n">uid</span>  <span class="n">tgid</span> <span class="n">total_vm</span>      <span class="n">rss</span> <span class="n">rss_anon</span> <span class="n">rss_file</span> <span class="n">rss_shmem</span> <span class="n">pgtables_bytes</span> <span class="n">swapents</span> <span class="n">oom_score_adj</span> <span class="n">name</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mf">292157.680911</span><span class="p">]</span> <span class="n">oom</span><span class="o">-</span><span class="n">kill</span><span class="p">:</span><span class="n">constraint</span><span class="o">=</span><span class="n">CONSTRAINT_MEMCG</span><span class="p">,</span><span class="n">nodemask</span><span class="o">=</span><span class="p">(</span><span class="n">null</span><span class="p">),</span><span class="n">cpuset</span><span class="o">=</span><span class="n">ns</span><span class="p">,</span><span class="n">mems_allowed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">oom_memcg</span><span class="o">=/</span><span class="n">lxc</span><span class="o">/</span><span class="mi">107</span><span class="p">,</span><span class="n">task_memcg</span><span class="o">=/</span><span class="n">lxc</span><span class="o">/</span><span class="mi">107</span><span class="o">/</span><span class="n">ns</span><span class="o">/</span><span class="n">system</span><span class="o">.</span><span class="n">slice</span><span class="o">/</span><span class="n">paperless</span><span class="o">-</span><span class="n">task</span><span class="o">-</span><span class="n">queue</span><span class="o">.</span><span class="n">service</span><span class="p">,</span><span class="n">task</span><span class="o">=</span><span class="nb">convert</span><span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mi">1562888</span><span class="p">,</span><span class="n">uid</span><span class="o">=</span><span class="mi">100000</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mf">292157.680925</span><span class="p">]</span> <span class="n">Memory</span> <span class="n">cgroup</span> <span class="n">out</span> <span class="n">of</span> <span class="n">memory</span><span class="p">:</span> <span class="n">Killed</span> <span class="n">process</span> <span class="mi">1562888</span> <span class="p">(</span><span class="nb">convert</span><span class="p">)</span> <span class="n">total</span><span class="o">-</span><span class="n">vm</span><span class="p">:</span><span class="mi">2070820</span><span class="n">kB</span><span class="p">,</span> <span class="n">anon</span><span class="o">-</span><span class="n">rss</span><span class="p">:</span><span class="mi">863744</span><span class="n">kB</span><span class="p">,</span> <span class="n">file</span><span class="o">-</span><span class="n">rss</span><span class="p">:</span><span class="mi">0</span><span class="n">kB</span><span class="p">,</span> <span class="n">shmem</span><span class="o">-</span><span class="n">rss</span><span class="p">:</span><span class="mi">939264</span><span class="n">kB</span><span class="p">,</span> <span class="n">UID</span><span class="p">:</span><span class="mi">100000</span> <span class="n">pgtables</span><span class="p">:</span><span class="mi">3640</span><span class="n">kB</span> <span class="n">oom_score_adj</span><span class="p">:</span><span class="mi">0</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Memory ran out, so Proxmox killed a process I wanted to run.</p>
+<p>Check RAM Situation:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a680c4a">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">free -h</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>My output</p>
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a6b41e8">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">               total        used        free      shared  buff/cache   available
+</span></span><span class="line"><span class="cl">Mem:           7.6Gi       5.0Gi       1.9Gi       123Mi       1.1Gi       2.6Gi
+</span></span><span class="line"><span class="cl">Swap:          7.6Gi       3.2Gi       4.4Gi</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>This shows that I am really limited in RAM.
+ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an critical info: Swap &gt;20% of RAM (42.4%). For short periods of time it is ok if swap is at 20 - 30%.
+<strong>RAM pressure already happened</strong> and Linux pushed memory pages to disk.</p>
+<hr>
+<p>Now let&rsquo;s check what filesystem we&rsquo;re on: <strong>ZFS</strong> is common but has high memory usage and slow performance at &gt;80%, in comparison to <strong>ext4</strong>.</p>
+<p>Check if using ZFS</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a6f3393">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">zpool status</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>My output</p>
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a71efe0">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">no pools available</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>or</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a74aaaf">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">df -Th /</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>My output</p>
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a77a26e">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Filesystem           Type  Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/mapper/pve-root ext4   68G   54G   11G  83% /</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>I am using <code>ext4</code>.</p>
+<hr>
+<h3 id="zram-swap-reduces-real-swap-usage-by-5070">ZRAM Swap: reduces real swap usage by ~50–70%</h3>
+<p>Check Swaps:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a7ae29e">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/swaps</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Install zram:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a7d8fcf">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt update <span class="o">&amp;&amp;</span> apt install zram-tools</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Configure:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a80b7c5">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /etc/default/zramswap</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Add this</p>
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a82edfd">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ALGO=zstd
+</span></span><span class="line"><span class="cl">PERCENTAGE=50
+</span></span><span class="line"><span class="cl">PRIORITY=100</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Enable</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a85befd">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl <span class="nb">enable</span> --now zramswap</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>List swaps:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a887c76">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/swaps</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a8ac29b">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@proxmox:~# cat /proc/swaps 
+</span></span><span class="line"><span class="cl">Filename                                Type            Size            Used            Priority
+</span></span><span class="line"><span class="cl">/dev/dm-0                               partition       8011772         1329084         -2</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<hr>
+<p>Change the swappiness to force Linux to prefer RAM (less aggressive swapping):</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a8e1dc2">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sysctl vm.swappiness<span class="o">=</span><span class="m">10</span> <span class="c1"># temporarily</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;vm.swappiness=10&#34;</span> &gt;&gt; /etc/sysctl.conf <span class="c1"># permanent</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<hr>
+<p>We are ready to check if the tweaks worked.</p>
+<p>Flushes swap usage and clears old RAM pages  (without reboot)</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a91f643">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">swapoff -a
+</span></span><span class="line"><span class="cl">swapon -a</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Now check again:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a951bcc">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">free -h 
+</span></span><span class="line"><span class="cl"><span class="c1"># or</span>
+</span></span><span class="line"><span class="cl">htop </span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a980e10">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">               total        used        free      shared  buff/cache   available
+</span></span><span class="line"><span class="cl">Mem:           7.6Gi       7.5Gi       147Mi       210Mi       510Mi       165Mi
+</span></span><span class="line"><span class="cl">Swap:          7.6Gi       621Mi       7.0Gi</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<ul>
+<li>3.2Gi changed to 621Mi.</li>
+<li>ProxMenux shows OK. (RAM usage a bit high)</li>
+</ul>
+<p>Paperless-ngx config:</p>
+<p>Configure in <code>/opt/paperless/paperless.conf</code></p>
+<p>Add</p>
+<div class="code-block language-conf" data-lang="conf" id="code-1892967f3b0c25e1">
+  <div class="code-header">
+    <span class="code-language">conf</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PAPERLESS_TASK_WORKERS=1
+</span></span><span class="line"><span class="cl">PAPERLESS_THREADS_PER_WORKER=1</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Paperless-ngx now works without problems.</p></div>
+
+
+
+
+
+<div class="readon">
+  
+<div class="post-navigation">
+
+
+  <div class="prev">
+      
+	<p>&lt;-- Previous on</p>
+        <a class="previous-post" href="http://localhost:1313/posts/snapclient-setup/">Snapscast Client Synchronous Audio Receiver</a>
+      
+  </div>
+  <div class="next">
+      
+        <span class="no-next"></span>
+      
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+  
+
+  
+  
+  </main>
+  <footer>
+    <p>Alex' Knowledge Base &copy; 2026.</p>
+  </footer>
+</body>
+</html>

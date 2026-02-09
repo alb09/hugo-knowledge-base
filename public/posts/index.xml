@@ -6,8 +6,22 @@
     <description>Recent content in Posts on Alex&#39; KB</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Feb 2026 23:56:21 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 09 Feb 2026 13:40:59 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fix Exceeding Swapping on a Small Proxmox Server</title>
+      <link>http://localhost:1313/posts/fix-exceeding-swapping/</link>
+      <pubDate>Mon, 09 Feb 2026 13:40:59 +0100</pubDate>
+      <guid>http://localhost:1313/posts/fix-exceeding-swapping/</guid>
+      <description>&lt;p&gt;I have a small server at home with little specs but great ideas. Now that I am using more containers and assigned more RAM to them than I got, Swapping got to a level of 42.2%. And that&amp;rsquo;s not good. So I fixed it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Snapscast Client Synchronous Audio Receiver</title>
+      <link>http://localhost:1313/posts/snapclient-setup/</link>
+      <pubDate>Mon, 09 Feb 2026 00:20:34 +0100</pubDate>
+      <guid>http://localhost:1313/posts/snapclient-setup/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Setup Samba Share</title>
       <link>http://localhost:1313/posts/setup-samba-share/</link>
