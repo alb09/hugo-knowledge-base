@@ -1,5 +1,5 @@
 ---
-title: 'Snapscast Client Synchronous Audio Receiver'
+title: 'Multiroom Audio: Setup Snapscast Client Synchronous Audio Receiver'
 date: 2026-02-09T00:20:34+01:00
 tags:
 category:
