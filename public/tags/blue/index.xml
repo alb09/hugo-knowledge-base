@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blue on Alex&#39; KB</title>
-    <link>http://localhost:1313/tags/blue/</link>
+    <link>https://kb.alexbutenschoen.com/tags/blue/</link>
     <description>Recent content in Blue on Alex&#39; KB</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 20 Jun 2025 23:44:16 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/blue/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://kb.alexbutenschoen.com/tags/blue/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fix Booting Into Black Screen on Arch Linux</title>
-      <link>http://localhost:1313/posts/fix-booting-into-black-screen-on-arch-linux/</link>
+      <link>https://kb.alexbutenschoen.com/posts/fix-booting-into-black-screen-on-arch-linux/</link>
       <pubDate>Fri, 20 Jun 2025 23:44:16 +0200</pubDate>
-      <guid>http://localhost:1313/posts/fix-booting-into-black-screen-on-arch-linux/</guid>
+      <guid>https://kb.alexbutenschoen.com/posts/fix-booting-into-black-screen-on-arch-linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Online Identity Verification</title>
-      <link>http://localhost:1313/posts/online-identity-verification/</link>
+      <link>https://kb.alexbutenschoen.com/posts/online-identity-verification/</link>
       <pubDate>Mon, 02 Jun 2025 14:39:05 +0200</pubDate>
-      <guid>http://localhost:1313/posts/online-identity-verification/</guid>
+      <guid>https://kb.alexbutenschoen.com/posts/online-identity-verification/</guid>
       <description>&lt;p&gt;How to reliably set up verification for your online identity (Email and Socials).&lt;/p&gt;</description>
     </item>
   </channel>

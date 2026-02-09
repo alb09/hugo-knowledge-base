@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <title>Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout | Alex&#39; KB</title>
 
@@ -45,7 +45,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
-<script src="/js/bundle.js" defer></script>
+<script src="/js/bundle.1f0fbf7be1bb32e26503f0e21ceda404ef60319a5656af25da14afaeb470cc17.js" integrity="sha256-Hw&#43;/e&#43;G7MuJlA/DiHO2kBO9gMZpWVq8l2hSvrrRwzBc=" crossorigin="anonymous" defer></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="me" href="https://defcon.social/@alexb">
@@ -64,8 +64,8 @@
 
 <meta property="og:title" content="Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout" />
 <meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
-<meta property="og:url" content="http://localhost:1313/posts/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout/" />
-<meta property="og:image" content="http://localhost:1313/images/default.png" />
+<meta property="og:url" content="https://kb.alexbutenschoen.com/posts/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout/" />
+<meta property="og:image" content="https://kb.alexbutenschoen.com/images/default.png" />
 
 
 
@@ -75,7 +75,7 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "@id": "http:\/\/localhost:1313\/posts\/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout\/#blogposting",
+  "@id": "https:\/\/kb.alexbutenschoen.com\/posts\/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout\/#blogposting",
   "headline": "Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout",
   "image": "",
   "author": {
@@ -99,11 +99,11 @@
       "url": ""
     }
   },
-  "url": "http:\/\/localhost:1313\/posts\/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout\/",
+  "url": "https:\/\/kb.alexbutenschoen.com\/posts\/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout\/",
   "datePublished": "2025-09-08T19:49:07\u002b02:00",
   "dateModified": "2025-09-08T19:49:07\u002b02:00",
   "description": "\u003cp\u003eInsight: My laptop has a German ISO keyboard layout. I bought an US ANSI keyboard for faster typing as I am programming. Now it flips the Y and Z key everytime I switch between DE and US grrrr.\u003c\/p\u003e",
-  "mainEntityOfPage": "http:\/\/localhost:1313\/posts\/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout\/"
+  "mainEntityOfPage": "https:\/\/kb.alexbutenschoen.com\/posts\/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout\/"
 }
 </script>
 
@@ -172,7 +172,7 @@
 <h2 id="how-i-switch-between-layouts">How I switch between layouts</h2>
 <p>sxhkd (Hotkey Daemon): Switch between us ansi and de with a key binding</p>
 <p>The config: <code>~/.config/sxhkd/sxhkdrc</code></p>
-<div class="code-block language-sxhkdrc" data-lang="sxhkdrc" id="code-1892967f3a6b4b11">
+<div class="code-block language-sxhkdrc" data-lang="sxhkdrc" id="code-18929747590efd06">
   <div class="code-header">
     <span class="code-language">sxhkdrc</span>
   </div>
@@ -196,7 +196,7 @@
 
 <p>But remember, it resets to default everytime you reboot.</p>
 <h3 id="optional-quickly-reload-sxhkd-with-super--escape">Optional: Quickly reload sxhkd with <code>super + escape</code></h3>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a6fabff">
+<div class="code-block language-bash" data-lang="bash" id="code-189297475914588c">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -218,7 +218,7 @@
 
 <h2 id="set-the-default-keyboard-layout">Set the default keyboard layout</h2>
 <p>Customize the keyboard layout system wide: <code>/etc/X11/xorg.conf.d/00-keyboard.conf</code></p>
-<div class="code-block language-vim" data-lang="vim" id="code-1892967f3a7542f6">
+<div class="code-block language-vim" data-lang="vim" id="code-18929747591b43ff">
   <div class="code-header">
     <span class="code-language">vim</span>
   </div>
@@ -250,7 +250,7 @@
 
 <p>To prevent swapping Y and Z, create a custom XKB symbols file (or modify existing <code>us</code> layout in <code>/usr/share/X11/xkb/</code>) so that Y remains where it is in German layout.</p>
 <p>Created custom <code>us_custom</code> in <code>/usr/share/X11/xkb/symbols</code></p>
-<div class="code-block language-us_custom" data-lang="us_custom" id="code-1892967f3b1ae8a6">
+<div class="code-block language-us_custom" data-lang="us_custom" id="code-189297475a0d0279">
   <div class="code-header">
     <span class="code-language">us_custom</span>
   </div>
@@ -382,7 +382,7 @@
 
 <h2 id="update-sxhkd-configuration">Update sxhkd configuration</h2>
 <p>Now change the <code>sxhkdrc</code> accordingly:</p>
-<div class="code-block language-sxhkdrc" data-lang="sxhkdrc" id="code-1892967f3b29a7db">
+<div class="code-block language-sxhkdrc" data-lang="sxhkdrc" id="code-189297475a1c9d51">
   <div class="code-header">
     <span class="code-language">sxhkdrc</span>
   </div>
@@ -418,13 +418,13 @@
   <div class="prev">
       
 	<p>&lt;-- Previous on</p>
-        <a class="previous-post" href="http://localhost:1313/posts/flash-usb-drive/">Flashing USB Drives</a>
+        <a class="previous-post" href="https://kb.alexbutenschoen.com/posts/flash-usb-drive/">Flashing USB Drives</a>
       
   </div>
   <div class="next">
       
 	<p>Up next --></p>
-        <a class="next-post" href="http://localhost:1313/posts/fast-updates-arch-linux/">Fast Updates - Arch Linux</a>
+        <a class="next-post" href="https://kb.alexbutenschoen.com/posts/fast-updates-arch-linux/">Fast Updates - Arch Linux</a>
       
 
   </div>

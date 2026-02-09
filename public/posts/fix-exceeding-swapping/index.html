@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <title>Fix Exceeding Swapping on a Small Proxmox Server | Alex&#39; KB</title>
 
@@ -45,7 +45,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
-<script src="/js/bundle.js" defer></script>
+<script src="/js/bundle.1f0fbf7be1bb32e26503f0e21ceda404ef60319a5656af25da14afaeb470cc17.js" integrity="sha256-Hw&#43;/e&#43;G7MuJlA/DiHO2kBO9gMZpWVq8l2hSvrrRwzBc=" crossorigin="anonymous" defer></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="me" href="https://defcon.social/@alexb">
@@ -64,8 +64,8 @@
 
 <meta property="og:title" content="Fix Exceeding Swapping on a Small Proxmox Server" />
 <meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
-<meta property="og:url" content="http://localhost:1313/posts/fix-exceeding-swapping/" />
-<meta property="og:image" content="http://localhost:1313/images/default.png" />
+<meta property="og:url" content="https://kb.alexbutenschoen.com/posts/fix-exceeding-swapping/" />
+<meta property="og:image" content="https://kb.alexbutenschoen.com/images/default.png" />
 
 
 
@@ -75,7 +75,7 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "@id": "http:\/\/localhost:1313\/posts\/fix-exceeding-swapping\/#blogposting",
+  "@id": "https:\/\/kb.alexbutenschoen.com\/posts\/fix-exceeding-swapping\/#blogposting",
   "headline": "Fix Exceeding Swapping on a Small Proxmox Server",
   "image": "",
   "author": {
@@ -88,7 +88,7 @@
   "keywords": 
 
 
-  "wordCount": "466",
+  "wordCount": "522",
 
 
   "publisher": {
@@ -99,11 +99,11 @@
       "url": ""
     }
   },
-  "url": "http:\/\/localhost:1313\/posts\/fix-exceeding-swapping\/",
+  "url": "https:\/\/kb.alexbutenschoen.com\/posts\/fix-exceeding-swapping\/",
   "datePublished": "2026-02-09T13:40:59\u002b01:00",
   "dateModified": "2026-02-09T13:40:59\u002b01:00",
   "description": "\u003cp\u003eI have a small server at home with little specs but great ideas. Now that I am using more containers and assigned more RAM to them than I got, Swapping got to a level of 42.2%. And that\u0026rsquo;s not good. So I fixed it.\u003c\/p\u003e",
-  "mainEntityOfPage": "http:\/\/localhost:1313\/posts\/fix-exceeding-swapping\/"
+  "mainEntityOfPage": "https:\/\/kb.alexbutenschoen.com\/posts\/fix-exceeding-swapping\/"
 }
 </script>
 
@@ -159,7 +159,7 @@
 <div class="pageinfo">
     <ul>
         <li><i></i> 09 Feb 2026</li> 
-        <li><i class="fa-regular fa-keyboard"></i> 466 words.</li>
+        <li><i class="fa-regular fa-keyboard"></i> 522 words.</li>
 	
     </ul>
 </div>
@@ -170,7 +170,7 @@
   <div class="single-content"><p>I have a small server at home with little specs but great ideas. Now that I am using more containers and assigned more RAM to them than I got, Swapping got to a level of 42.2%. And that&rsquo;s not good. So I fixed it.</p>
 <p>Paperless-ngx did not fully work, so I checked for memory issues on the Proxmox host.</p>
 <h3 id="oom-memory-issues">OOM Memory Issues</h3>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f396259d2">
+<div class="code-block language-bash" data-lang="bash" id="code-18929747580433e1">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -187,7 +187,7 @@
 
 
 <p>My output</p>
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a270b80">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892974758ab80a8">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -213,7 +213,7 @@
 
 <p>Memory ran out, so Proxmox killed a process I wanted to run.</p>
 <p>Check RAM Situation:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a680c4a">
+<div class="code-block language-bash" data-lang="bash" id="code-18929747590bc323">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -230,7 +230,7 @@
 
 
 <p>My output</p>
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a6b41e8">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-18929747590f4b6a">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -256,7 +256,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 <hr>
 <p>Now let&rsquo;s check what filesystem we&rsquo;re on: <strong>ZFS</strong> is common but has high memory usage and slow performance at &gt;80%, in comparison to <strong>ext4</strong>.</p>
 <p>Check if using ZFS</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a6f3393">
+<div class="code-block language-bash" data-lang="bash" id="code-189297475914585a">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -273,7 +273,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>My output</p>
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a71efe0">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-18929747591801b2">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -290,7 +290,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>or</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a74aaaf">
+<div class="code-block language-bash" data-lang="bash" id="code-18929747591b4811">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -307,7 +307,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>My output</p>
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a77a26e">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-18929747591f0740">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -329,7 +329,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 <hr>
 <h3 id="zram-swap-reduces-real-swap-usage-by-5070">ZRAM Swap: reduces real swap usage by ~50–70%</h3>
 <p>Check Swaps:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a7ae29e">
+<div class="code-block language-bash" data-lang="bash" id="code-1892974759242d64">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -345,8 +345,28 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-189297475928505f">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@proxmox:~# cat /proc/swaps 
+</span></span><span class="line"><span class="cl">Filename                                Type            Size            Used            Priority
+</span></span><span class="line"><span class="cl">/dev/dm-0                               partition       8011772         0               100</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
 <p>Install zram:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a7d8fcf">
+<div class="code-block language-bash" data-lang="bash" id="code-18929747592d557b">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -363,7 +383,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>Configure:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a80b7c5">
+<div class="code-block language-bash" data-lang="bash" id="code-1892974759327c48">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -380,7 +400,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>Add this</p>
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a82edfd">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-189297475935cc70">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -401,16 +421,38 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>Enable</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a85befd">
+<div class="code-block language-bash" data-lang="bash" id="code-1892974759390b42">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
   <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl <span class="nb">enable</span> --now zramswap</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl <span class="nb">enable</span> --now zramswap
+</span></span><span class="line"><span class="cl">systemctl status zramswap</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-18929747593e1ce3">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">zramswap</span><span class="o">.</span><span class="n">service</span> <span class="o">-</span> <span class="n">Linux</span> <span class="n">zramswap</span> <span class="n">setup</span>
+</span></span><span class="line"><span class="cl">     <span class="n">Loaded</span><span class="p">:</span> <span class="n">loaded</span> <span class="p">(</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">zramswap</span><span class="o">.</span><span class="n">service</span><span class="p">;</span> <span class="n">enabled</span><span class="p">;</span> <span class="n">preset</span><span class="p">:</span> <span class="n">enabled</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="n">Active</span><span class="p">:</span> <span class="n">active</span> <span class="p">(</span><span class="n">exited</span><span class="p">)</span> <span class="n">since</span> <span class="n">Mon</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">09</span> <span class="mi">12</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">33</span> <span class="n">CET</span><span class="p">;</span> <span class="mi">1</span><span class="n">h</span> <span class="mi">37</span><span class="nb">min</span> <span class="n">ago</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -418,7 +460,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>List swaps:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a887c76">
+<div class="code-block language-bash" data-lang="bash" id="code-189297475955ac87">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -434,7 +476,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a8ac29b">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-189297475958e55b">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -443,11 +485,13 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@proxmox:~# cat /proc/swaps 
 </span></span><span class="line"><span class="cl">Filename                                Type            Size            Used            Priority
-</span></span><span class="line"><span class="cl">/dev/dm-0                               partition       8011772         1329084         -2</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl">/dev/dm-0                               partition       8011772         0               -2
+</span></span><span class="line"><span class="cl">/dev/zram0                              partition       4006404         0               100       </span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -456,7 +500,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 <hr>
 <p>Change the swappiness to force Linux to prefer RAM (less aggressive swapping):</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a8e1dc2">
+<div class="code-block language-bash" data-lang="bash" id="code-18929747595f258c">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -477,7 +521,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 <hr>
 <p>We are ready to check if the tweaks worked.</p>
 <p>Flushes swap usage and clears old RAM pages  (without reboot)</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a91f643">
+<div class="code-block language-bash" data-lang="bash" id="code-1892974759646f4d">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -496,7 +540,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 
 
 <p>Now check again:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3a951bcc">
+<div class="code-block language-bash" data-lang="bash" id="code-18929747596840e1">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -507,16 +551,16 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">free -h 
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">htop
 </span></span><span class="line"><span class="cl"><span class="c1"># or</span>
-</span></span><span class="line"><span class="cl">htop </span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl">watch -n <span class="m">2</span> free -h</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 
 
 
-<div class="code-block language-plaintext" data-lang="plaintext" id="code-1892967f3a980e10">
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-18929747596d7d71">
   <div class="code-header">
     <span class="code-language">plaintext</span>
   </div>
@@ -543,7 +587,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
 <p>Paperless-ngx config:</p>
 <p>Configure in <code>/opt/paperless/paperless.conf</code></p>
 <p>Add</p>
-<div class="code-block language-conf" data-lang="conf" id="code-1892967f3b0c25e1">
+<div class="code-block language-conf" data-lang="conf" id="code-189297475a070064">
   <div class="code-header">
     <span class="code-language">conf</span>
   </div>
@@ -575,7 +619,7 @@ ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an cri
   <div class="prev">
       
 	<p>&lt;-- Previous on</p>
-        <a class="previous-post" href="http://localhost:1313/posts/snapclient-setup/">Snapscast Client Synchronous Audio Receiver</a>
+        <a class="previous-post" href="https://kb.alexbutenschoen.com/posts/snapclient-setup/">Snapscast Client Synchronous Audio Receiver</a>
       
   </div>
   <div class="next">

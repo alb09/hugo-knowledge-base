@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <title>Fixing Audio for Arch Laptop | Alex&#39; KB</title>
 
@@ -45,7 +45,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
-<script src="/js/bundle.js" defer></script>
+<script src="/js/bundle.1f0fbf7be1bb32e26503f0e21ceda404ef60319a5656af25da14afaeb470cc17.js" integrity="sha256-Hw&#43;/e&#43;G7MuJlA/DiHO2kBO9gMZpWVq8l2hSvrrRwzBc=" crossorigin="anonymous" defer></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="me" href="https://defcon.social/@alexb">
@@ -64,8 +64,8 @@
 
 <meta property="og:title" content="Fixing Audio for Arch Laptop" />
 <meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
-<meta property="og:url" content="http://localhost:1313/posts/fixing-audio-for-arch-laptop/" />
-<meta property="og:image" content="http://localhost:1313/images/default.png" />
+<meta property="og:url" content="https://kb.alexbutenschoen.com/posts/fixing-audio-for-arch-laptop/" />
+<meta property="og:image" content="https://kb.alexbutenschoen.com/images/default.png" />
 
 
 
@@ -75,7 +75,7 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "@id": "http:\/\/localhost:1313\/posts\/fixing-audio-for-arch-laptop\/#blogposting",
+  "@id": "https:\/\/kb.alexbutenschoen.com\/posts\/fixing-audio-for-arch-laptop\/#blogposting",
   "headline": "Fixing Audio for Arch Laptop",
   "image": "",
   "author": {
@@ -99,11 +99,11 @@
       "url": ""
     }
   },
-  "url": "http:\/\/localhost:1313\/posts\/fixing-audio-for-arch-laptop\/",
+  "url": "https:\/\/kb.alexbutenschoen.com\/posts\/fixing-audio-for-arch-laptop\/",
   "datePublished": "2026-01-19T13:07:00\u002b01:00",
   "dateModified": "2026-01-19T13:07:00\u002b01:00",
   "description": "",
-  "mainEntityOfPage": "http:\/\/localhost:1313\/posts\/fixing-audio-for-arch-laptop\/"
+  "mainEntityOfPage": "https:\/\/kb.alexbutenschoen.com\/posts\/fixing-audio-for-arch-laptop\/"
 }
 </script>
 
@@ -179,7 +179,7 @@
 <ol>
 <li>Install tools</li>
 </ol>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3962019b">
+<div class="code-block language-bash" data-lang="bash" id="code-18929747580624ac">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -196,7 +196,7 @@
 
 
 <p>Check audio sinks:</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f39825c91">
+<div class="code-block language-bash" data-lang="bash" id="code-189297475829c06c">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -215,7 +215,7 @@
 <ol start="2">
 <li>Unmute codec (critical for ALC294)</li>
 </ol>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f39860458">
+<div class="code-block language-bash" data-lang="bash" id="code-18929747583b84e2">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -233,7 +233,7 @@
 
 <p>Enable it so it shows <code>OO</code> instead of <code>MM</code>, with pressing m. (Muting and unmuting).</p>
 <p>(also keep in mind to switch between audio sinks with <code>F6</code> if not working)</p>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f39896952">
+<div class="code-block language-bash" data-lang="bash" id="code-189297475841388a">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -256,7 +256,7 @@
 <ol start="3">
 <li>Test ALSA directly</li>
 </ol>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f3996dbc1">
+<div class="code-block language-bash" data-lang="bash" id="code-18929747584f391f">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -275,7 +275,7 @@
 <ol start="4">
 <li>Persist hda-verb via udev</li>
 </ol>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f39d1e5da">
+<div class="code-block language-bash" data-lang="bash" id="code-18929747588e1ba1">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -302,7 +302,7 @@ pavucontrol → Configuration → &ldquo;Ryzen HD Audio Controller&rdquo; → Pr
 <p>Restart PipeWire</p>
 </li>
 </ol>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f39e8a6af">
+<div class="code-block language-bash" data-lang="bash" id="code-18929747589e95bf">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -321,7 +321,7 @@ pavucontrol → Configuration → &ldquo;Ryzen HD Audio Controller&rdquo; → Pr
 <ol start="7">
 <li>Verify</li>
 </ol>
-<div class="code-block language-bash" data-lang="bash" id="code-1892967f39ee1c3a">
+<div class="code-block language-bash" data-lang="bash" id="code-1892974758a3d8a6">
   <div class="code-header">
     <span class="code-language">bash</span>
   </div>
@@ -366,13 +366,13 @@ PipeWire → [Pro Audio profile bypasses port detection] → ALC294 sink created
   <div class="prev">
       
 	<p>&lt;-- Previous on</p>
-        <a class="previous-post" href="http://localhost:1313/posts/fast-updates-arch-linux/">Fast Updates - Arch Linux</a>
+        <a class="previous-post" href="https://kb.alexbutenschoen.com/posts/fast-updates-arch-linux/">Fast Updates - Arch Linux</a>
       
   </div>
   <div class="next">
       
 	<p>Up next --></p>
-        <a class="next-post" href="http://localhost:1313/posts/setup-samba-share/">Setup Samba Share</a>
+        <a class="next-post" href="https://kb.alexbutenschoen.com/posts/setup-samba-share/">Setup Samba Share</a>
       
 
   </div>
