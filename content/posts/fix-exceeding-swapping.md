@@ -1,8 +1,8 @@
 ---
 title: 'Fix Exceeding Swapping on a Small Proxmox Server'
 date: 2026-02-09T13:40:59+01:00
-tags:
-category:
+tags: swap, proxmox, linux
+category: linux
 topic:
 draft: false
 ---

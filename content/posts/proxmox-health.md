@@ -1,8 +1,8 @@
 ---
 title: 'Proxmox Health'
 date: 2026-02-09T14:49:54+01:00
-tags:
-category:
+tags: proxmox
+category: linux
 topic:
 draft: false
 ---

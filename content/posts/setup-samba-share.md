@@ -1,8 +1,8 @@
 ---
 title: 'Setup Samba Share'
 date: 2026-02-08T23:56:21+01:00
-tags:
-category:
+tags: sambashare, nas
+category: 
 topic:
 draft: false
 ---

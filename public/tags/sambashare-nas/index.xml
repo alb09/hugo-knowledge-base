@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sambashare, Nas on Alex&#39; KB</title>
+    <link>https://kb.alexbutenschoen.com/tags/sambashare-nas/</link>
+    <description>Recent content in Sambashare, Nas on Alex&#39; KB</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Feb 2026 23:56:21 +0100</lastBuildDate>
+    <atom:link href="https://kb.alexbutenschoen.com/tags/sambashare-nas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setup Samba Share</title>
+      <link>https://kb.alexbutenschoen.com/posts/setup-samba-share/</link>
+      <pubDate>Sun, 08 Feb 2026 23:56:21 +0100</pubDate>
+      <guid>https://kb.alexbutenschoen.com/posts/setup-samba-share/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

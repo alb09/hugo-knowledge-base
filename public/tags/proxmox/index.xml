@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Proxmox on Alex&#39; KB</title>
+    <link>https://kb.alexbutenschoen.com/tags/proxmox/</link>
+    <description>Recent content in Proxmox on Alex&#39; KB</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Feb 2026 14:49:54 +0100</lastBuildDate>
+    <atom:link href="https://kb.alexbutenschoen.com/tags/proxmox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Proxmox Health</title>
+      <link>https://kb.alexbutenschoen.com/posts/proxmox-health/</link>
+      <pubDate>Mon, 09 Feb 2026 14:49:54 +0100</pubDate>
+      <guid>https://kb.alexbutenschoen.com/posts/proxmox-health/</guid>
+      <description>&lt;p&gt;Just some useful commands for Proxmox Virtual Environment.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

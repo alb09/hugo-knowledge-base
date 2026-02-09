@@ -8,14 +8,26 @@
     <loc>https://kb.alexbutenschoen.com/posts/</loc>
     <lastmod>2026-02-09T14:49:54+01:00</lastmod>
   </url><url>
+    <loc>https://kb.alexbutenschoen.com/tags/proxmox/</loc>
+    <lastmod>2026-02-09T14:49:54+01:00</lastmod>
+  </url><url>
     <loc>https://kb.alexbutenschoen.com/posts/proxmox-health/</loc>
+    <lastmod>2026-02-09T14:49:54+01:00</lastmod>
+  </url><url>
+    <loc>https://kb.alexbutenschoen.com/tags/</loc>
     <lastmod>2026-02-09T14:49:54+01:00</lastmod>
   </url><url>
     <loc>https://kb.alexbutenschoen.com/posts/fix-exceeding-swapping/</loc>
     <lastmod>2026-02-09T13:40:59+01:00</lastmod>
   </url><url>
+    <loc>https://kb.alexbutenschoen.com/tags/swap-proxmox-linux/</loc>
+    <lastmod>2026-02-09T13:40:59+01:00</lastmod>
+  </url><url>
     <loc>https://kb.alexbutenschoen.com/posts/snapclient-setup/</loc>
     <lastmod>2026-02-09T00:20:34+01:00</lastmod>
+  </url><url>
+    <loc>https://kb.alexbutenschoen.com/tags/sambashare-nas/</loc>
+    <lastmod>2026-02-08T23:56:21+01:00</lastmod>
   </url><url>
     <loc>https://kb.alexbutenschoen.com/posts/setup-samba-share/</loc>
     <lastmod>2026-02-08T23:56:21+01:00</lastmod>
@@ -33,9 +45,6 @@
     <lastmod>2025-09-22T00:58:55+02:00</lastmod>
   </url><url>
     <loc>https://kb.alexbutenschoen.com/topic/linux/</loc>
-    <lastmod>2025-09-22T00:58:55+02:00</lastmod>
-  </url><url>
-    <loc>https://kb.alexbutenschoen.com/tags/</loc>
     <lastmod>2025-09-22T00:58:55+02:00</lastmod>
   </url><url>
     <loc>https://kb.alexbutenschoen.com/topic/</loc>
