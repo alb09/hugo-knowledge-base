@@ -105,7 +105,7 @@ vi /etc/default/zramswap
 Add this
 ```
 ALGO=zstd
-PERCENTAGE=50
+PERCENTAGE=80
 PRIORITY=100
 ```
 
@@ -133,12 +133,28 @@ Filename                                Type            Size            Used    
 /dev/zram0                              partition       4006404         0               100       
 ```
 
+Zram compression in use:
+```bash
+zramctl
+```
+
+Shows:
+```
+NAME       ALGORITHM DISKSIZE  DATA  COMPR  TOTAL STREAMS MOUNTPOINT
+/dev/zram0 zstd          3.8G  2.7G 932.3M 959.4M       4 [SWAP]
+```
+
 ---
 
 Change the swappiness to force Linux to prefer RAM (less aggressive swapping):
 ```bash
 sysctl vm.swappiness=10 # temporarily
 echo "vm.swappiness=10" >> /etc/sysctl.conf # permanent
+```
+
+Check:
+```bash
+sysctl -p
 ```
 
 ---

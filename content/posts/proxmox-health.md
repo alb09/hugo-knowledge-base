@@ -19,12 +19,12 @@ htop
 top
 ```
 
-Show disk usage
+Show disk usage:
 ```bash
 pvesm status
 ```
 
-Show root filesystem
+Show root filesystem:
 ```bash
 df -Th /
 ```
@@ -34,15 +34,40 @@ Check RAM:
 watch -n 2 free -h
 ```
 
+Enable memory overcommit:
+```bash
+echo "vm.overcommit_memory=1" >> /etc/sysctl.conf
+```
+
 Check Swap:
 ```bash
 cat /proc/swaps
+```
+
+Change swappiness:
+```bash
+echo "vm.swappiness=10" >> /etc/sysctl.conf
+```
+
+Check swappiness:
+```bash
+sysctl -p
 ```
 
 Flushes swap usage and clears old RAM pages  (without reboot)
 ```bash
 swapoff -a
 swapon -a
+```
+
+Shows zram compression:
+```bash
+zramctl
+```
+
+Restart zram:
+```bash
+systemctl restart zramswap
 ```
 
 
