@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" 
+	xmlns:atom="http://www.w3.org/2005/Atom"
+        xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Proxmox on Alex&#39; KB</title>
     <link>https://kb.alexbutenschoen.com/tags/proxmox/</link>
@@ -13,7 +15,106 @@
       <link>https://kb.alexbutenschoen.com/posts/proxmox-health/</link>
       <pubDate>Mon, 09 Feb 2026 14:49:54 +0100</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/proxmox-health/</guid>
-      <description>&lt;p&gt;Just some useful commands for Proxmox Virtual Environment.&lt;/p&gt;</description>
+      
+   	<content:encoded>
+Just some useful commands for Proxmox Virtual Environment.
+
+&lt;!--more--&gt;
+
+
+
+Watch system processes:
+```bash
+htop
+top
+```
+
+Show disk usage:
+```bash
+pvesm status
+```
+
+Show root filesystem:
+```bash
+df -Th /
+```
+
+Check RAM:
+```bash
+watch -n 2 free -h
+```
+
+Enable memory overcommit vor Virtual Machines:
+```bash
+echo &#34;vm.overcommit_memory=1&#34; &gt;&gt; /etc/sysctl.conf
+```
+
+Check Swap:
+```bash
+cat /proc/swaps
+```
+
+Change swappiness:
+```bash
+echo &#34;vm.swappiness=10&#34; &gt;&gt; /etc/sysctl.conf
+```
+
+Check swappiness:
+```bash
+sysctl -p
+```
+
+Flushes swap usage and clears old RAM pages  (without reboot)
+```bash
+swapoff -a
+swapon -a
+```
+
+Shows all active swaps:
+```bash
+swapon --show
+```
+
+Start swap with priority:
+```bash
+swapon -p 100 /dev/zram0
+```
+
+Check for zram and load it with modprobe if not showing up:
+```bash
+ls /sys/block | grep zram
+lsmod | grep zram
+modprobe zram
+```
+
+Shows zram compression:
+```bash
+zramctl
+```
+
+Restart zram:
+```bash
+systemctl restart zramswap
+```
+
+
+Container config:
+```bash
+vi /etc/pve/lxc/&lt;id&gt;.conf
+pct config &lt;id&gt; | grep &lt;search for config&gt;
+```
+
+Check for oom issues: e.g. killing a process because of low RAM
+```bash
+dmesg | grep -i oom
+```
+
+Set correct access privilges for the storage (so containers can access it)
+```bash
+chown -R 101000:101000 &lt;some-file&gt;
+```
+
+</content:encoded> 
     </item>
   </channel>
 </rss>

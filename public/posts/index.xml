@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" 
+	xmlns:atom="http://www.w3.org/2005/Atom"
+        xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Alex&#39; KB</title>
     <link>https://kb.alexbutenschoen.com/posts/</link>
@@ -13,91 +15,1168 @@
       <link>https://kb.alexbutenschoen.com/posts/proxmox-health/</link>
       <pubDate>Mon, 09 Feb 2026 14:49:54 +0100</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/proxmox-health/</guid>
-      <description>&lt;p&gt;Just some useful commands for Proxmox Virtual Environment.&lt;/p&gt;</description>
+      
+   	<content:encoded>
+Just some useful commands for Proxmox Virtual Environment.
+
+&lt;!--more--&gt;
+
+
+
+Watch system processes:
+```bash
+htop
+top
+```
+
+Show disk usage:
+```bash
+pvesm status
+```
+
+Show root filesystem:
+```bash
+df -Th /
+```
+
+Check RAM:
+```bash
+watch -n 2 free -h
+```
+
+Enable memory overcommit vor Virtual Machines:
+```bash
+echo &#34;vm.overcommit_memory=1&#34; &gt;&gt; /etc/sysctl.conf
+```
+
+Check Swap:
+```bash
+cat /proc/swaps
+```
+
+Change swappiness:
+```bash
+echo &#34;vm.swappiness=10&#34; &gt;&gt; /etc/sysctl.conf
+```
+
+Check swappiness:
+```bash
+sysctl -p
+```
+
+Flushes swap usage and clears old RAM pages  (without reboot)
+```bash
+swapoff -a
+swapon -a
+```
+
+Shows all active swaps:
+```bash
+swapon --show
+```
+
+Start swap with priority:
+```bash
+swapon -p 100 /dev/zram0
+```
+
+Check for zram and load it with modprobe if not showing up:
+```bash
+ls /sys/block | grep zram
+lsmod | grep zram
+modprobe zram
+```
+
+Shows zram compression:
+```bash
+zramctl
+```
+
+Restart zram:
+```bash
+systemctl restart zramswap
+```
+
+
+Container config:
+```bash
+vi /etc/pve/lxc/&lt;id&gt;.conf
+pct config &lt;id&gt; | grep &lt;search for config&gt;
+```
+
+Check for oom issues: e.g. killing a process because of low RAM
+```bash
+dmesg | grep -i oom
+```
+
+Set correct access privilges for the storage (so containers can access it)
+```bash
+chown -R 101000:101000 &lt;some-file&gt;
+```
+
+</content:encoded> 
     </item>
     <item>
       <title>Fix Exceeding Swapping on a Small Proxmox Server</title>
       <link>https://kb.alexbutenschoen.com/posts/fix-exceeding-swapping/</link>
       <pubDate>Mon, 09 Feb 2026 13:40:59 +0100</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/fix-exceeding-swapping/</guid>
-      <description>&lt;p&gt;I have a small server at home with little specs but great ideas. Now that I am using more containers and assigned more RAM to them than I got, Swapping got to a level of 42.2%. And that&amp;rsquo;s not good. So I fixed it.&lt;/p&gt;</description>
+      
+   	<content:encoded>
+
+I have a small server at home with little specs but great ideas. Now that I am using more containers and assigned more RAM to them than I got, Swapping got to a level of 42.2%. And that&#39;s not good. So I fixed it.
+
+&lt;!--more--&gt;
+
+
+Paperless-ngx did not fully work, so I checked for memory issues on the Proxmox host.
+
+### OOM Memory Issues
+
+```bash
+dmesg | grep -i oom
+```
+
+My output
+```
+[292157.680595] systemd-network invoked oom-killer: gfp_mask=0x100cca(GFP_HIGHUSER_MOVABLE), order=0, oom_score_adj=0
+[292157.680623]  oom_kill_process+0x110/0x240
+[292157.680803] [  pid  ]   uid  tgid total_vm      rss rss_anon rss_file rss_shmem pgtables_bytes swapents oom_score_adj name
+[292157.680911] oom-kill:constraint=CONSTRAINT_MEMCG,nodemask=(null),cpuset=ns,mems_allowed=0,oom_memcg=/lxc/107,task_memcg=/lxc/107/ns/system.slice/paperless-task-queue.service,task=convert,pid=1562888,uid=100000
+[292157.680925] Memory cgroup out of memory: Killed process 1562888 (convert) total-vm:2070820kB, anon-rss:863744kB, file-rss:0kB, shmem-rss:939264kB, UID:100000 pgtables:3640kB oom_score_adj:0
+```
+
+Memory ran out, so Proxmox killed a process I wanted to run.
+
+
+Check RAM Situation:
+```bash
+free -h
+```
+
+My output
+```
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       5.0Gi       1.9Gi       123Mi       1.1Gi       2.6Gi
+Swap:          7.6Gi       3.2Gi       4.4Gi
+```
+
+This shows that I am really limited in RAM.
+ProxMenux is a Proxmox Dashboard that checks for System Health. It showed an critical info: Swap &gt;20% of RAM (42.4%). For short periods of time it is ok if swap is at 20 - 30%.
+**RAM pressure already happened** and Linux pushed memory pages to disk.
+
+---
+
+Now let&#39;s check what filesystem we&#39;re on: **ZFS** is common but has high memory usage and slow performance at &gt;80%, in comparison to **ext4**.
+
+Check if using ZFS
+```bash
+zpool status
+```
+
+My output
+```
+no pools available
+```
+
+or
+
+```bash
+df -Th /
+```
+
+My output
+```
+Filesystem           Type  Size  Used Avail Use% Mounted on
+/dev/mapper/pve-root ext4   68G   54G   11G  83% /
+```
+
+I am using `ext4`. 
+
+---
+
+### ZRAM Swap: reduces real swap usage by ~50–70%
+
+Check Swaps:
+```bash
+cat /proc/swaps
+```
+
+```
+root@proxmox:~# cat /proc/swaps 
+Filename                                Type            Size            Used            Priority
+/dev/dm-0                               partition       8011772         0               100
+```
+
+Install zram:
+```bash
+apt update &amp;&amp; apt install zram-tools
+```
+
+Configure:
+```bash
+vi /etc/default/zramswap
+```
+
+Add this
+```
+ALGO=zstd
+PERCENTAGE=80
+PRIORITY=100
+```
+
+Enable
+```bash
+systemctl enable --now zramswap
+systemctl status zramswap
+```
+
+```
+zramswap.service - Linux zramswap setup
+     Loaded: loaded (/lib/systemd/system/zramswap.service; enabled; preset: enabled)
+     Active: active (exited) since Mon 2026-02-09 12:40:33 CET; 1h 37min ago
+```
+
+List swaps:
+```bash
+cat /proc/swaps
+```
+
+```
+root@proxmox:~# cat /proc/swaps 
+Filename                                Type            Size            Used            Priority
+/dev/dm-0                               partition       8011772         0               -2
+/dev/zram0                              partition       4006404         0               100       
+```
+
+Zram compression in use:
+```bash
+zramctl
+```
+
+Shows:
+```
+NAME       ALGORITHM DISKSIZE  DATA  COMPR  TOTAL STREAMS MOUNTPOINT
+/dev/zram0 zstd          3.8G  2.7G 932.3M 959.4M       4 [SWAP]
+```
+
+---
+
+Change the swappiness to force Linux to prefer RAM (less aggressive swapping):
+```bash
+sysctl vm.swappiness=10 # temporarily
+echo &#34;vm.swappiness=10&#34; &gt;&gt; /etc/sysctl.conf # permanent
+```
+
+Check:
+```bash
+sysctl -p
+```
+
+---
+
+We are ready to check if the tweaks worked.
+
+Flushes swap usage and clears old RAM pages  (without reboot)
+```bash
+swapoff -a
+swapon -p 100 /dev/zram0
+swapon -a
+```
+
+
+Now check again:
+```bash
+htop
+# or
+watch -n 2 free -h
+```
+
+```
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       7.5Gi       147Mi       210Mi       510Mi       165Mi
+Swap:          7.6Gi       621Mi       7.0Gi
+```
+
+
+- 3.2Gi changed to 621Mi.
+- ProxMenux shows OK. (RAM usage a bit high)
+
+Paperless-ngx config:
+
+Configure in `/opt/paperless/paperless.conf`
+
+Add
+```conf
+PAPERLESS_TASK_WORKERS=1
+PAPERLESS_THREADS_PER_WORKER=1
+```
+
+Paperless-ngx now works without problems.
+
+</content:encoded> 
     </item>
     <item>
       <title>Multiroom Audio: Setup Snapscast Client Synchronous Audio Receiver</title>
       <link>https://kb.alexbutenschoen.com/posts/snapclient-setup/</link>
       <pubDate>Mon, 09 Feb 2026 00:20:34 +0100</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/snapclient-setup/</guid>
-      <description></description>
+      
+   	<content:encoded>
+&lt;!--more--&gt;
+
+Snapserver is a nice way to sync media playback across a place. Homeassistant Integration possible --&gt; I recommend installing the Snapserver into Home Assistant (Music Assistant).
+
+Check it out: [GitHub - snapcast/snapcast: Synchronous multiroom audio player](https://github.com/snapcast/snapcast)
+
+Install:
+```bash
+apt search snapcast
+Sorting... Done
+Full Text Search... Done
+snapclient/noble 0.27.0+dfsg-1build2 amd64
+  Snapcast client
+snapserver/noble 0.27.0+dfsg-1build2 amd64
+  Snapcast server
+```
+
+We just want the client, so install it:
+
+```bash
+
+sudo apt install snapclient
+```
+
+
+Add this config:
+```bash
+vim /etc/default/snapclient 
+```
+
+```
+SNAPCLIENT_OPTS=&#34;--host &lt;ip&gt; --port 1704 --player alsa --device hw:0,0 --latency 200&#34;
+```
+
+But keep in mind to configure your own hw-output device and IP adress of your snapserver.
+
+Enable now:
+```bash
+sudo systemctl enable --now snapclient
+sudo systemctl status snapclient
+```
+
+Turn on sound:
+```bash
+alsamixer
+```
+ 
+- Press `m` to unmute sound.
+- `ArrowUp` to max volume.
+- `Esc` to exit and save
+
+
+---
+
+Extra:
+
+I am running snapcast-client in a Proxmox LXC Container, so I needed to passthrough the AUX Output Hardware Device. I did this with this config (might not work for you!!)
+
+```
+lxc.cgroup2.devices.allow: c 116:* rwm
+lxc.cgroup2.devices.allow: c 226:* rwm
+lxc.mount.entry: /dev/snd dev/snd none bind,optional,create=dir
+lxc.mount.entry: /dev/dri dev/dri none bind,optional,create=dir
+lxc.mount.entry: /dev/seq dev/seq none bind,optional,create=file
+lxc.mount.entry: /dev/timer dev/timer none bind,optional,create=file
+```
+
+
+Full config: `cat /etc/pve/lxc/102.conf `
+
+```
+arch: amd64
+cores: 1
+hostname: snapcast
+memory: 512
+net0: name=eth0,bridge=vmbr0,firewall=1,gw=192.168.0.1,hwaddr=BC:24:11:C0:DA:A1,ip=192.168.0.102/24,type=veth
+onboot: 1
+ostype: debian
+rootfs: local-lvm:vm-102-disk-0,size=4G
+swap: 1024
+lxc.cgroup2.devices.allow: c 116:* rwm
+lxc.cgroup2.devices.allow: c 226:* rwm
+lxc.mount.entry: /dev/snd dev/snd none bind,optional,create=dir
+lxc.mount.entry: /dev/dri dev/dri none bind,optional,create=dir
+lxc.mount.entry: /dev/seq dev/seq none bind,optional,create=file
+lxc.mount.entry: /dev/timer dev/timer none bind,optional,create=file
+```
+
+
+</content:encoded> 
     </item>
     <item>
       <title>Setup Samba Share</title>
       <link>https://kb.alexbutenschoen.com/posts/setup-samba-share/</link>
       <pubDate>Sun, 08 Feb 2026 23:56:21 +0100</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/setup-samba-share/</guid>
-      <description></description>
+      
+   	<content:encoded>
+&lt;!--more--&gt;
+
+
+## Setup Samba Share:
+
+```bash
+apt update &amp;&amp; apt install samba -y
+vi /etc/samba/smb.conf
+```
+
+Add this at the end of the config:
+```
+[media]
+path = /var/lib/vz/storage1
+browseable = yes
+writable = yes
+guest ok = no
+read only = no
+create mask = 0775
+directory mask = 0775
+valid users = root
+```
+
+Setup a secure password
+```bash
+smbpasswd -a root
+```
+
+Add Samba Share Storage to your PC as a network attached storage (local):
+```bash
+gio mount smb://root@&lt;proxmox-ip&gt;/storage1
+```
+
+
+</content:encoded> 
     </item>
     <item>
       <title>Fixing Audio for Arch Laptop</title>
       <link>https://kb.alexbutenschoen.com/posts/fixing-audio-for-arch-laptop/</link>
       <pubDate>Mon, 19 Jan 2026 13:07:00 +0100</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/fixing-audio-for-arch-laptop/</guid>
-      <description></description>
+      
+   	<content:encoded>
+&lt;!--more--&gt;
+
+
+## Problem Overview
+ASUS Zenbook laptops with Ryzen APUs and Realtek ALC294 audio codec suffer from **no analog speaker output** on Arch Linux with PipeWire. Hardware detects fine (`aplay -l` shows Card 1 Device 0: ALC294 Analog), `speaker-test -D plughw:1,0` requires manual codec unmuting, but PipeWire/WirePlumber **never creates ALC294 playback sinks**—only HDMI and microphone appear in `wpctl status`. HiFi profiles fail due to broken port detection; **Pro Audio profile works reliably**.
+## Root Causes
+**1. ALC294 Codec Mute State**: Realtek laptop codecs default to hardware-muted speakers post-boot. Windows firmware handles unmuting; Linux needs `hda-verb` on pins 0x20/0x21/0x1b.
+
+**2. Ryzen HD Audio Controller**: AMD ACP (Audio Co-Processor) confuses WirePlumber—device appears as both capture (mic works) and potential playback, but analog profile never activates.
+
+**3. WirePlumber Port Detection**: HiFi profiles expect jack sensing/speaker switching that ALC294 doesn&#39;t implement properly, causing sink creation to fail silently.
+
+**4. ASUS Firmware Quirks**: Fast Boot (UEFI + Windows) leaves codec in inconsistent state; Linux needs explicit pin control.
+
+
+---
+
+
+## Complete Working Solution
+1. Install tools
+```bash
+sudo pacman -S alsa-utils alsa-tools alsa-firmware sof-firmware pavucontrol
+```
+
+
+Check audio sinks:
+```bash
+pactl list short sinks
+```
+
+2. Unmute codec (critical for ALC294)
+```bash
+alsamixer -c 1
+```
+
+Enable it so it shows `OO` instead of `MM`, with pressing m. (Muting and unmuting).
+
+(also keep in mind to switch between audio sinks with `F6` if not working)
+
+```bash
+sudo hda-verb /dev/snd/hwC1D0 0x20 SET_PIN_WIDGET_CONTROL 0x40
+sudo hda-verb /dev/snd/hwC1D0 0x21 SET_PIN_WIDGET_CONTROL 0x40
+sudo hda-verb /dev/snd/hwC1D0 0x1b SET_PIN_WIDGET_CONTROL 0x40
+```
+
+3. Test ALSA directly
+```bash
+speaker-test -c 2 -D plughw:1,0 -t sine -f 1000  # Hears tone
+```
+
+4. Persist hda-verb via udev
+```bash
+echo &#39;ACTION==&#34;change&#34;, SUBSYSTEM==&#34;sound&#34;, KERNEL==&#34;card1&#34;, RUN+=&#34;/usr/bin/hda-verb /dev/snd/hwC1D0 0x20 SET_PIN_WIDGET_CONTROL 0x40&#34;&#39; | sudo tee /etc/udev/rules.d/90-alc294.rules
+sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger
+```
+
+5. Set Pro Audio profile (key step)
+pavucontrol → Configuration → &#34;Ryzen HD Audio Controller&#34; → Pro Audio
+
+6. Restart PipeWire 
+```bash
+systemctl --user restart pipewire pipewire-pulse wireplumber
+```
+
+7. Verify
+```bash
+wpctl status  # ALC294 sink appears
+pw-play /usr/share/sounds/alsa/Front_Left.wav  # Speakers work
+```
+
+
+---
+
+
+### Overview
+ALSA (hw:1,0) → [hda-verb unmute] → speaker-test WORKS
+                           ↓
+PipeWire → [Pro Audio profile bypasses port detection] → ALC294 sink created → Apps play through speakers
+
+**Pro Audio** uses raw ALSA `hw:1,0` access with manual FL/FR channel mapping—no reliance on ALC294&#39;s broken jack sensing or port routing that breaks HiFi profiles. Full 24-bit/48kHz quality preserved.
+### Permanent Configuration
+**`/etc/udev/rules.d/90-alc294.rules`** ensures codec unmuting on every boot. **Pro Audio profile** in pavucontrol persists via PipeWire session state. Reboot-safe.
+
+- **Identical hardware** across UX3405/UX363/S13 models (Ryzen + ALC294)
+- **Same failure pattern** documented since 2020 across Ubuntu/Fedora/Manjaro
+- **Arch bleeding-edge kernels** expose the issue most reliably (newer SOF firmware helps detection but not activation)
+- **Solution identical** across distros: hda-verb + Pro Audio profile
+
+
+</content:encoded> 
     </item>
     <item>
       <title>Fast Updates - Arch Linux</title>
       <link>https://kb.alexbutenschoen.com/posts/fast-updates-arch-linux/</link>
       <pubDate>Mon, 22 Sep 2025 00:58:55 +0200</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/fast-updates-arch-linux/</guid>
-      <description>&lt;p&gt;I just found the reflector cli tool which can help you manage the mirrorlist in Arch. Just wow, it is so fast to update anything now, it feels like a breeze.&lt;/p&gt;</description>
+      
+   	<content:encoded>
+I just found the reflector cli tool which can help you manage the mirrorlist in Arch. Just wow, it is so fast to update anything now, it feels like a breeze.
+
+&lt;!--more--&gt;
+
+
+![Mirrorlist](/images/mirrorlist.png)
+
+&gt;[!FYI]
+&gt;Changing a the mirrorlist (list of update servers) to a nearby located mirror resolves in faster updates. Really amazing!
+
+Quick setup:
+
+```bash
+sudo pacman -Sy reflector
+```
+
+Test mirrors and add the fastest to your mirrorlist:
+
+```bash
+sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+```
+
+&gt;[!Note]
+&gt;You can also use the `--country` flag to specify your country. 
+&gt;For example:  `--country Germany`
+
+Refresh package databases:
+
+```bash
+sudo pacman -Syyu
+```
+
+Creating a systemd timer to refresh mirrors regularly:
+
+```bash
+sudo systemctl enable reflector.timer
+sudo systemctl start reflector.timer
+```
+
+Speedy!
+</content:encoded> 
     </item>
     <item>
       <title>Remapping the Y and Z Key while Switching US ANSI and DE ISO Keyboard Layout</title>
       <link>https://kb.alexbutenschoen.com/posts/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout/</link>
       <pubDate>Mon, 08 Sep 2025 19:49:07 +0200</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/remapping-the-y-and-z-key-while-switching-us-ansi-and-de-iso-keyboard-layout/</guid>
-      <description>&lt;p&gt;Insight: My laptop has a German ISO keyboard layout. I bought an US ANSI keyboard for faster typing as I am programming. Now it flips the Y and Z key everytime I switch between DE and US grrrr.&lt;/p&gt;</description>
+      
+   	<content:encoded>
+
+Insight: My laptop has a German ISO keyboard layout. I bought an US ANSI keyboard for faster typing as I am programming. Now it flips the Y and Z key everytime I switch between DE and US grrrr.
+
+
+
+&lt;!--more--&gt;
+
+![Keyboard](/images/keyboard.jpg)
+
+
+## How I switch between layouts
+sxhkd (Hotkey Daemon): Switch between us ansi and de with a key binding
+
+The config: `~/.config/sxhkd/sxhkdrc`
+
+```sxhkdrc
+F1
+    setxkbmap us &amp;&amp; xsetroot -name &#34;us&#34;
+F2
+    setxkbmap de &amp;&amp; xsetroot -name &#34;de&#34;
+```
+
+But remember, it resets to default everytime you reboot.
+
+### Optional: Quickly reload sxhkd with `super + escape`
+
+```bash
+ # Reload sxhkd 
+ super + @Escape
+     pkill -USR1 -x sxhkd &amp;&amp; xsetroot -name &#34;reset sxhkd&#34;
+```
+
+## Set the default keyboard layout
+Customize the keyboard layout system wide: `/etc/X11/xorg.conf.d/00-keyboard.conf`
+
+```vim
+Section &#34;InputClass&#34;
+        Identifier &#34;system-keyboard&#34;
+        MatchIsKeyboard &#34;on&#34;
+        Option &#34;XkbLayout&#34; &#34;de,us_custom&#34;
+        Option &#34;XkbModel&#34; &#34;pc104&#34;
+        Option &#34;XkbVariant&#34; &#34;&#34;
+        # Option &#34;XkbOptions&#34; &#34;grp:alt_shift_toggle&#34;
+EndSection
+```
+
+
+To prevent swapping Y and Z, create a custom XKB symbols file (or modify existing `us` layout in `/usr/share/X11/xkb/`) so that Y remains where it is in German layout.
+
+Created custom `us_custom` in `/usr/share/X11/xkb/symbols`
+
+```us_custom
+// Keyboard layouts for the United States of America.
+
+default partial alphanumeric_keys modifier_keys
+xkb_symbols &#34;basic&#34; {
+
+    name[Group1]= &#34;English (US)&#34;;
+
+    key &lt;TLDE&gt;	{[   grave,	 asciitilde	]};
+    key &lt;AE01&gt;	{[	 1,	 exclam		]};
+    key &lt;AE02&gt;	{[	 2,	 at		]};
+    key &lt;AE03&gt;	{[	 3,	 numbersign	]};
+    key &lt;AE04&gt;	{[	 4,	 dollar		]};
+    key &lt;AE05&gt;	{[	 5,	 percent	]};
+    key &lt;AE06&gt;	{[	 6,	 asciicircum	]};
+    key &lt;AE07&gt;	{[	 7,	 ampersand	]};
+    key &lt;AE08&gt;	{[	 8,	 asterisk	]};
+    key &lt;AE09&gt;	{[	 9,	 parenleft	]};
+    key &lt;AE10&gt;	{[	 0,	 parenright	]};
+    key &lt;AE11&gt;	{[   minus,	 underscore	]};
+    key &lt;AE12&gt;	{[   equal,	 plus		]};
+
+    key &lt;AD01&gt;	{[	 q,	 Q		]};
+    key &lt;AD02&gt;	{[	 w,	 W		]};
+    key &lt;AD03&gt;	{[	 e,	 E		]};
+    key &lt;AD04&gt;	{[	 r,	 R		]};
+    key &lt;AD05&gt;	{[	 t,	 T		]};
+    key &lt;AD06&gt;	{[	 z,	 Z		]};
+    key &lt;AD07&gt;	{[	 u,	 U		]};
+    key &lt;AD08&gt;	{[	 i,	 I		]};
+    key &lt;AD09&gt;	{[	 o,	 O		]};
+    key &lt;AD10&gt;	{[	 p,	 P		]};
+    key &lt;AD11&gt;	{[ bracketleft,	 braceleft	]};
+    key &lt;AD12&gt;	{[ bracketright, braceright	]};
+
+    key &lt;AC01&gt;	{[	 a,	 A		]};
+    key &lt;AC02&gt;	{[	 s,	 S		]};
+    key &lt;AC03&gt;	{[	 d,	 D		]};
+    key &lt;AC04&gt;	{[	 f,	 F		]};
+    key &lt;AC05&gt;	{[	 g,	 G		]};
+    key &lt;AC06&gt;	{[	 h,	 H		]};
+    key &lt;AC07&gt;	{[	 j,	 J		]};
+    key &lt;AC08&gt;	{[	 k,	 K		]};
+    key &lt;AC09&gt;	{[	 l,	 L		]};
+    key &lt;AC10&gt;	{[ semicolon,	 colon		]};
+    key &lt;AC11&gt;	{[ apostrophe,	 quotedbl	]};
+    key &lt;BKSL&gt;	{[ backslash,	 bar		]};
+
+    key &lt;AB01&gt;	{[	 y,	 Y		]};
+    key &lt;AB02&gt;	{[	 x,	 X		]};
+    key &lt;AB03&gt;	{[	 c,	 C		]};
+    key &lt;AB04&gt;	{[	 v,	 V		]};
+    key &lt;AB05&gt;	{[	 b,	 B		]};
+    key &lt;AB06&gt;	{[	 n,	 N		]};
+    key &lt;AB07&gt;	{[	 m,	 M		]};
+    key &lt;AB08&gt;	{[   comma,	 less		]};
+    key &lt;AB09&gt;	{[  period,	 greater	]};
+    key &lt;AB10&gt;	{[   slash,	 question	]};
+};
+
+```
+
+## Update sxhkd configuration
+Now change the `sxhkdrc` accordingly:
+
+```sxhkdrc
+F1
+    setxkbmap de &amp;&amp; xsetroot -name &#34;de&#34;
+F2
+    setxkbmap us_custom &amp;&amp; xsetroot -name &#34;us_custom&#34;
+```
+
+
+Good luck!
+</content:encoded> 
     </item>
     <item>
       <title>Flashing USB Drives</title>
       <link>https://kb.alexbutenschoen.com/posts/flash-usb-drive/</link>
       <pubDate>Sun, 29 Jun 2025 01:47:00 +0200</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/flash-usb-drive/</guid>
-      <description></description>
+      
+   	<content:encoded>
+&lt;!--more--&gt;
+
+
+Using `ventoy` to flash multiple ISOs from one USB medium:
+
+```bash
+yay -S ventoy-bin
+sudo /opt/ventoy/VentoyGUI.x86_64
+```
+
+Then simply paste all ISOs into the `Ventoy` USB Drive. When you enter the Ventoy USB on startup, a list with all ISOs are presented to choose from.
+
+
+---
+
+# Full USB flashing
+
+&gt;[!IMPORTANT]
+&gt;Unmount the USB device you want to flash.
+
+
+```bash
+umount /dev/sdX
+```
+
+Using the `dd` command:
+
+```bash
+sudo dd if=/path/to/your.iso of=/dev/sdX bs=4M status=progress
+```
+
+
+Flush write cache:
+
+```bash
+sudo sync
+```
+
+
+
+
+Alternatively: Use `balena etcher` or `rufus` or any other usb writing tool.
+</content:encoded> 
     </item>
     <item>
       <title>Fix Booting Into Black Screen on Arch Linux</title>
       <link>https://kb.alexbutenschoen.com/posts/fix-booting-into-black-screen-on-arch-linux/</link>
       <pubDate>Fri, 20 Jun 2025 23:44:16 +0200</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/fix-booting-into-black-screen-on-arch-linux/</guid>
-      <description></description>
+      
+   	<content:encoded>
+&lt;!--more--&gt;
+
+
+How I fixed booting into a black monitor for Asus Zenbook running Arch Linux (step by step): 
+
+```bash
+pacman -Qs radeon # search system wide radeon driver
+pacman -Qs amdgpu
+sudo pacman -Ss amdgpu # search for amdgpu drivers in the repo
+sudo pacman -S xf86-video-amdgpu # install those drivers
+sudo pacman -Rns vulkan-radeon # remove conflicting drivers
+sudo mkinitcpio -P # reload initramfs modules
+reboot
+```
+
+Check kernel driver for gpu:
+
+```bash
+lspci -k | grep -A 3 -E &#34;(VGA|3D)&#34;
+```
+
+Output:
+
+```
+04:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev c1)
+	Subsystem: ASUSTeK Computer Inc. Device 161c
+	Kernel driver in use: amdgpu
+	Kernel modules: amdgpu
+```
+
+---
+
+Run `xrandr` or `arandr` to adjust monitors
+
+Enable and set resolution of embedded monitor (usually eDP-1):
+
+```bash
+xrandr --output eDP-1 --mode 1920x1080
+```
+
+
+</content:encoded> 
     </item>
     <item>
       <title>Troubleshooting Arch Linux</title>
       <link>https://kb.alexbutenschoen.com/posts/troubleshooting-arch-linux/</link>
       <pubDate>Fri, 20 Jun 2025 22:32:50 +0200</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/troubleshooting-arch-linux/</guid>
-      <description></description>
+      
+   	<content:encoded>
+&lt;!--more--&gt;
+
+
+
+After an update interruption the screen of my Laptop stopped working.
+
+I found the USB ISO of my initial Arch Linux installation and booted into the live environment:
+
+Arch Linux tty:
+
+```bash
+root@archiso ~ #
+```
+
+## Enable wireless connection (WIFI)
+
+(run commands one by one)
+
+```bash
+iwctl
+device list
+station wlan0 scan
+station wlan0 get-networks
+station wlan0 connect &#34;SSID&#34;
+exit
+```
+
+---
+
+## Access your system
+
+List block devices:
+
+```bash
+lsblk
+```
+
+Result:
+
+```
+nvme0n1     259:0    0 476.9G  0 disk 
+├─nvme0n1p1 259:1    0   100M  0 part /boot/efi
+├─nvme0n1p2 259:2    0     8G  0 part [SWAP]
+└─nvme0n1p3 259:3    0 468.8G  0 part /
+```
+
+Mount your root partition:
+
+```bash
+mount /dev/nvme0n1p3 /mnt
+```
+
+Access your root partition: 
+ 
+```bash
+arch-chroot /mnt
+```
+
+Troubleshoot something...
+
+When you finished:
+
+```bash
+exit
+reboot
+```
+
+
+
+</content:encoded> 
     </item>
     <item>
       <title>Setup Windows 11 Inside of Linux</title>
       <link>https://kb.alexbutenschoen.com/posts/setup-windows11-inside-of-linux/</link>
       <pubDate>Tue, 17 Jun 2025 23:24:25 +0200</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/setup-windows11-inside-of-linux/</guid>
-      <description></description>
+      
+   	<content:encoded>
+&lt;!--more--&gt;
+
+Download preferred ISO from Microsoft: [Download Windows 11](https://www.microsoft.com/en-us/software-download/windows11)
+
+I recommend **Windows 11 English International**, supposedly less bloat in there. Look at [Microwin – Winutil Documentation](https://winutil.christitus.com/userguide/microwin/) if you want to go full mode with setting up an clean Windows ISO.
+
+Installing the graphical user interface for QEMU and a GUI Hypervisor:
+
+```bash
+sudo pacman -S quemu-desktop libvirt virt-manager
+```
+
+See `man virsh` and `man qemu` for details.
+
+
+Enable `libvirtd`:
+
+```bash
+systemctl enable libvirtd.socket
+```
+
+Open `Virtual Machine Manager`, click the plus icon and create an virtual machine with Windows ISO for example.
+</content:encoded> 
     </item>
     <item>
       <title>Running Windows Apps on Linux with Wine</title>
       <link>https://kb.alexbutenschoen.com/posts/windows-apps-on-linux/</link>
       <pubDate>Mon, 16 Jun 2025 00:34:06 +0200</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/windows-apps-on-linux/</guid>
-      <description></description>
+      
+   	<content:encoded>
+&lt;!--more--&gt;
+
+Download desired Windows `.exe` or `.msi`.
+
+Configuring Wine:
+
+```bash
+winecfg
+```
+
+
+Installing a Windows Program:
+
+```bash
+wine foobar2000.exe
+```
+
+Uninstalling a program:
+
+```bash
+wine uninstaller
+```
+
+Also remove desktop entries:
+
+```bash
+rm  /.local/share/applications/wine/Programs/foobar2000.desktop
+```
+
+
+
+</content:encoded> 
     </item>
     <item>
       <title>Online Identity Verification</title>
       <link>https://kb.alexbutenschoen.com/posts/online-identity-verification/</link>
       <pubDate>Mon, 02 Jun 2025 14:39:05 +0200</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/online-identity-verification/</guid>
-      <description>&lt;p&gt;How to reliably set up verification for your online identity (Email and Socials).&lt;/p&gt;</description>
+      
+   	<content:encoded>
+
+How to reliably set up verification for your online identity (Email and Socials).
+
+&lt;!--more--&gt;
+
+
+Terminology:
+
+- PGP: Pretty Good Privacy
+- GPG: Gnu Privacy Guard
+
+## 1. Creating a private OpenPGP key
+
+Make sure `gnupg` is installed (additionally install gpg-tui):
+
+```bash
+sudo pacman -S gnupg gpg-tui
+```
+
+
+---
+
+&gt;[!Note]
+&gt;We will add your official Emails and Socials to this key later
+
+
+Generate a private key:
+
+```bash
+gpg --full-generate-key
+```
+
+I recommend a full generation and going with the defaults.
+
+
+&gt;[!Warning]
+&gt;Deleting a key: `gpg --delete-secret-key [FPR or Email]`)
+
+
+---
+
+Listing all secret keys:
+
+```bash
+gpg --list-secret-keys
+```
+
+Listing all public keys:
+
+```bash
+gpg --list-public-keys
+```
+
+This way you can check out all your keys and their fingerprint (FPR)
+
+---
+
+### Editing your private key
+
+```bash
+gpg --edit-key [FPR]
+```
+
+or interactively:
+
+```bash
+gpg-tui
+```
+
+### Basic operations:
+
+Selecting an uid:
+
+```gpg
+uid [number]
+```
+
+Deleting an uid:
+
+```gpg
+deluid
+```
+
+
+Add secondary Emails to your encryption key:
+
+```gpg
+adduid
+```
+
+
+Set primary Email!
+
+```gpg
+uid [number]
+primary
+save
+```
+
+
+Add identity claim to your private key:
+
+```gpg
+notation
+```
+
+
+At this point I recommend to create an Keyoxide Profile for online identity verification and easier claim of multiple accounts.
+
+Get your key fingerprint and add this into the notation: `proof@ariadne.id=https://keyoxide.org/aspe:keyoxide.org:FPR`.
+
+
+This will link your Keyoxide Profile to your OpenPGP Key (both ways). Remember to add the PGP Key to Keyoxide as well.
+
+
+Add some services and complete your Keyoxide Profile afterwards.
+
+You are totally free to add your accounts to your PGP Key instead but Keyoxide is easier to maintain in my opinion.
+
+
+
+
+## 2. Export and upload public key 
+
+
+Quick upload:
+
+```bash
+gpg --send-keys [FPR]
+gpg --keyserver hkps://keys.openpgp.org --send-keys [FPR]
+```
+
+For example:
+
+```bash
+gpg --send-keys LD2C49IENMLNS287A12AC5D8CB1846291B4819D
+```
+
+---
+
+Be careful where you export the keys into!
+
+
+Export secret key into file:
+
+```bash
+gpg --armor --export-secret-keys --output private.asc [Email-address or KEYID]
+```
+
+Export public key to upload later:
+
+```bash
+gpg --armor --export --output public.asc [Email-address or KEYID]
+```
+
+
+Upload your public key `public.asc` to [OpenPGP](https://keys.openpgp.org/upload/submit)
+
+
+
+## 3. Check if Keyoxide shows your public information
+
+Go to `https://keyoxide.org/FPR` and check your profile.
+
+Change `FPR` to your key fingerprint or paste your fingerprint directly here [Keyoxide](https://keyoxide.org).
+
+Then add your Keyoxide link to your socials to proof your identity. (e.g. Mastodon)
+
+Last step: Check if Keyoxide realises the linked PGP Key and Socials: `https://keyoxide.org/aspe:keyoxide.org:FPR`
+
+Congratulations, you are now verified on Mastodon, have an encrypted Mail and you claimed the accounts you use online.
+
+
+---
+
+Also look into [Keybase](https://wiki.archlinux.org/title/Keybase)!
+
+---
+
+References:
+- https://docs.keyoxide.org/getting-started/creating-profile-openpgp/
+</content:encoded> 
     </item>
   </channel>
 </rss>
