@@ -34,7 +34,7 @@ Check RAM:
 watch -n 2 free -h
 ```
 
-Enable memory overcommit:
+Enable memory overcommit vor Virtual Machines:
 ```bash
 echo "vm.overcommit_memory=1" >> /etc/sysctl.conf
 ```
@@ -58,6 +58,23 @@ Flushes swap usage and clears old RAM pages  (without reboot)
 ```bash
 swapoff -a
 swapon -a
+```
+
+Shows all active swaps:
+```bash
+swapon --show
+```
+
+Start swap with priority:
+```bash
+swapon -p 100 /dev/zram0
+```
+
+Check for zram and load it with modprobe if not showing up:
+```bash
+ls /sys/block | grep zram
+lsmod | grep zram
+modprobe zram
 ```
 
 Shows zram compression:

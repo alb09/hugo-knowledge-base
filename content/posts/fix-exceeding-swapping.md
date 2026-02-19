@@ -164,6 +164,7 @@ We are ready to check if the tweaks worked.
 Flushes swap usage and clears old RAM pages  (without reboot)
 ```bash
 swapoff -a
+swapon -p 100 /dev/zram0
 swapon -a
 ```
 
