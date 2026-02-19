@@ -55,18 +55,18 @@
       {{- with $authorEmail }}<author>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</author>{{ end }}
       <guid>{{ .Permalink }}</guid>
 	      
-<content:encoded>
-{{- $content := .Content -}}
+	<content:encoded>
+	{{- $content := .Content -}}
 
-{{- /* Replace <pre><code class="language-xxx">...</code></pre> with ```xxx ... ``` */ -}}
-{{- $content = $content | replaceRE "<pre><code class=\"language-([^\"]+)\">([\\s\\S]*?)</code></pre>" "```$1\n$2\n```" -}}
+	{{- /* Replace <pre><code class="language-xxx">...</code></pre> with ```xxx ... ``` */ -}}
+	{{- $content = $content | replaceRE "<pre><code class=\"language-([^\"]+)\">([\\s\\S]*?)</code></pre>" "```$1\n$2\n```" -}}
 
-{{- /* Unescape HTML entities inside code blocks */ -}}
-{{- $content = $content | replace "&lt;" "<" | replace "&gt;" ">" | replace "&amp;" "&" -}}
+	{{- /* Unescape HTML entities inside code blocks */ -}}
+	{{- $content = $content | replace "&lt;" "<" | replace "&gt;" ">" | replace "&amp;" "&" -}}
 
-{{- /* Output the transformed content as HTML-safe for XML */ -}}
-{{ $content | html }}
-</content:encoded>
+	{{- /* Output the transformed content as HTML-safe for XML */ -}}
+	{{ $content | html }}
+	</content:encoded>
     </item>
     {{- end }}
   </channel>
