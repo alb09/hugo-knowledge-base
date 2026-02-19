@@ -53,10 +53,7 @@
       {{- with $authorEmail }}<author>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</author>{{ end }}
       <guid>{{ .Permalink }}</guid>
       
-      <content:encoded><![CDATA[
-        {{ .Content }}
-      ]]></content:encoded>
-    
+   	<content:encoded>{{ .Content | html }}</content:encoded> 
     </item>
     {{- end }}
   </channel>
