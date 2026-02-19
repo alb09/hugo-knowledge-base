@@ -15,43 +15,9 @@
       <link>https://kb.alexbutenschoen.com/posts/setup-samba-share/</link>
       <pubDate>Sun, 08 Feb 2026 23:56:21 +0100</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/setup-samba-share/</guid>
-      
-   	<content:encoded>
-&lt;!--more--&gt;
-
-
-## Setup Samba Share:
-
-```bash
-apt update &amp;&amp; apt install samba -y
-vi /etc/samba/smb.conf
-```
-
-Add this at the end of the config:
-```
-[media]
-path = /var/lib/vz/storage1
-browseable = yes
-writable = yes
-guest ok = no
-read only = no
-create mask = 0775
-directory mask = 0775
-valid users = root
-```
-
-Setup a secure password
-```bash
-smbpasswd -a root
-```
-
-Add Samba Share Storage to your PC as a network attached storage (local):
-```bash
-gio mount smb://root@&lt;proxmox-ip&gt;/storage1
-```
-
-
-</content:encoded> 
+	      
+<content:encoded>&amp;gt;amp;
+</content:encoded>
     </item>
   </channel>
 </rss>
