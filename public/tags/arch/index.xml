@@ -15,9 +15,95 @@
       <link>https://kb.alexbutenschoen.com/posts/fast-updates-arch-linux/</link>
       <pubDate>Mon, 22 Sep 2025 00:58:55 +0200</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/fast-updates-arch-linux/</guid>
-	      
-	<content:encoded>&amp;gt;amp;
-	</content:encoded>
+      
+   	<content:encoded>&lt;p&gt;I just found the reflector cli tool which can help you manage the mirrorlist in Arch. Just wow, it is so fast to update anything now, it feels like a breeze.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kb.alexbutenschoen.com/images/mirrorlist.png&#34; alt=&#34;Mirrorlist&#34;&gt;&lt;/p&gt;
+
+  &lt;blockquote class=&#34;alert-fyi&#34;&gt;
+    &lt;span class=&#34;alert-heading&#34;&gt;&lt;/span&gt;
+    &lt;p&gt;Changing a the mirrorlist (list of update servers) to a nearby located mirror resolves in faster updates. Really amazing!&lt;/p&gt;
+  &lt;/blockquote&gt;
+
+
+&lt;p&gt;Quick setup:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885737b4558&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman -Sy reflector&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Test mirrors and add the fastest to your mirrorlist:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573dc112d&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo reflector --latest &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt; --protocol https --sort rate --save /etc/pacman.d/mirrorlist&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+
+  &lt;blockquote class=&#34;alert-note&#34;&gt;
+    &lt;span class=&#34;alert-heading&#34;&gt;&lt;/span&gt;
+    &lt;p&gt;You can also use the &lt;code&gt;--country&lt;/code&gt; flag to specify your country.
+For example:  &lt;code&gt;--country Germany&lt;/code&gt;&lt;/p&gt;
+  &lt;/blockquote&gt;
+
+
+&lt;p&gt;Refresh package databases:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573e4cc40&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman -Syyu&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Creating a systemd timer to refresh mirrors regularly:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573e9c515&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; reflector.timer
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl start reflector.timer&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Speedy!&lt;/p&gt;</content:encoded> 
     </item>
   </channel>
 </rss>

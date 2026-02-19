@@ -15,18 +15,449 @@
       <link>https://kb.alexbutenschoen.com/posts/fix-booting-into-black-screen-on-arch-linux/</link>
       <pubDate>Fri, 20 Jun 2025 23:44:16 +0200</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/fix-booting-into-black-screen-on-arch-linux/</guid>
-	      
-	<content:encoded>&amp;gt;amp;
-	</content:encoded>
+      
+   	<content:encoded>&lt;p&gt;How I fixed booting into a black monitor for Asus Zenbook running Arch Linux (step by step):&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88575238570&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pacman -Qs radeon &lt;span class=&#34;c1&#34;&gt;# search system wide radeon driver&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pacman -Qs amdgpu
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman -Ss amdgpu &lt;span class=&#34;c1&#34;&gt;# search for amdgpu drivers in the repo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman -S xf86-video-amdgpu &lt;span class=&#34;c1&#34;&gt;# install those drivers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman -Rns vulkan-radeon &lt;span class=&#34;c1&#34;&gt;# remove conflicting drivers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mkinitcpio -P &lt;span class=&#34;c1&#34;&gt;# reload initramfs modules&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reboot&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Check kernel driver for gpu:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885752abf41&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lspci -k &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep -A &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; -E &lt;span class=&#34;s2&#34;&gt;&amp;#34;(VGA|3D)&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Output:&lt;/p&gt;
+&lt;div class=&#34;code-block language-plaintext&#34; data-lang=&#34;plaintext&#34; id=&#34;code-1895c885752dbf94&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;plaintext&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;04:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev c1)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	Subsystem: ASUSTeK Computer Inc. Device 161c
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	Kernel driver in use: amdgpu
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	Kernel modules: amdgpu&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;hr&gt;
+&lt;p&gt;Run &lt;code&gt;xrandr&lt;/code&gt; or &lt;code&gt;arandr&lt;/code&gt; to adjust monitors&lt;/p&gt;
+&lt;p&gt;Enable and set resolution of embedded monitor (usually eDP-1):&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885753146b0&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xrandr --output eDP-1 --mode 1920x1080&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded> 
     </item>
     <item>
       <title>Online Identity Verification</title>
       <link>https://kb.alexbutenschoen.com/posts/online-identity-verification/</link>
       <pubDate>Mon, 02 Jun 2025 14:39:05 +0200</pubDate>
       <guid>https://kb.alexbutenschoen.com/posts/online-identity-verification/</guid>
-	      
-	<content:encoded>&amp;gt;amp;
-	</content:encoded>
+      
+   	<content:encoded>&lt;p&gt;How to reliably set up verification for your online identity (Email and Socials).&lt;/p&gt;
+&lt;p&gt;Terminology:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PGP: Pretty Good Privacy&lt;/li&gt;
+&lt;li&gt;GPG: Gnu Privacy Guard&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1-creating-a-private-openpgp-key&#34;&gt;1. Creating a private OpenPGP key&lt;/h2&gt;
+&lt;p&gt;Make sure &lt;code&gt;gnupg&lt;/code&gt; is installed (additionally install gpg-tui):&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573765398&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman -S gnupg gpg-tui&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;hr&gt;
+
+  &lt;blockquote class=&#34;alert-note&#34;&gt;
+    &lt;span class=&#34;alert-heading&#34;&gt;&lt;/span&gt;
+    &lt;p&gt;We will add your official Emails and Socials to this key later&lt;/p&gt;
+  &lt;/blockquote&gt;
+
+
+&lt;p&gt;Generate a private key:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573874edc&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --full-generate-key&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;I recommend a full generation and going with the defaults.&lt;/p&gt;
+
+  &lt;blockquote class=&#34;alert-warning&#34;&gt;
+    &lt;span class=&#34;alert-heading&#34;&gt;&lt;/span&gt;
+    &lt;p&gt;Deleting a key: &lt;code&gt;gpg --delete-secret-key [FPR or Email]&lt;/code&gt;)&lt;/p&gt;
+  &lt;/blockquote&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;Listing all secret keys:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885738b1a07&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --list-secret-keys&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Listing all public keys:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885738ec11d&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --list-public-keys&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;This way you can check out all your keys and their fingerprint (FPR)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;editing-your-private-key&#34;&gt;Editing your private key&lt;/h3&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c8857392d4b8&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --edit-key &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;FPR&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;or interactively:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573983a8c&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg-tui&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;h3 id=&#34;basic-operations&#34;&gt;Basic operations:&lt;/h3&gt;
+&lt;p&gt;Selecting an uid:&lt;/p&gt;
+&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1895c8857433543c&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;gpg&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;uid [number]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Deleting an uid:&lt;/p&gt;
+&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1895c885743597d8&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;gpg&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;deluid&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Add secondary Emails to your encryption key:&lt;/p&gt;
+&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1895c885743724af&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;gpg&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;adduid&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Set primary Email!&lt;/p&gt;
+&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1895c885743896a4&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;gpg&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;uid [number]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;primary
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;save&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Add identity claim to your private key:&lt;/p&gt;
+&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1895c885743a5b87&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;gpg&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;notation&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;At this point I recommend to create an Keyoxide Profile for online identity verification and easier claim of multiple accounts.&lt;/p&gt;
+&lt;p&gt;Get your key fingerprint and add this into the notation: &lt;code&gt;proof@ariadne.id=https://keyoxide.org/aspe:keyoxide.org:FPR&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This will link your Keyoxide Profile to your OpenPGP Key (both ways). Remember to add the PGP Key to Keyoxide as well.&lt;/p&gt;
+&lt;p&gt;Add some services and complete your Keyoxide Profile afterwards.&lt;/p&gt;
+&lt;p&gt;You are totally free to add your accounts to your PGP Key instead but Keyoxide is easier to maintain in my opinion.&lt;/p&gt;
+&lt;h2 id=&#34;2-export-and-upload-public-key&#34;&gt;2. Export and upload public key&lt;/h2&gt;
+&lt;p&gt;Quick upload:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885743c01ba&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --send-keys &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;FPR&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --keyserver hkps://keys.openpgp.org --send-keys &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;FPR&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885743eb91a&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --send-keys LD2C49IENMLNS287A12AC5D8CB1846291B4819D&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;hr&gt;
+&lt;p&gt;Be careful where you export the keys into!&lt;/p&gt;
+&lt;p&gt;Export secret key into file:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c8857440a367&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --armor --export-secret-keys --output private.asc &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;Email-address or KEYID&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Export public key to upload later:&lt;/p&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885744326ec&#34;&gt;
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --armor --export --output public.asc &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;Email-address or KEYID&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;p&gt;Upload your public key &lt;code&gt;public.asc&lt;/code&gt; to 
+
+&lt;a href=&#34;https://keys.openpgp.org/upload/submit&#34; 
+target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; class=&#34;external-link&#34;&gt;
+
+OpenPGP
+&lt;i class=&#34;fa-solid fa-arrow-up-right-from-square fa-xs&#34;&gt;&lt;/i&gt;
+
+
+&lt;/a&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;3-check-if-keyoxide-shows-your-public-information&#34;&gt;3. Check if Keyoxide shows your public information&lt;/h2&gt;
+&lt;p&gt;Go to &lt;code&gt;https://keyoxide.org/FPR&lt;/code&gt; and check your profile.&lt;/p&gt;
+&lt;p&gt;Change &lt;code&gt;FPR&lt;/code&gt; to your key fingerprint or paste your fingerprint directly here 
+
+&lt;a href=&#34;https://keyoxide.org&#34; 
+target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; class=&#34;external-link&#34;&gt;
+
+Keyoxide
+&lt;i class=&#34;fa-solid fa-arrow-up-right-from-square fa-xs&#34;&gt;&lt;/i&gt;
+
+
+&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;Then add your Keyoxide link to your socials to proof your identity. (e.g. Mastodon)&lt;/p&gt;
+&lt;p&gt;Last step: Check if Keyoxide realises the linked PGP Key and Socials: &lt;code&gt;https://keyoxide.org/aspe:keyoxide.org:FPR&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Congratulations, you are now verified on Mastodon, have an encrypted Mail and you claimed the accounts you use online.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Also look into 
+
+&lt;a href=&#34;https://wiki.archlinux.org/title/Keybase&#34; 
+target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; class=&#34;external-link&#34;&gt;
+
+Keybase
+&lt;i class=&#34;fa-solid fa-arrow-up-right-from-square fa-xs&#34;&gt;&lt;/i&gt;
+
+
+&lt;/a&gt;
+!&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;References:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+&lt;a href=&#34;https://docs.keyoxide.org/getting-started/creating-profile-openpgp/&#34; 
+target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; class=&#34;external-link&#34;&gt;
+
+https://docs.keyoxide.org/getting-started/creating-profile-openpgp/
+&lt;i class=&#34;fa-solid fa-arrow-up-right-from-square fa-xs&#34;&gt;&lt;/i&gt;
+
+
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content:encoded> 
     </item>
   </channel>
 </rss>
