@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kb.alexbutenschoen.com/</loc>
-    <lastmod>2026-02-09T14:49:54+01:00</lastmod>
+    <lastmod>2026-02-24T10:35:22+01:00</lastmod>
   </url><url>
     <loc>https://kb.alexbutenschoen.com/posts/</loc>
-    <lastmod>2026-02-09T14:49:54+01:00</lastmod>
+    <lastmod>2026-02-24T10:35:22+01:00</lastmod>
+  </url><url>
+    <loc>https://kb.alexbutenschoen.com/posts/synced-fleeting-notes-with-termux/</loc>
+    <lastmod>2026-02-24T10:35:22+01:00</lastmod>
   </url><url>
     <loc>https://kb.alexbutenschoen.com/tags/proxmox/</loc>
     <lastmod>2026-02-09T14:49:54+01:00</lastmod>

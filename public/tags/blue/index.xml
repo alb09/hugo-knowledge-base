@@ -17,7 +17,7 @@
       <guid>https://kb.alexbutenschoen.com/posts/fix-booting-into-black-screen-on-arch-linux/</guid>
       
    	<content:encoded>&lt;p&gt;How I fixed booting into a black monitor for Asus Zenbook running Arch Linux (step by step):&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88575238570&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272831a9905c&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -46,7 +46,7 @@
 
 
 &lt;p&gt;Check kernel driver for gpu:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885752abf41&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272831b06f71&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -63,7 +63,7 @@
 
 
 &lt;p&gt;Output:&lt;/p&gt;
-&lt;div class=&#34;code-block language-plaintext&#34; data-lang=&#34;plaintext&#34; id=&#34;code-1895c885752dbf94&#34;&gt;
+&lt;div class=&#34;code-block language-plaintext&#34; data-lang=&#34;plaintext&#34; id=&#34;code-1897272831b35cbd&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;plaintext&lt;/span&gt;
   &lt;/div&gt;
@@ -88,7 +88,7 @@
 &lt;hr&gt;
 &lt;p&gt;Run &lt;code&gt;xrandr&lt;/code&gt; or &lt;code&gt;arandr&lt;/code&gt; to adjust monitors&lt;/p&gt;
 &lt;p&gt;Enable and set resolution of embedded monitor (usually eDP-1):&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885753146b0&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272831b6ae3a&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -116,7 +116,7 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;1-creating-a-private-openpgp-key&#34;&gt;1. Creating a private OpenPGP key&lt;/h2&gt;
 &lt;p&gt;Make sure &lt;code&gt;gnupg&lt;/code&gt; is installed (additionally install gpg-tui):&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573765398&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728302e7c82&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -141,7 +141,7 @@
 
 
 &lt;p&gt;Generate a private key:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573874edc&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728303c4f25&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -167,7 +167,7 @@
 
 &lt;hr&gt;
 &lt;p&gt;Listing all secret keys:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885738b1a07&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728303f8ae8&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -184,7 +184,7 @@
 
 
 &lt;p&gt;Listing all public keys:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885738ec11d&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-189727283042a1cf&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -203,7 +203,7 @@
 &lt;p&gt;This way you can check out all your keys and their fingerprint (FPR)&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;editing-your-private-key&#34;&gt;Editing your private key&lt;/h3&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c8857392d4b8&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-189727283045e888&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -220,7 +220,7 @@
 
 
 &lt;p&gt;or interactively:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573983a8c&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728304ca0c1&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -238,7 +238,7 @@
 
 &lt;h3 id=&#34;basic-operations&#34;&gt;Basic operations:&lt;/h3&gt;
 &lt;p&gt;Selecting an uid:&lt;/p&gt;
-&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1895c8857433543c&#34;&gt;
+&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1897272830c924d0&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;gpg&lt;/span&gt;
   &lt;/div&gt;
@@ -255,7 +255,7 @@
 
 
 &lt;p&gt;Deleting an uid:&lt;/p&gt;
-&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1895c885743597d8&#34;&gt;
+&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1897272830cb5443&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;gpg&lt;/span&gt;
   &lt;/div&gt;
@@ -272,7 +272,7 @@
 
 
 &lt;p&gt;Add secondary Emails to your encryption key:&lt;/p&gt;
-&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1895c885743724af&#34;&gt;
+&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1897272830ccef31&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;gpg&lt;/span&gt;
   &lt;/div&gt;
@@ -289,7 +289,7 @@
 
 
 &lt;p&gt;Set primary Email!&lt;/p&gt;
-&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1895c885743896a4&#34;&gt;
+&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1897272830ce7904&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;gpg&lt;/span&gt;
   &lt;/div&gt;
@@ -310,7 +310,7 @@
 
 
 &lt;p&gt;Add identity claim to your private key:&lt;/p&gt;
-&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1895c885743a5b87&#34;&gt;
+&lt;div class=&#34;code-block language-gpg&#34; data-lang=&#34;gpg&#34; id=&#34;code-1897272830d03586&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;gpg&lt;/span&gt;
   &lt;/div&gt;
@@ -333,7 +333,7 @@
 &lt;p&gt;You are totally free to add your accounts to your PGP Key instead but Keyoxide is easier to maintain in my opinion.&lt;/p&gt;
 &lt;h2 id=&#34;2-export-and-upload-public-key&#34;&gt;2. Export and upload public key&lt;/h2&gt;
 &lt;p&gt;Quick upload:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885743c01ba&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272830d1fb26&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -352,7 +352,7 @@
 
 
 &lt;p&gt;For example:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885743eb91a&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272830d51b5c&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -371,7 +371,7 @@
 &lt;hr&gt;
 &lt;p&gt;Be careful where you export the keys into!&lt;/p&gt;
 &lt;p&gt;Export secret key into file:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c8857440a367&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272830d7109d&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -388,7 +388,7 @@
 
 
 &lt;p&gt;Export public key to upload later:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885744326ec&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272830d99589&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;

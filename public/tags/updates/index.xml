@@ -26,7 +26,7 @@
 
 
 &lt;p&gt;Quick setup:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885737b4558&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728302b1b0e&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -43,7 +43,7 @@
 
 
 &lt;p&gt;Test mirrors and add the fastest to your mirrorlist:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573dc112d&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272830450abf&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -68,7 +68,7 @@ For example:  &lt;code&gt;--country Germany&lt;/code&gt;&lt;/p&gt;
 
 
 &lt;p&gt;Refresh package databases:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573e4cc40&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272830659cdd&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -85,7 +85,7 @@ For example:  &lt;code&gt;--country Germany&lt;/code&gt;&lt;/p&gt;
 
 
 &lt;p&gt;Creating a systemd timer to refresh mirrors regularly:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573e9c515&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272830795735&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;

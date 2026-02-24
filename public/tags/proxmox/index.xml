@@ -18,7 +18,7 @@
       
    	<content:encoded>&lt;p&gt;Just some useful commands for Proxmox Virtual Environment.&lt;/p&gt;
 &lt;p&gt;Watch system processes:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c8857375be72&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272830217357&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -37,7 +37,7 @@
 
 
 &lt;p&gt;Show disk usage:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885738ca851&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728303a42cc&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -54,7 +54,7 @@
 
 
 &lt;p&gt;Show root filesystem:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573916617&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728303cabe5&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -71,7 +71,7 @@
 
 
 &lt;p&gt;Check RAM:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885739b3383&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728303ee000&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -88,7 +88,7 @@
 
 
 &lt;p&gt;Enable memory overcommit vor Virtual Machines:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573bae3ed&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272830422e47&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -105,7 +105,7 @@
 
 
 &lt;p&gt;Check Swap:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573dff492&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-189727283045d8cc&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -122,7 +122,7 @@
 
 
 &lt;p&gt;Change swappiness:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573e458f5&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728304f355e&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -139,7 +139,7 @@
 
 
 &lt;p&gt;Check swappiness:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573e9b5b4&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272830549d55&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -156,7 +156,7 @@
 
 
 &lt;p&gt;Flushes swap usage and clears old RAM pages  (without reboot)&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573f4745c&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-189727283058a9bb&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -175,7 +175,7 @@
 
 
 &lt;p&gt;Shows all active swaps:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573f8e4e1&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728305db3ee&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -192,7 +192,7 @@
 
 
 &lt;p&gt;Start swap with priority:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88573fc23c8&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-189727283062163b&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -209,7 +209,7 @@
 
 
 &lt;p&gt;Check for zram and load it with modprobe if not showing up:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88574002564&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-189727283067bad1&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -230,7 +230,7 @@
 
 
 &lt;p&gt;Shows zram compression:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88574068d84&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-189727283079f03a&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -247,7 +247,7 @@
 
 
 &lt;p&gt;Restart zram:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88574094b31&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272830811c2d&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -264,7 +264,7 @@
 
 
 &lt;p&gt;Container config:&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c885740c45eb&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-189727283084d446&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -283,7 +283,7 @@
 
 
 &lt;p&gt;Check for oom issues: e.g. killing a process because of low RAM&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88574112ed2&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728308afe65&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -300,7 +300,7 @@
 
 
 &lt;p&gt;Set correct access privilges for the storage (so containers can access it)&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88574147623&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-18972728308ee036&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;

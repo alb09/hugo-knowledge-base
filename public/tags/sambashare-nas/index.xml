@@ -17,7 +17,7 @@
       <guid>https://kb.alexbutenschoen.com/posts/setup-samba-share/</guid>
       
    	<content:encoded>&lt;h2 id=&#34;setup-samba-share&#34;&gt;Setup Samba Share:&lt;/h2&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88575234a4d&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272831a990c0&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -36,7 +36,7 @@
 
 
 &lt;p&gt;Add this at the end of the config:&lt;/p&gt;
-&lt;div class=&#34;code-block language-plaintext&#34; data-lang=&#34;plaintext&#34; id=&#34;code-1895c8857527dd9d&#34;&gt;
+&lt;div class=&#34;code-block language-plaintext&#34; data-lang=&#34;plaintext&#34; id=&#34;code-1897272831b04cb1&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;plaintext&lt;/span&gt;
   &lt;/div&gt;
@@ -69,7 +69,7 @@
 
 
 &lt;p&gt;Setup a secure password&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c88575376e47&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272831bae747&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;
@@ -86,7 +86,7 @@
 
 
 &lt;p&gt;Add Samba Share Storage to your PC as a network attached storage (local):&lt;/p&gt;
-&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1895c8857539c357&#34;&gt;
+&lt;div class=&#34;code-block language-bash&#34; data-lang=&#34;bash&#34; id=&#34;code-1897272831bc89f5&#34;&gt;
   &lt;div class=&#34;code-header&#34;&gt;
     &lt;span class=&#34;code-language&#34;&gt;bash&lt;/span&gt;
   &lt;/div&gt;

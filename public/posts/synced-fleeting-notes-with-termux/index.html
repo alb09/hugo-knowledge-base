@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<title>Synced Fleeting Notes With Termux | Alex&#39; KB</title>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<link rel="stylesheet" href="/css/combined.min.7799b065e22a7e40b8c8f26557c8a35f60fae8cf71a555a2d627ea4c46e608e4.css" integrity="sha256-d5mwZeIqfkC4yPJlV8ijX2D66M9xpVWi1ifqTEbmCOQ=" crossorigin="anonymous">
+
+
+<link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Dosis:wght@500&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+<script src="/js/bundle.1f0fbf7be1bb32e26503f0e21ceda404ef60319a5656af25da14afaeb470cc17.js" integrity="sha256-Hw&#43;/e&#43;G7MuJlA/DiHO2kBO9gMZpWVq8l2hSvrrRwzBc=" crossorigin="anonymous" defer></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="me" href="https://defcon.social/@alexb">
+<meta name="theme-color" content="#313751">
+<meta property="og:site_name" content="Alex Knowledge Base" />
+<meta name="fediverse:creator" content="@alexb@defcon.social" />
+<meta name="description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
+
+
+<meta name="date" content="2026-02-24" />
+
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-02-24T10:35:22&#43;01:00" />
+
+
+<meta property="og:title" content="Synced Fleeting Notes With Termux" />
+<meta property="og:description" content="This Knowledge Base is an ‘it works on my machine’ project where I document all the details the brain might not remember later. Preflight of my blog." />
+<meta property="og:url" content="https://kb.alexbutenschoen.com/posts/synced-fleeting-notes-with-termux/" />
+<meta property="og:image" content="https://kb.alexbutenschoen.com/images/default.png" />
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https:\/\/kb.alexbutenschoen.com\/posts\/synced-fleeting-notes-with-termux\/#blogposting",
+  "headline": "Synced Fleeting Notes With Termux",
+  "image": "",
+  "author": {
+    "@type": "Person",
+    "name": ""
+  },
+
+
+  "genre": []
+  "keywords": 
+
+
+  "wordCount": "671",
+
+
+  "publisher": {
+    "@type": "Organization",
+    "name": "",
+    "logo": {
+      "@type": "ImageObject",
+      "url": ""
+    }
+  },
+  "url": "https:\/\/kb.alexbutenschoen.com\/posts\/synced-fleeting-notes-with-termux\/",
+  "datePublished": "2026-02-24T10:35:22\u002b01:00",
+  "dateModified": "2026-02-24T10:35:22\u002b01:00",
+  "description": "",
+  "mainEntityOfPage": "https:\/\/kb.alexbutenschoen.com\/posts\/synced-fleeting-notes-with-termux\/"
+}
+</script>
+
+
+
+
+</head>
+<body>
+  <header>
+    <nav>
+    <div class="navbar-left">
+        <div class="navbar-title"><a href="/">Alex&#39; KB</a></div>
+
+    </div>
+
+    <div class="navbar-right">
+        <button class="toggle-dark-mode" id="themeToggle">
+    <i class="fa-solid fa-circle-half-stroke" style="color: var(--text-color);"></i>
+</button>
+        
+
+
+
+  <nav class="navbar-list">
+    <ul>
+
+
+
+    <li>
+      <a href="https://alexbutenschoen.com/about">About</a>
+    </li>
+    </ul>
+  </nav>
+
+
+
+
+
+    </div>
+</nav>
+  </header>
+  <main>
+    
+  <h1 class="blogpost-title">Synced Fleeting Notes With Termux</h1>
+
+
+
+  
+
+ 
+
+
+<div class="pageinfo">
+    <ul>
+        <li><i></i> 24 Feb 2026</li> 
+        <li><i class="fa-regular fa-keyboard"></i> 671 words.</li>
+	
+    </ul>
+</div>
+
+   
+
+
+  <div class="single-content"><p><code>Termux</code> with <code>Termux:Widget</code> and <code>Termux:API</code> from F-Droid:</p>
+<ul>
+<li>
+
+<a href="https://f-droid.org/de/packages/com.termux/" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+Termux | F-Droid – Freies und quelloffenes Android-App-Repository
+<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+
+
+</a>
+</li>
+<li>
+
+<a href="https://f-droid.org/de/packages/com.termux.widget/" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+Termux:Widget | F-Droid – Freies und quelloffenes Android-App-Repository
+<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+
+
+</a>
+</li>
+<li>
+
+<a href="https://f-droid.org/de/packages/com.termux.api/" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+Termux:API | F-Droid – Freies und quelloffenes Android-App-Repository
+<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+
+
+</a>
+</li>
+<li>
+
+<a href="https://wiki.termux.com/wiki/Main_Page" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+Termux Wiki
+<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+
+
+</a>
+</li>
+<li>
+
+<a href="https://github.com/termux/termux-widget?tab=readme-ov-file#script-icon-directory-optional" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+GitHub - termux/termux-widget: Termux add-on app which adds shortcuts to commands on the home screen.
+<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+
+
+</a>
+</li>
+</ul>
+<p>Enable all required permissions after installation.</p>
+<div class="code-block language-bash" data-lang="bash" id="code-189727283034210e">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">termux-change-repo <span class="c1"># select your region</span>
+</span></span><span class="line"><span class="cl">pkg upgrade
+</span></span><span class="line"><span class="cl">pkg install vim tree termux-api</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Create directiory for the Widget scripts:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-18972728305341f6">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p ~/.shortcuts</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>My file tree:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-189727283058081a">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls -sah</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1897272830d81c12">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">total 48K
+</span></span><span class="line"><span class="cl">3.5K .           3.5K .ssh      3.5K notes
+</span></span><span class="line"><span class="cl">3.5K ..          3.5K .termux   3.5K scripts
+</span></span><span class="line"><span class="cl">4.0K .bashrc     3.5K .vim      3.5K storage
+</span></span><span class="line"><span class="cl">3.5K .shortcuts   12K .viminfo</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Your phone files are here:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1897272830dc6aec">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls ~/storage/shared</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>This is where we want to store the FleetingNotes folder for sync.
+The script below automatically reorganizes your ideas in monthly notes with timestamps.</p>
+<p>Notes in termux: <code>~/notes/fleeting/</code>
+Shared notes in Android: <code>~/storage/shared/FleetingNotes</code></p>
+<p>Organisation:</p>
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1897272830df0d3c">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">2025-11.md
+</span></span><span class="line"><span class="cl">2025-12.md
+</span></span><span class="line"><span class="cl">2026-01.md
+</span></span><span class="line"><span class="cl">2026-02.md</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Example content of <code>2026-02.md</code> with timestamps:</p>
+<div class="code-block language-plaintext" data-lang="plaintext" id="code-1897272830e1dfa5">
+  <div class="code-header">
+    <span class="code-language">plaintext</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">2026-02-03 09:12 hello
+</span></span><span class="line"><span class="cl">2026-02-03 11:38 test
+</span></span><span class="line"><span class="cl">2026-02-03 15:58 something important
+</span></span><span class="line"><span class="cl">2026-02-08 12:44 test1
+</span></span><span class="line"><span class="cl">2026-02-15 23:28 this is a nice idea
+</span></span><span class="line"><span class="cl">2026-02-27 21:44 testing termux fleeting notes</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<hr>
+<h2 id="create-script">Create script</h2>
+<p>Fleeting notes creation with Timestamps:
+Create this file in <code>~/.shortcuts</code> to make accessable with the <code>Termux:Widget</code></p>
+<div class="code-block language-bash" data-lang="bash" id="code-1897272830e5e6d7">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="c1"># ~/.shortcuts/note.sh</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Usage: ./note.sh</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Prompts for a fleeting note, keeps it in ~/notes, and also copies to shared storage</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Termux internal notes directory (private)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NOTES_DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/notes/fleeting&#34;</span>
+</span></span><span class="line"><span class="cl">mkdir -p <span class="s2">&#34;</span><span class="nv">$NOTES_DIR</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Shared storage directory (accessible from Android)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SHARED_DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/storage/shared/FleetingNotes&#34;</span>
+</span></span><span class="line"><span class="cl">mkdir -p <span class="s2">&#34;</span><span class="nv">$SHARED_DIR</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Current month file</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MONTH_FILE</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$NOTES_DIR</span><span class="s2">/</span><span class="k">$(</span>date <span class="s1">&#39;+%Y-%m&#39;</span><span class="k">)</span><span class="s2">.md&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SHARED_MONTH_FILE</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$SHARED_DIR</span><span class="s2">/</span><span class="k">$(</span>date <span class="s1">&#39;+%Y-%m&#39;</span><span class="k">)</span><span class="s2">.md&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create monthly file with header if it doesn&#39;t exist</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">&#34;</span><span class="nv">$MONTH_FILE</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;# Fleeting Notes — </span><span class="k">$(</span>date <span class="s1">&#39;+%Y-%m&#39;</span><span class="k">)</span><span class="s2">&#34;</span> &gt; <span class="s2">&#34;</span><span class="nv">$MONTH_FILE</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">&#34;</span><span class="nv">$SHARED_MONTH_FILE</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;# Fleeting Notes — </span><span class="k">$(</span>date <span class="s1">&#39;+%Y-%m&#39;</span><span class="k">)</span><span class="s2">&#34;</span> &gt; <span class="s2">&#34;</span><span class="nv">$SHARED_MONTH_FILE</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Prompt for note</span>
+</span></span><span class="line"><span class="cl"><span class="nb">read</span> -p <span class="s2">&#34;Enter New Note: &#34;</span> NOTE
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check if user entered something</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -z <span class="s2">&#34;</span><span class="nv">$NOTE</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;No note entered. Exiting.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Append note with timestamp to both locations</span>
+</span></span><span class="line"><span class="cl"><span class="nv">TIMESTAMP</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span>date <span class="s1">&#39;+%Y-%m-%d %H:%M&#39;</span><span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$TIMESTAMP</span><span class="s2"> </span><span class="nv">$NOTE</span><span class="s2">&#34;</span> &gt;&gt; <span class="s2">&#34;</span><span class="nv">$MONTH_FILE</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$TIMESTAMP</span><span class="s2"> </span><span class="nv">$NOTE</span><span class="s2">&#34;</span> &gt;&gt; <span class="s2">&#34;</span><span class="nv">$SHARED_MONTH_FILE</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Confirmation</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Note added to </span><span class="nv">$MONTH_FILE</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Also copied to shared folder: </span><span class="nv">$SHARED_MONTH_FILE</span><span class="s2">&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Now add the widget to your homescreen.</p>
+<hr>
+<h2 id="optional">Optional:</h2>
+<p>The <code>.bashrc</code> I use with an easy clipboard function and aliases:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1897272830f2e978">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/data/data/com.termux/files/usr/bin/bash
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">n</span><span class="o">=</span><span class="s2">&#34;~/.shortcuts/note.sh&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">alias</span> ..<span class="o">=</span><span class="s2">&#34;cd ..&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">alias</span> ...<span class="o">=</span><span class="s2">&#34;cd ../..&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TERM</span><span class="o">=</span>xterm-256color
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Easily copy something over to the Android Keyboard</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span> clip <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">[</span> -p /dev/stdin <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Input is coming from a pipe</span>
+</span></span><span class="line"><span class="cl">        termux-clipboard-set
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="s2">&#34;Copied piped input to clipboard.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="o">[</span> -f <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Input is a file</span>
+</span></span><span class="line"><span class="cl">        termux-clipboard-set &lt; <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="s2">&#34;Copied </span><span class="nv">$1</span><span class="s2"> to clipboard.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="s2">&#34;Usage: clip &lt;file&gt; OR pipe content to clip&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>Don&rsquo;t forget to source the <code>.bashrc</code> with</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1897272830f92135">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> .bashrc</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<hr>
+<h2 id="syncing">Syncing</h2>
+<p>Now let&rsquo;s sync our <code>FleetingNotes</code> content with Syncthing. This way we can create fleeting notes from the desktop too, and bundle them together. Just use the same script as above with modified output directiories.</p>
+<p>Change this accordingly:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-1897272830fac664">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Termux internal notes directory (private)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NOTES_DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/backup/notes/fleeting&#34;</span>
+</span></span><span class="line"><span class="cl">mkdir -p <span class="s2">&#34;</span><span class="nv">$NOTES_DIR</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Shared storage directory (accessible from Android)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SHARED_DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/notes/FleetingNotes&#34;</span>
+</span></span><span class="line"><span class="cl">mkdir -p <span class="s2">&#34;</span><span class="nv">$SHARED_DIR</span><span class="s2">&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+<p>You can keep both, so one is a local backup of the notes created on the device. Sync one and avoid conflicts, you have a backup now!</p>
+<p>Syncing your phone:
+
+
+<a href="https://f-droid.org/de/packages/com.github.catfriend1.syncthingfork/" 
+target="_blank" rel="noopener noreferrer" class="external-link">
+
+Syncthing-Fork | F-Droid – Freies und quelloffenes Android-App-Repository
+<i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+
+
+</a>
+</p>
+<p>On the desktop:</p>
+<div class="code-block language-bash" data-lang="bash" id="code-189727283108239e">
+  <div class="code-header">
+    <span class="code-language">bash</span>
+  </div>
+  <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -Ss syncthing</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div></div>
+
+
+
+
+
+<div class="readon">
+  
+<div class="post-navigation">
+
+
+  <div class="prev">
+      
+	<p>&lt;-- Previous on</p>
+        <a class="previous-post" href="https://kb.alexbutenschoen.com/posts/proxmox-health/">Proxmox Health</a>
+      
+  </div>
+  <div class="next">
+      
+        <span class="no-next"></span>
+      
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+  
+
+  
+  
+  </main>
+  <footer>
+    <p>Alex' Knowledge Base &copy; 2026.</p>
+  </footer>
+</body>
+</html>
